@@ -135,6 +135,7 @@
 			buildConfigurationList = 4524A0B62C0A3CF2002A3B40 /* Build configuration list for PBXNativeTarget "Xiuxiueig" */;
 			buildPhases = (
 				4524A08E2C0A3CF1002A3B40 /* Sources */,
+				45EA9A602C0CE7F2006C14E8 /* Swiftlint */,
 				4524A08F2C0A3CF1002A3B40 /* Frameworks */,
 				4524A0902C0A3CF1002A3B40 /* Resources */,
 			);
@@ -143,6 +144,8 @@
 			dependencies = (
 			);
 			name = Xiuxiueig;
+			packageProductDependencies = (
+			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +218,8 @@
 				Base,
 			);
 			mainGroup = 4524A0892C0A3CF1002A3B40;
+			packageReferences = (
+			);
 			productRefGroup = 4524A0932C0A3CF1002A3B40 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -251,6 +256,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45EA9A602C0CE7F2006C14E8 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint rules\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4524A08E2C0A3CF1002A3B40 /* Sources */ = {
@@ -424,6 +451,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Xiuxiueig_iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -454,6 +482,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Xiuxiueig_iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

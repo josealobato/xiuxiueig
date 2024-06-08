@@ -1,0 +1,5 @@
+#
+# Find more information about the configuration here:
+# https://github.com/realm/SwiftLint?tab=readme-ov-file#configuration
+#
+disabled_rules:

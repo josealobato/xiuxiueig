@@ -1,14 +1,9 @@
-//
-//  Xiuxiueig_iOSUITestsLaunchTests.swift
-//  Xiuxiueig_iOSUITests
-//
-//  Created by Jose A. Lobato on 31/5/24.
-//
-
 import XCTest
 
+// swiftlint:disable:next type_name
 final class Xiuxiueig_iOSUITestsLaunchTests: XCTestCase {
 
+    // swiftlint:disable:next static_over_final_class
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

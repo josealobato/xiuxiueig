@@ -11,3 +11,8 @@ The "xiuxiueig" project is an iOS app to help dyslexic students keep up with the
 ## Documentation
 
 All project development is traced using Github projects (https://github.com/users/josealobato/projects/4).
+
+## Swiftlint
+
+This projects uses [`swiftlint`](https://github.com/realm/SwiftLint). Install it with homebrew `brew install swiftlint`.
+
