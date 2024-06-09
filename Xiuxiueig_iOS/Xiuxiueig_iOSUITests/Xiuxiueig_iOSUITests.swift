@@ -1,5 +1,6 @@
 import XCTest
 
+// swiftlint:disable:next type_name
 final class Xiuxiueig_iOSUITests: XCTestCase {
 
     override func setUpWithError() throws {

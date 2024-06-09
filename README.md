@@ -16,3 +16,6 @@ All project development is traced using Github projects (https://github.com/user
 
 This projects uses [`swiftlint`](https://github.com/realm/SwiftLint). Install it with homebrew `brew install swiftlint`.
 
+## On Naming
+
+The prefix `X` or `XX` is used to identify public containers or types designed exclusively for the app. It is used to avoid conflicts with other systems or imported types. Internal types won't generally use any prefixes.

@@ -44,6 +44,7 @@
 		4524A0AC2C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xiuxiueig_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4524A0B02C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITests.swift; sourceTree = "<group>"; };
 		4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		45B086EC2C15A0020055659F /* XCoordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCoordinator; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		4524A0892C0A3CF1002A3B40 = {
 			isa = PBXGroup;
 			children = (
+				45B086EA2C159BC40055659F /* Packages */,
 				4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */,
 				4524A0A52C0A3CF2002A3B40 /* Xiuxiueig_iOSTests */,
 				4524A0AF2C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests */,
@@ -125,6 +127,14 @@
 				4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */,
 			);
 			path = Xiuxiueig_iOSUITests;
+			sourceTree = "<group>";
+		};
+		45B086EA2C159BC40055659F /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				45B086EC2C15A0020055659F /* XCoordinator */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
