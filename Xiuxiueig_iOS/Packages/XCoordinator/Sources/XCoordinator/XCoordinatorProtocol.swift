@@ -18,7 +18,7 @@ public protocol XCoordinatorProtocol {
     mutating func removeChild(_ child: XCoordinatorProtocol)
 }
 
-extension XCoordinatorProtocol {
+public extension XCoordinatorProtocol {
 
     mutating func addChild(_ newChild: XCoordinatorProtocol) {
         childCoordinators.append(newChild)

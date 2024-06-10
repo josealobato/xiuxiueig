@@ -14,6 +14,9 @@
 		4524A0A72C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0A62C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift */; };
 		4524A0B12C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0B02C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift */; };
 		4524A0B32C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */; };
+		458100C82C16167F00F2AC0A /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */; };
+		458100CA2C16169B00F2AC0A /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* AppFlowView.swift */; };
+		458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 458100CC2C16172100F2AC0A /* XCoordinator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,8 @@
 		4524A0AC2C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xiuxiueig_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4524A0B02C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITests.swift; sourceTree = "<group>"; };
 		4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		458100C92C16169B00F2AC0A /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
 		45B086EC2C15A0020055659F /* XCoordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCoordinator; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +86,7 @@
 				4524A0A52C0A3CF2002A3B40 /* Xiuxiueig_iOSTests */,
 				4524A0AF2C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests */,
 				4524A0932C0A3CF1002A3B40 /* Products */,
+				458100CB2C16172100F2AC0A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +103,7 @@
 		4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				458100C62C16166500F2AC0A /* Flows */,
 				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
 				4524A0972C0A3CF1002A3B40 /* ContentView.swift */,
 				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
@@ -129,6 +137,22 @@
 			path = Xiuxiueig_iOSUITests;
 			sourceTree = "<group>";
 		};
+		458100C62C16166500F2AC0A /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */,
+				458100C92C16169B00F2AC0A /* AppFlowView.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		458100CB2C16172100F2AC0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45B086EA2C159BC40055659F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +179,7 @@
 			);
 			name = Xiuxiueig;
 			packageProductDependencies = (
+				458100CC2C16172100F2AC0A /* XCoordinator */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -294,7 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458100CA2C16169B00F2AC0A /* AppFlowView.swift in Sources */,
 				4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */,
+				458100C82C16167F00F2AC0A /* AppFlowCoordinator.swift in Sources */,
 				4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,7 +555,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xiuxiueig_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xiuxiueig_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xiuxiueig.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xiuxiueig";
 			};
 			name = Debug;
 		};
@@ -547,7 +574,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xiuxiueig_iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xiuxiueig_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Xiuxiueig.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Xiuxiueig";
 			};
 			name = Release;
 		};
@@ -625,6 +652,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		458100CC2C16172100F2AC0A /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XCoordinator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4524A08A2C0A3CF1002A3B40 /* Project object */;
 }

@@ -1,0 +1,38 @@
+// Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
+
+import SwiftUI
+
+struct AppFlowView: View {
+
+    // Coordinator associated to this view.
+    @StateObject private var coordinator = AppFlowCoordinator()
+
+    // Access to the system environment.
+    @Environment(\.scenePhase) var scenePhase
+
+    @State var onFirstLoad = true
+
+    var body: some View {
+        coordinator.baseCoordinatorView()
+            .onAppear {
+                if onFirstLoad {
+                    onFirstLoad = false
+                    coordinator.start()
+                }
+            }
+            // Example of Getting system events that are system level.
+            .onChange(of: scenePhase, initial: false) { _, newPhase  in
+                if newPhase == .inactive {
+                    print("App is Inactive")
+                } else if newPhase == .active {
+                    print("App is Active")
+                } else if newPhase == .background {
+                    print("App is Background")
+                }
+            }
+    }
+}
+
+#Preview {
+    AppFlowView()
+}

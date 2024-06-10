@@ -5,7 +5,7 @@ import SwiftUI
 struct Xiuxiueig_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppFlowView()
         }
     }
 }
