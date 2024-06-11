@@ -17,6 +17,7 @@
 		458100C82C16167F00F2AC0A /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */; };
 		458100CA2C16169B00F2AC0A /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* AppFlowView.swift */; };
 		458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 458100CC2C16172100F2AC0A /* XCoordinator */; };
+		458100D12C1772E800F2AC0A /* XToolKit in Frameworks */ = {isa = PBXBuildFile; productRef = 458100D02C1772E800F2AC0A /* XToolKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
+		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
 		45B086EC2C15A0020055659F /* XCoordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCoordinator; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458100D12C1772E800F2AC0A /* XToolKit in Frameworks */,
 				458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +159,7 @@
 		45B086EA2C159BC40055659F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				458100CF2C17722700F2AC0A /* XToolKit */,
 				45B086EC2C15A0020055659F /* XCoordinator */,
 			);
 			path = Packages;
@@ -180,6 +184,7 @@
 			name = Xiuxiueig;
 			packageProductDependencies = (
 				458100CC2C16172100F2AC0A /* XCoordinator */,
+				458100D02C1772E800F2AC0A /* XToolKit */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -657,6 +662,10 @@
 		458100CC2C16172100F2AC0A /* XCoordinator */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XCoordinator;
+		};
+		458100D02C1772E800F2AC0A /* XToolKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XToolKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

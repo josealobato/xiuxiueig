@@ -2,11 +2,13 @@
 
 import SwiftUI
 import XCoordinator
+import XToolKit
 
 /// The `AppFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
 final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
+    let logger = XLog.logger(category: "AppFlowCoordinator")
     var isStarted: Bool = false
 
     var parentCoordinator: (any XCoordinator.XCoordinatorRequestProtocol)?
@@ -14,19 +16,20 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
     init() {
-        print("init AppFlowCoordinator")
+        logger.debug("init AppFlowCoordinator")
     }
 
     deinit {
-        print("init AppFlowCoordinator")
+        logger.debug("init AppFlowCoordinator")
     }
 
     func start() {
-        print("start AppFlowCoordinator")
+        logger.debug("start AppFlowCoordinator")
         isStarted = true
     }
 
     func stop() {
+        logger.debug("stop AppFlowCoordinator")
         isStarted = false
     }
 }
@@ -59,7 +62,9 @@ extension AppFlowCoordinator: XCoordinatorRequestProtocol {
 
         switch feature {
         default:
-            print("Coordinator: Nothing to coordinate for feature \(feature) and request \(request)")
+            logger.debug(
+                "Coordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request.rawValue)"
+            )
         }
     }
 }
