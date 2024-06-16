@@ -6,6 +6,7 @@ import XToolKit
 
 /// The `AppFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
+/// It is also the entry point of the application
 final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "AppFlowCoordinator")
@@ -17,6 +18,7 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     init() {
         logger.debug("init AppFlowCoordinator")
+        initializeTabs()
     }
 
     deinit {
@@ -32,6 +34,22 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         logger.debug("stop AppFlowCoordinator")
         isStarted = false
     }
+
+    var tabs: [XCoordinatorProtocol] = []
+    func initializeTabs() {
+        let tabOneCoordinator = SampleTabFlowCoordinator()
+        tabOneCoordinator.parentCoordinator = self
+        tabs.append(tabOneCoordinator)
+        playerTabCoordinator = tabOneCoordinator
+
+        let tabTwoCoordinator = SampleTabFlowCoordinator()
+        tabTwoCoordinator.parentCoordinator = self
+        tabs.append(tabOneCoordinator)
+        collectitonTabCoordinator = tabTwoCoordinator
+    }
+
+    var playerTabCoordinator: SampleTabFlowCoordinator?
+    var collectitonTabCoordinator: SampleTabFlowCoordinator?
 }
 
 ///
@@ -45,7 +63,21 @@ extension AppFlowCoordinator {
             if !isStarted {
                 Text("starting")
             } else {
-                Text("Started")
+                TabView {
+                    // NOTE: I tried to do with with a loop over the coordinator
+                    //       collection but it added a ton of complexity that is not
+                    //       needed yet on the application. Approach to be reviewed in
+                    //       the future.
+
+                    // Tab 1
+                    if let playerTabCoordinator = playerTabCoordinator {
+                        SampleTabFlowView(coordinator: playerTabCoordinator)
+                    }
+                    // Tab 2
+                    if let collectitonTabCoordinator = collectitonTabCoordinator {
+                        SampleTabFlowView(coordinator: collectitonTabCoordinator)
+                    }
+                }
             }
         }
     }

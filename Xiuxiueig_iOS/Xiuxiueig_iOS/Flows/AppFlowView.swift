@@ -10,6 +10,7 @@ struct AppFlowView: View {
     // Access to the system environment.
     @Environment(\.scenePhase) var scenePhase
 
+    // To detect first load of the view and start the coordinator.
     @State var onFirstLoad = true
 
     var body: some View {
@@ -33,6 +34,9 @@ struct AppFlowView: View {
     }
 }
 
-#Preview {
-    AppFlowView()
-}
+// No need for preview on this view. In case of need add something like this:
+// ``
+// #Preview {
+//    AppFlowView()
+// }
+// ```

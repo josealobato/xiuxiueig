@@ -7,13 +7,13 @@ let package = Package(
     products: [
         .library(
             name: "XToolKit",
-            targets: ["XToolKit"]),
+            targets: ["XToolKit"])
     ],
     targets: [
         .target(
             name: "XToolKit"),
         .testTarget(
             name: "XToolKitTests",
-            dependencies: ["XToolKit"]),
+            dependencies: ["XToolKit"])
     ]
 )
