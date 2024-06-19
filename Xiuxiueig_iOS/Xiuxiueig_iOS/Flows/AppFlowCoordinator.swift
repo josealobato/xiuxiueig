@@ -12,7 +12,7 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     let logger = XLog.logger(category: "AppFlowCoordinator")
     var isStarted: Bool = false
 
-    var parentCoordinator: (any XCoordinator.XCoordinatorRequestProtocol)?
+    var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
 
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
@@ -42,14 +42,14 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         tabs.append(tabOneCoordinator)
         playerTabCoordinator = tabOneCoordinator
 
-        let tabTwoCoordinator = SampleTabFlowCoordinator()
+        let tabTwoCoordinator = CollectionFlowCoordinator()
         tabTwoCoordinator.parentCoordinator = self
         tabs.append(tabOneCoordinator)
         collectitonTabCoordinator = tabTwoCoordinator
     }
 
     var playerTabCoordinator: SampleTabFlowCoordinator?
-    var collectitonTabCoordinator: SampleTabFlowCoordinator?
+    var collectitonTabCoordinator: CollectionFlowCoordinator?
 }
 
 ///
@@ -73,9 +73,10 @@ extension AppFlowCoordinator {
                     if let playerTabCoordinator = playerTabCoordinator {
                         SampleTabFlowView(coordinator: playerTabCoordinator)
                     }
-                    // Tab 2
+
+                    // Tab 1
                     if let collectitonTabCoordinator = collectitonTabCoordinator {
-                        SampleTabFlowView(coordinator: collectitonTabCoordinator)
+                        CollectionFlowView(coordinator: collectitonTabCoordinator)
                     }
                 }
             }
@@ -88,14 +89,14 @@ extension AppFlowCoordinator {
 ///
 /// Conformance of the `XCoordinatorRequestProtocol` of the `AppFlowCoordinator`
 ///
-extension AppFlowCoordinator: XCoordinatorRequestProtocol {
+extension AppFlowCoordinator: XCoordinationRequestProtocol {
 
-    func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinatorRequest) {
+    func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
 
         switch feature {
         default:
             logger.debug(
-                "Coordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request.rawValue)"
+                "Coordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request)"
             )
         }
     }

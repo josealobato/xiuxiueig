@@ -11,7 +11,7 @@ public protocol XCoordinatorProtocol {
     func start()
     func stop()
     var isStarted: Bool { get set }
-    var parentCoordinator: XCoordinatorRequestProtocol? { get set }
+    var parentCoordinator: XCoordinationRequestProtocol? { get set }
     var childCoordinators: [ XCoordinatorProtocol] { get set }
 
     mutating func addChild(_ newChild: XCoordinatorProtocol)

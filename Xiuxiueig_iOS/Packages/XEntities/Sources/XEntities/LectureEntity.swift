@@ -9,7 +9,7 @@ public struct LectureEntity: Identifiable, Equatable {
 
     public var id: String
     public var title: String
-    public var category: Category?
+    public var category: CategoryEntity?
     public var mediaURL: URL
     public let imageURL: URL?
     public var queuePosition: Int?
@@ -21,7 +21,7 @@ public struct LectureEntity: Identifiable, Equatable {
 
     public init(id: String,
                 title: String,
-                category: Category? = nil,
+                category: CategoryEntity? = nil,
                 mediaURL: URL,
                 imageURL: URL? = nil,
                 queuePosition: Int? = nil,

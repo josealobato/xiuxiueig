@@ -6,5 +6,6 @@ import Foundation
 public enum XCoordinated: String, Equatable {
     // Please, keep this list sorted alphabetically.
 
-    case xplayer
+    case xLectureCollection
+    case xPlayer
 }

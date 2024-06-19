@@ -13,7 +13,7 @@ final class SampleTabFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "SampleTabFlowCoordinator")
     var isStarted: Bool = false
-    var parentCoordinator: (any XCoordinator.XCoordinatorRequestProtocol)?
+    var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
     init() {

@@ -3,7 +3,7 @@
 import Foundation
 
 /// Features use this protocol to request coordination actions to a given coordinator.
-public protocol XCoordinatorRequestProtocol {
+public protocol XCoordinationRequestProtocol {
 
     /// Request for coordination to a coordinator.
     /// - Parameters:
@@ -11,5 +11,5 @@ public protocol XCoordinatorRequestProtocol {
     ///   a coordinator to be smart and show things differently for
     ///   diferent feature when needed.
     ///   - request: The coordination action to be performed.
-    func coordinate(from feature: XCoordinated, request: XCoordinatorRequest)
+    func coordinate(from feature: XCoordinated, request: XCoordinationRequest)
 }
