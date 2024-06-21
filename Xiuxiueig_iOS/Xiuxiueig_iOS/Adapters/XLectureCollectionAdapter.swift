@@ -4,7 +4,7 @@ import Foundation
 import XLectureCollection
 import XEntities
 
-class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
+final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
     func lectures() async throws -> [XEntities.LectureEntity] {
         [
             LectureEntity(id: "1",

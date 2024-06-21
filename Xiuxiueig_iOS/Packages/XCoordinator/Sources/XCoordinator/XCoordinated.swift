@@ -7,5 +7,6 @@ public enum XCoordinated: String, Equatable {
     // Please, keep this list sorted alphabetically.
 
     case xLectureCollection
+    case xLectureDetails
     case xPlayer
 }

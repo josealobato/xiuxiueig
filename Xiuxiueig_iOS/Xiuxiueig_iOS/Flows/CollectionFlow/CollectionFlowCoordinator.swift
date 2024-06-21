@@ -7,7 +7,7 @@ import XCoordinator
 import XToolKit
 import XLectureCollection
 
-/// The coordinator managing the flow on the collection tab.
+/// The coordinator managing the flow on the collection flow.
 final class CollectionFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "CollectionFlowCoordinator")
@@ -38,6 +38,11 @@ final class CollectionFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     @Published var sheet: Feature?
     @Published var screenCover: Feature?
 
+    func push(_ page: Feature) {
+        DispatchQueue.main.async {
+            self.path.append(page)
+        }
+    }
     private func present(sheet: Feature) { self.sheet = sheet }
     private func present(screenCover: Feature) { self.screenCover = screenCover }
     private func dismissSheet() { sheet = nil; screenCover = nil}
@@ -46,32 +51,16 @@ final class CollectionFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 }
 
 ///
-/// This extension provides the view associated with the Coordinator
+/// This extension serves the view associated with the Coordinator
 ///
 extension CollectionFlowCoordinator {
 
     @ViewBuilder
+    /// The view use this method to request the main view it should hold.
+    /// - Returns: the navigation root view of the `CollectionFlowView`
     func baseCoordinatorView() -> some View {
         let adapter = XLectureCollectionAdapter()
         XLectureCollectionBuilder.build(services: adapter,
                                         coordinator: self)
-    }
-}
-
-// MARK: - CoordinatorRequestProtocol
-
-///
-/// Conformance of the `XCoordinatorRequestProtocol` of the `AppFlowCoordinator`
-///
-extension CollectionFlowCoordinator: XCoordinationRequestProtocol {
-
-    func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
-
-        switch feature {
-        default:
-            logger.debug(
-                "Coordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request)"
-            )
-        }
     }
 }

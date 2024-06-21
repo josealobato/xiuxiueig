@@ -1,0 +1,21 @@
+// Navigation Title
+"navigationTitle" = "Lecture Details";
+
+// Labels
+"titleLabel" = "Title:";
+"titleHint" = "Type your title here...";
+"titleAdvice" = "Use a short title to help quickly identify your lessons.";
+
+"categoryLabel" = "Category:";
+"noCategory" = "Tap to select a category";
+"categoryAdvice" = "Select a category to group your lectures by themes.";
+
+// Actions
+"save" = "Save";
+
+// Category Selector
+"categorySelectorTitle" = "Select a Category";
+"categorySelectorCancelButtonTitle" = "Cancel";
+
+
+// Errors

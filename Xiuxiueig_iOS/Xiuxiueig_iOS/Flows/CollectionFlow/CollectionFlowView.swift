@@ -2,6 +2,8 @@
 
 import SwiftUI
 
+/// Base View associated to the Collecction flow. It works in tandem with the
+/// view coordinator to manage coordination requests on the Collection Flow.
 struct CollectionFlowView: View {
 
     @ObservedObject var coordinator: CollectionFlowCoordinator
@@ -14,18 +16,21 @@ struct CollectionFlowView: View {
 
     var body: some View {
 
+        // The Main work of the view is holding a Navigation View
+        // (pushing) and presenting shets and covers. The building of those
+        // views is deferred to the Coordinator.
+
         NavigationStack(path: $coordinator.path) {
             coordinator.baseCoordinatorView()
-//                .navigationDestination(for: Feature.self) { page in
-//                    flowOneCoordinator.build(feature: page)
-//                }
-//                .sheet(item: $flowOneCoordinator.sheet) { sheet in
-//                    flowOneCoordinator.build(feature: sheet)
-//                }
-//                .fullScreenCover(item: $flowOneCoordinator.screenCover) { screenCover in
-//                    flowOneCoordinator.build(feature: screenCover)
-//                }
-
+                .navigationDestination(for: CollectionFlowCoordinator.Feature.self) { page in
+                    coordinator.build(feature: page)
+                }
+                .sheet(item: $coordinator.sheet) { sheet in
+                    coordinator.build(feature: sheet)
+                }
+                .fullScreenCover(item: $coordinator.screenCover) { screenCover in
+                    coordinator.build(feature: screenCover)
+                }
         }
         .tabItem {
             Label("Library", systemImage: "books.vertical")
@@ -38,7 +43,3 @@ struct CollectionFlowView: View {
         }
     }
 }
-
-// #Preview {
-//    CollectionFlowView()
-// }

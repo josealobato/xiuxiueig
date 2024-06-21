@@ -14,15 +14,20 @@
 		4524A0A72C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0A62C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift */; };
 		4524A0B12C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0B02C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift */; };
 		4524A0B32C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */; };
-		456038F02C1EE57100BE25FC /* XEntities in Frameworks */ = {isa = PBXBuildFile; productRef = 456038EF2C1EE57100BE25FC /* XEntities */; };
-		456038F42C1EEE3E00BE25FC /* XLectureCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 456038F32C1EEE3E00BE25FC /* XLectureCollection */; };
+		4544985A2C248D5B005357FD /* XEntities in Frameworks */ = {isa = PBXBuildFile; productRef = 454498592C248D5B005357FD /* XEntities */; };
+		4544985C2C248D66005357FD /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 4544985B2C248D66005357FD /* XCoordinator */; };
+		4544985E2C248D74005357FD /* XLectureCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 4544985D2C248D74005357FD /* XLectureCollection */; };
+		454498602C248D74005357FD /* XToolKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4544985F2C248D74005357FD /* XToolKit */; };
+		454498622C248D80005357FD /* XLectureDetails in Frameworks */ = {isa = PBXBuildFile; productRef = 454498612C248D80005357FD /* XLectureDetails */; };
+		454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498632C249244005357FD /* CollectionFlowCoordinator+Features.swift */; };
+		454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498652C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift */; };
+		454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498672C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift */; };
+		4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
 		458100C82C16167F00F2AC0A /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */; };
 		458100CA2C16169B00F2AC0A /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* AppFlowView.swift */; };
-		458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 458100CC2C16172100F2AC0A /* XCoordinator */; };
-		458100D12C1772E800F2AC0A /* XToolKit in Frameworks */ = {isa = PBXBuildFile; productRef = 458100D02C1772E800F2AC0A /* XToolKit */; };
 		458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D22C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift */; };
 		458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */; };
 		458100D72C18C25300F2AC0A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D62C18C25300F2AC0A /* Feature.swift */; };
@@ -56,11 +61,16 @@
 		4524A0AC2C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xiuxiueig_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4524A0B02C0A3CF2002A3B40 /* Xiuxiueig_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITests.swift; sourceTree = "<group>"; };
 		4524A0B22C0A3CF2002A3B40 /* Xiuxiueig_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		454498632C249244005357FD /* CollectionFlowCoordinator+Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
+		454498652C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
+		454498672C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
+		454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureDetailsAdapter.swift; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
 		456038F82C20A90900BE25FC /* CollectionFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowView.swift; sourceTree = "<group>"; };
 		456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureCollectionAdapter.swift; sourceTree = "<group>"; };
+		456038FD2C24891F00BE25FC /* XLectureDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureDetails; sourceTree = "<group>"; };
 		458100C72C16167F00F2AC0A /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
@@ -75,10 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458100D12C1772E800F2AC0A /* XToolKit in Frameworks */,
-				458100CD2C16172100F2AC0A /* XCoordinator in Frameworks */,
-				456038F42C1EEE3E00BE25FC /* XLectureCollection in Frameworks */,
-				456038F02C1EE57100BE25FC /* XEntities in Frameworks */,
+				454498622C248D80005357FD /* XLectureDetails in Frameworks */,
+				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
+				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
+				454498602C248D74005357FD /* XToolKit in Frameworks */,
+				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +183,7 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
 			);
 			path = Features;
@@ -182,6 +194,9 @@
 			children = (
 				456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */,
 				456038F82C20A90900BE25FC /* CollectionFlowView.swift */,
+				454498632C249244005357FD /* CollectionFlowCoordinator+Features.swift */,
+				454498652C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift */,
+				454498672C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift */,
 			);
 			path = CollectionFlow;
 			sourceTree = "<group>";
@@ -190,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */,
+				454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -241,10 +257,11 @@
 			);
 			name = Xiuxiueig;
 			packageProductDependencies = (
-				458100CC2C16172100F2AC0A /* XCoordinator */,
-				458100D02C1772E800F2AC0A /* XToolKit */,
-				456038EF2C1EE57100BE25FC /* XEntities */,
-				456038F32C1EEE3E00BE25FC /* XLectureCollection */,
+				454498592C248D5B005357FD /* XEntities */,
+				4544985B2C248D66005357FD /* XCoordinator */,
+				4544985D2C248D74005357FD /* XLectureCollection */,
+				4544985F2C248D74005357FD /* XToolKit */,
+				454498612C248D80005357FD /* XLectureDetails */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -389,10 +406,14 @@
 				458100CA2C16169B00F2AC0A /* AppFlowView.swift in Sources */,
 				458100D72C18C25300F2AC0A /* Feature.swift in Sources */,
 				456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */,
+				454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */,
 				4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */,
+				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
 				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
+				454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				458100C82C16167F00F2AC0A /* AppFlowCoordinator.swift in Sources */,
+				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
 				4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,21 +746,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		456038EF2C1EE57100BE25FC /* XEntities */ = {
+		454498592C248D5B005357FD /* XEntities */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XEntities;
 		};
-		456038F32C1EEE3E00BE25FC /* XLectureCollection */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = XLectureCollection;
-		};
-		458100CC2C16172100F2AC0A /* XCoordinator */ = {
+		4544985B2C248D66005357FD /* XCoordinator */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XCoordinator;
 		};
-		458100D02C1772E800F2AC0A /* XToolKit */ = {
+		4544985D2C248D74005357FD /* XLectureCollection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XLectureCollection;
+		};
+		4544985F2C248D74005357FD /* XToolKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XToolKit;
+		};
+		454498612C248D80005357FD /* XLectureDetails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XLectureDetails;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
