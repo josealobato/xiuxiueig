@@ -4,9 +4,10 @@ import SwiftUI
 import XCoordinator
 import XToolKit
 
-/// The `LoggedInFlowCoordinator` is the root coordinator of the application.
-/// It will be the last coordinator on attending an event.
-/// It is also the entry point of the application
+/// The `LoggedInFlowCoordinator` is the main coordinator when the user
+/// is logged in.
+///
+/// It holds the tabview with a navigation flow for every tab.
 final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "LoggedInFlowCoordinator")
@@ -60,24 +61,20 @@ extension LoggedInFlowCoordinator {
     @ViewBuilder
     func baseCoordinatorView() -> some View {
         VStack {
-            if !isStarted {
-                Text("starting")
-            } else {
-                TabView {
-                    // NOTE: I tried to do with with a loop over the coordinator
-                    //       collection but it added a ton of complexity that is not
-                    //       needed yet on the application. Approach to be reviewed in
-                    //       the future.
+            TabView {
+                // NOTE: I tried to do with with a loop over the coordinator
+                //       collection but it added a ton of complexity that is not
+                //       needed yet on the application. Approach to be reviewed in
+                //       the future.
 
-                    // Tab 1
-                    if let playerTabCoordinator = playerTabCoordinator {
-                        SampleTabFlowView(coordinator: playerTabCoordinator)
-                    }
+                // Tab 1
+                if let playerTabCoordinator = playerTabCoordinator {
+                    SampleTabFlowView(coordinator: playerTabCoordinator)
+                }
 
-                    // Tab 1
-                    if let collectitonTabCoordinator = collectitonTabCoordinator {
-                        CollectionFlowView(coordinator: collectitonTabCoordinator)
-                    }
+                // Tab 1
+                if let collectitonTabCoordinator = collectitonTabCoordinator {
+                    CollectionFlowView(coordinator: collectitonTabCoordinator)
                 }
             }
         }
@@ -92,6 +89,8 @@ extension LoggedInFlowCoordinator {
 extension LoggedInFlowCoordinator: XCoordinationRequestProtocol {
 
     func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
+
+        guard isStarted else { return }
 
         switch feature {
         default:

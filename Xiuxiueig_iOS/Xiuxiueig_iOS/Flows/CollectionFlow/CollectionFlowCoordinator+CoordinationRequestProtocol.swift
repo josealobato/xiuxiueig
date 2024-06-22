@@ -10,6 +10,8 @@ extension CollectionFlowCoordinator: XCoordinationRequestProtocol {
 
     func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
 
+        guard isStarted else { return }
+
         switch feature {
         case .xLectureCollection: onLectureCollectionRequest(request: request)
         default:

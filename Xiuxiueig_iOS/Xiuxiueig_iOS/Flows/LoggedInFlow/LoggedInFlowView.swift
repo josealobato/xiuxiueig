@@ -5,7 +5,11 @@ import SwiftUI
 struct LoggedInFlowView: View {
 
     // Coordinator associated to this view.
-    @StateObject private var coordinator = LoggedInFlowCoordinator()
+    @ObservedObject var coordinator: LoggedInFlowCoordinator
+
+    init(coordinator: LoggedInFlowCoordinator) {
+        self.coordinator = coordinator
+    }
 
     // Access to the system environment.
     @Environment(\.scenePhase) var scenePhase

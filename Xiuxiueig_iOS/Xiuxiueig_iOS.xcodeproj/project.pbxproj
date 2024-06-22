@@ -23,6 +23,8 @@
 		454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498652C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift */; };
 		454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498672C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift */; };
 		4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */; };
+		4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544986C2C26B740005357FD /* AppFlowCoordinator.swift */; };
+		4544986F2C26B754005357FD /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544986E2C26B754005357FD /* AppFlowView.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
@@ -65,6 +67,8 @@
 		454498652C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
 		454498672C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
 		454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureDetailsAdapter.swift; sourceTree = "<group>"; };
+		4544986C2C26B740005357FD /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		4544986E2C26B754005357FD /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				4544986B2C26B30D005357FD /* LoggedInFlow */,
 				456038F52C20A8CC00BE25FC /* CollectionFlow */,
 				456038ED2C1ECFE200BE25FC /* DemoCode */,
+				4544986C2C26B740005357FD /* AppFlowCoordinator.swift */,
+				4544986E2C26B754005357FD /* AppFlowView.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4544986F2C26B754005357FD /* AppFlowView.swift in Sources */,
 				456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */,
 				456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */,
 				458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */,
@@ -416,6 +423,7 @@
 				456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */,
 				454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */,
 				4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */,
+				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
 				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
