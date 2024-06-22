@@ -3,7 +3,7 @@
 import Foundation
 
 extension CollectionFlowCoordinator {
-    
+
     /// The list of Features that are under control of the
     /// CollectionFlowCoordinator.
     ///
@@ -11,7 +11,7 @@ extension CollectionFlowCoordinator {
     /// associated Coordinator. So we should provide the essential information
     /// needed to build that features. Therefore the parameters.
     enum Feature: Identifiable, Hashable {
-        
+
         case lectureDetails(String)
 
         var id: String {

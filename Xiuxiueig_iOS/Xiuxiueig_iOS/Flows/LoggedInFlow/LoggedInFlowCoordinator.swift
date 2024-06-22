@@ -4,12 +4,12 @@ import SwiftUI
 import XCoordinator
 import XToolKit
 
-/// The `AppFlowCoordinator` is the root coordinator of the application.
+/// The `LoggedInFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
 /// It is also the entry point of the application
-final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
+final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
-    let logger = XLog.logger(category: "AppFlowCoordinator")
+    let logger = XLog.logger(category: "LoggedInFlowCoordinator")
     var isStarted: Bool = false
 
     var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
@@ -17,21 +17,21 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
     init() {
-        logger.debug("init AppFlowCoordinator")
+        logger.debug("init LoggedInFlowCoordinator")
         initializeTabs()
     }
 
     deinit {
-        logger.debug("init AppFlowCoordinator")
+        logger.debug("init LoggedInFlowCoordinator")
     }
 
     func start() {
-        logger.debug("start AppFlowCoordinator")
+        logger.debug("start LoggedInFlowCoordinator")
         isStarted = true
     }
 
     func stop() {
-        logger.debug("stop AppFlowCoordinator")
+        logger.debug("stop LoggedInFlowCoordinator")
         isStarted = false
     }
 
@@ -55,7 +55,7 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 ///
 /// This extension provides the view associated with the Coordinator
 ///
-extension AppFlowCoordinator {
+extension LoggedInFlowCoordinator {
 
     @ViewBuilder
     func baseCoordinatorView() -> some View {
@@ -87,9 +87,9 @@ extension AppFlowCoordinator {
 // MARK: - CoordinatorRequestProtocol
 
 ///
-/// Conformance of the `XCoordinatorRequestProtocol` of the `AppFlowCoordinator`
+/// Conformance of the `XCoordinatorRequestProtocol` of the `LoggedInFlowCoordinator`
 ///
-extension AppFlowCoordinator: XCoordinationRequestProtocol {
+extension LoggedInFlowCoordinator: XCoordinationRequestProtocol {
 
     func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
 

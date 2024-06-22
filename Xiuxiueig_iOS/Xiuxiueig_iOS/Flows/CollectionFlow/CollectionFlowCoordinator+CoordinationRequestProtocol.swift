@@ -28,7 +28,6 @@ extension CollectionFlowCoordinator: XCoordinationRequestProtocol {
     // The Feature itself just request an action, but how it is handled
     // is coordinator's responsibility.
 
-
     /// Manage all request by the Lecture Collection Feature
     /// - Parameter request: the request to handle.
     func onLectureCollectionRequest(request: XCoordinationRequest) {

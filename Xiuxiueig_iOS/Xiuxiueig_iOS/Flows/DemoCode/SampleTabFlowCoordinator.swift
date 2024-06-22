@@ -7,7 +7,7 @@ import XToolKit
 /// This file was created as an example to be able to develop the Coordinator approach.
 /// Should be removed when the other coordinators are in place.
 
-/// The `AppFlowCoordinator` is the root coordinator of the application.
+/// The `LoggedInFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
 final class SampleTabFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 

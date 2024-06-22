@@ -2,10 +2,10 @@
 
 import SwiftUI
 
-struct AppFlowView: View {
+struct LoggedInFlowView: View {
 
     // Coordinator associated to this view.
-    @StateObject private var coordinator = AppFlowCoordinator()
+    @StateObject private var coordinator = LoggedInFlowCoordinator()
 
     // Access to the system environment.
     @Environment(\.scenePhase) var scenePhase
@@ -37,6 +37,6 @@ struct AppFlowView: View {
 // No need for preview on this view. In case of need add something like this:
 // ``
 // #Preview {
-//    AppFlowView()
+//    LoggedInFlowView()
 // }
 // ```

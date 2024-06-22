@@ -10,7 +10,7 @@ import OSLog
 /// How to use it:
 /// 1. Create a logger selecting a category relevant for your logs.
 /// ```
-/// let logger = XLog.logger(category: "AppFlowCoordinator")
+/// let logger = XLog.logger(category: "LoggedInFlowCoordinator")
 /// ```
 ///
 /// 2. Used it as you will use any Logger from OSLog.
