@@ -4,6 +4,8 @@ import SwiftUI
 import XCoordinator
 import XToolKit
 
+
+
 /// The `AppFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
 /// It is also the entry point of the application
@@ -16,6 +18,11 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     }
 
     @Published var state: State = .loggedOut
+    func updateState(_ state: State) {
+        DispatchQueue.main.async {
+            self.state = state
+        }
+    }
 
     let logger = XLog.logger(category: "AppFlowCoordinator")
     var isStarted: Bool = false
@@ -58,66 +65,6 @@ extension AppFlowCoordinator {
             case .onboarding: onboardingView()
             case .loggedIn: loggedInView()
             }
-        }
-    }
-
-    @ViewBuilder
-    private func loggedOutView() -> some View {
-        VStack {
-            Text("Logged Out")
-            Button {
-                self.state = .onboarding
-            } label: {
-                Text("Next")
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func onboardingView() -> some View {
-        VStack {
-            Text("Onboarding")
-            Button {
-                self.state = .loggedIn
-            } label: {
-                Text("Next")
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func loggedInView() -> some View {
-        LoggedInFlowView(coordinator: buildLoggedInCoordinator())
-    }
-
-    private func buildLoggedInCoordinator() -> LoggedInFlowCoordinator {
-        if let coordinator = loggedInCoordinator {
-            return coordinator
-        } else {
-            let coordinator = LoggedInFlowCoordinator()
-            coordinator.parentCoordinator = self
-            loggedInCoordinator = coordinator
-            return coordinator
-        }
-    }
-}
-
-// MARK: - CoordinatorRequestProtocol
-
-///
-/// Conformance of the `XCoordinatorRequestProtocol` of the `AppFlowCoordinator`
-///
-extension AppFlowCoordinator: XCoordinationRequestProtocol {
-
-    func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
-
-        guard isStarted else { return }
-
-        switch feature {
-        default:
-            logger.debug(
-                "AppFlowCoordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request)"
-            )
         }
     }
 }

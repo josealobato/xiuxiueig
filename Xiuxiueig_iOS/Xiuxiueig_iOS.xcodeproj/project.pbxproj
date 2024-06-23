@@ -25,6 +25,12 @@
 		4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */; };
 		4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544986C2C26B740005357FD /* AppFlowCoordinator.swift */; };
 		4544986F2C26B754005357FD /* AppFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544986E2C26B754005357FD /* AppFlowView.swift */; };
+		454498722C27FDD4005357FD /* XLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 454498712C27FDD4005357FD /* XLogin */; };
+		454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498732C2811F9005357FD /* AppFlowCoordinator+Login.swift */; };
+		454498762C281270005357FD /* XLoginAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498752C281270005357FD /* XLoginAdapter.swift */; };
+		454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */; };
+		4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */; };
+		4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
@@ -69,6 +75,12 @@
 		454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureDetailsAdapter.swift; sourceTree = "<group>"; };
 		4544986C2C26B740005357FD /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		4544986E2C26B754005357FD /* AppFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowView.swift; sourceTree = "<group>"; };
+		454498702C26E2F0005357FD /* XLogin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLogin; sourceTree = "<group>"; };
+		454498732C2811F9005357FD /* AppFlowCoordinator+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+Login.swift"; sourceTree = "<group>"; };
+		454498752C281270005357FD /* XLoginAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLoginAdapter.swift; sourceTree = "<group>"; };
+		454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+XCoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
+		454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+LoggedIn.swift"; sourceTree = "<group>"; };
+		4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+Onboarding.swift"; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -92,6 +104,7 @@
 				454498622C248D80005357FD /* XLectureDetails in Frameworks */,
 				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
 				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
+				454498722C27FDD4005357FD /* XLogin in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
 			);
@@ -196,6 +209,7 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				454498702C26E2F0005357FD /* XLogin */,
 				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
 			);
@@ -219,6 +233,7 @@
 			children = (
 				456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */,
 				454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */,
+				454498752C281270005357FD /* XLoginAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -231,6 +246,10 @@
 				456038ED2C1ECFE200BE25FC /* DemoCode */,
 				4544986C2C26B740005357FD /* AppFlowCoordinator.swift */,
 				4544986E2C26B754005357FD /* AppFlowView.swift */,
+				454498732C2811F9005357FD /* AppFlowCoordinator+Login.swift */,
+				454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */,
+				454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */,
+				4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -276,6 +295,7 @@
 				4544985D2C248D74005357FD /* XLectureCollection */,
 				4544985F2C248D74005357FD /* XToolKit */,
 				454498612C248D80005357FD /* XLectureDetails */,
+				454498712C27FDD4005357FD /* XLogin */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -426,10 +446,15 @@
 				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
+				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
+				454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */,
 				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
+				454498762C281270005357FD /* XLoginAdapter.swift in Sources */,
 				454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
+				454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
+				4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */,
 				4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,6 +806,10 @@
 		454498612C248D80005357FD /* XLectureDetails */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XLectureDetails;
+		};
+		454498712C27FDD4005357FD /* XLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

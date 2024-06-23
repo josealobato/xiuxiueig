@@ -16,21 +16,12 @@ public enum XCoordinationRequest: Equatable {
     // Those request that not pointing to something specific
     case dismiss
     case done
-    case logoout
+    case logoOut
 
     // Specific requests.
     // Those request that direct to a concrete feature.
     // e.g.: `case showPlayer`
     case showLectureDetails(id: String)
-
-//    public var name: String {
-//        switch self {
-//        case .dismiss: return "dismiss"
-//        case .done: return "done"
-//        case .logoout: return "logoout"
-//        case .showLectureDetails: return "showLectureDetails"
-//        }
-//    }
 
     // MARK: - Equatable
     public static func == (lhs: XCoordinationRequest, rhs: XCoordinationRequest) -> Bool {
@@ -41,7 +32,7 @@ public enum XCoordinationRequest: Equatable {
 
         case (.dismiss, .dismiss): return true
         case (.done, .done): return true
-        case (.logoout, .logoout): return true
+        case (.logoOut, .logoOut): return true
 
         case let (.showLectureDetails(lhsId), .showLectureDetails(rhsId)): return lhsId == rhsId
 
@@ -55,7 +46,7 @@ extension XCoordinationRequest: CustomStringConvertible {
         switch self {
         case .dismiss: return "dismiss"
         case .done: return "done"
-        case .logoout: return "logoout"
+        case .logoOut: return "logoout"
         case .showLectureDetails: return "showLectureDetails"
         }
     }
