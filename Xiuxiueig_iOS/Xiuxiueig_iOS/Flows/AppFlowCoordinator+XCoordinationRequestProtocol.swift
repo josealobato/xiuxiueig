@@ -11,11 +11,18 @@ extension AppFlowCoordinator: XCoordinationRequestProtocol {
     func coordinate(from feature: XCoordinator.XCoordinated, request: XCoordinator.XCoordinationRequest) {
 
         guard isStarted else { return }
+        logger.debug(
+            "AppFlowCoordinator: feature \(feature.rawValue) request \(request)"
+        )
 
         switch feature {
         case .xLogin:
             if case .done = request {
                 updateState(.onboarding)
+            }
+        case .xOnboarding:
+            if case .done = request {
+                updateState(.loggedIn)
             }
         default:
             logger.debug(

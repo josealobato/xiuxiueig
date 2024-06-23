@@ -9,8 +9,7 @@ extension AppFlowCoordinator {
     @ViewBuilder
     func loggedOutView() -> some View {
         let adapter = XLoginAdapter()
-        XLoginBuilder.build(
-            services: adapter,
-            coordinator: self)
+        XLoginBuilder.build(services: adapter,
+                            coordinator: self)
     }
 }

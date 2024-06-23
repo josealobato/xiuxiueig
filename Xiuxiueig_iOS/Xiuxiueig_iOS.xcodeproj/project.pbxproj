@@ -31,6 +31,8 @@
 		454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */; };
 		4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */; };
 		4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */; };
+		454498812C281EA1005357FD /* XOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 454498802C281EA1005357FD /* XOnboarding */; };
+		454498832C281EF5005357FD /* XOnboardingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498822C281EF5005357FD /* XOnboardingAdapter.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
@@ -81,6 +83,8 @@
 		454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+XCoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
 		454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+LoggedIn.swift"; sourceTree = "<group>"; };
 		4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+Onboarding.swift"; sourceTree = "<group>"; };
+		4544987F2C281CB3005357FD /* XOnboarding */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XOnboarding; sourceTree = "<group>"; };
+		454498822C281EF5005357FD /* XOnboardingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOnboardingAdapter.swift; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				454498622C248D80005357FD /* XLectureDetails in Frameworks */,
 				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
 				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
+				454498812C281EA1005357FD /* XOnboarding in Frameworks */,
 				454498722C27FDD4005357FD /* XLogin in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
@@ -209,9 +214,10 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				454498702C26E2F0005357FD /* XLogin */,
-				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
+				456038FD2C24891F00BE25FC /* XLectureDetails */,
+				454498702C26E2F0005357FD /* XLogin */,
+				4544987F2C281CB3005357FD /* XOnboarding */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 				456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */,
 				454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */,
 				454498752C281270005357FD /* XLoginAdapter.swift */,
+				454498822C281EF5005357FD /* XOnboardingAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -265,9 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				456038F12C1EED7C00BE25FC /* Features */,
+				45B086EC2C15A0020055659F /* XCoordinator */,
 				456038EE2C1ED91B00BE25FC /* XEntities */,
 				458100CF2C17722700F2AC0A /* XToolKit */,
-				45B086EC2C15A0020055659F /* XCoordinator */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -296,6 +303,7 @@
 				4544985F2C248D74005357FD /* XToolKit */,
 				454498612C248D80005357FD /* XLectureDetails */,
 				454498712C27FDD4005357FD /* XLogin */,
+				454498802C281EA1005357FD /* XOnboarding */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -452,6 +460,7 @@
 				454498762C281270005357FD /* XLoginAdapter.swift in Sources */,
 				454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */,
+				454498832C281EF5005357FD /* XOnboardingAdapter.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
 				4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */,
@@ -810,6 +819,10 @@
 		454498712C27FDD4005357FD /* XLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XLogin;
+		};
+		454498802C281EA1005357FD /* XOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XOnboarding;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

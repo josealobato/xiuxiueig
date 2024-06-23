@@ -4,8 +4,6 @@ import SwiftUI
 import XCoordinator
 import XToolKit
 
-
-
 /// The `AppFlowCoordinator` is the root coordinator of the application.
 /// It will be the last coordinator on attending an event.
 /// It is also the entry point of the application

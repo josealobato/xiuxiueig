@@ -8,6 +8,7 @@ public enum XCoordinated: String, Equatable {
 
     case xLectureCollection
     case xLectureDetails
-    case xPlayer
     case xLogin
+    case xPlayer
+    case xOnboarding
 }

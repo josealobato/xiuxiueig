@@ -2,18 +2,14 @@
 
 import SwiftUI
 import XCoordinator
+import XOnboarding
 
 extension AppFlowCoordinator {
 
     @ViewBuilder
     func onboardingView() -> some View {
-        VStack {
-            Text("Onboarding")
-            Button {
-                self.updateState(.loggedIn)
-            } label: {
-                Text("Next")
-            }
-        }
+        let adapter = XOnboardingAdapter()
+        XOnboardingBuilder.build(services: adapter,
+                                 coordinator: self)
     }
 }
