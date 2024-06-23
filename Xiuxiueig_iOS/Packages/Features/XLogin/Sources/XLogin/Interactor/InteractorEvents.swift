@@ -11,6 +11,7 @@ enum InteractorEvents {
 
     enum Output: Equatable {
 
+        case dummy
     }
 }
 

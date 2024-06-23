@@ -10,13 +10,14 @@ let package = Package(
             targets: ["XCoordinator"])
     ],
     dependencies: [
-        // No dependencies.
+        .package(name: "XToolKit", path: "../../XToolKit")
     ],
     targets: [
         .target(
-            name: "XCoordinator"),
+            name: "XCoordinator",
+            dependencies: ["XToolKit"]),
         .testTarget(
             name: "XCoordinatorTests",
-            dependencies: ["XCoordinator"])
+            dependencies: ["XCoordinator", "XToolKit"])
     ]
 )

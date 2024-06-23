@@ -47,6 +47,9 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         isStarted = false
     }
 
+    // Temporal solution to hold the child flow coordinators instead of using the
+    // `childCoordinators` array. Under investigation to check if it is worth the
+    // complexity.
     var loggedInCoordinator: LoggedInFlowCoordinator?
 }
 

@@ -1,9 +1,10 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import Foundation
+import XToolKit
 
 /// Features use this protocol to request coordination actions to a given coordinator.
-public protocol XCoordinationRequestProtocol {
+public protocol XCoordinationRequestProtocol: AutoMockable {
 
     /// Request for coordination to a coordinator.
     /// - Parameters:
