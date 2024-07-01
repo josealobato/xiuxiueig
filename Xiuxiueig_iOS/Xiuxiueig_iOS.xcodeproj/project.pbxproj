@@ -86,6 +86,7 @@
 		4544987F2C281CB3005357FD /* XOnboarding */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XOnboarding; sourceTree = "<group>"; };
 		454498822C281EF5005357FD /* XOnboardingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOnboardingAdapter.swift; sourceTree = "<group>"; };
 		454498852C2F0748005357FD /* XRepositories */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XRepositories; sourceTree = "<group>"; };
+		454CFD352C330F8400FA2CA5 /* XPreferences */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XPreferences; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 		454498842C2F0705005357FD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				454CFD352C330F8400FA2CA5 /* XPreferences */,
 				454498852C2F0748005357FD /* XRepositories */,
 			);
 			path = Data;
