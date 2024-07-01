@@ -85,6 +85,7 @@
 		4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+Onboarding.swift"; sourceTree = "<group>"; };
 		4544987F2C281CB3005357FD /* XOnboarding */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XOnboarding; sourceTree = "<group>"; };
 		454498822C281EF5005357FD /* XOnboardingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOnboardingAdapter.swift; sourceTree = "<group>"; };
+		454498852C2F0748005357FD /* XRepositories */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XRepositories; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -201,6 +202,14 @@
 			path = LoggedInFlow;
 			sourceTree = "<group>";
 		};
+		454498842C2F0705005357FD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				454498852C2F0748005357FD /* XRepositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		456038ED2C1ECFE200BE25FC /* DemoCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +280,7 @@
 		45B086EA2C159BC40055659F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				454498842C2F0705005357FD /* Data */,
 				456038F12C1EED7C00BE25FC /* Features */,
 				45B086EC2C15A0020055659F /* XCoordinator */,
 				456038EE2C1ED91B00BE25FC /* XEntities */,
