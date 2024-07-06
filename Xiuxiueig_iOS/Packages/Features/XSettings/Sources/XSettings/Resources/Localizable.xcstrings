@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ here you will find thesettings to tune the application." : {
+
+    },
+    "Log out" : {
+
+    },
+    "Settings" : {
+
+    }
+  },
+  "version" : "1.0"
+}
