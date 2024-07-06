@@ -37,7 +37,12 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     init() {
         logger.debug("init AppFlowCoordinator")
         loadPreferences()
-        logger.debug("Loaded user name: \(self.userName ?? "No user name yet") and onboarding \((self.onboardingPerformed ?? false) ? "done" : "not done").")
+        logger.debug(
+            """
+            Loaded user name: \(self.userName ?? "No user name yet")
+            and onboarding \((self.onboardingPerformed ?? false) ? "done" : "not done").
+            """
+        )
     }
 
     deinit {
@@ -88,6 +93,11 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
                                      mode: .universal)
         userName = prefereces.preference(for: PreferencesKeys.userName.rawValue)
         onboardingPerformed = prefereces.preference(for: PreferencesKeys.onboardingPerformed.rawValue)
+    }
+
+    func restartOnLogout() {
+        loadPreferences()
+        setUpStartingState()
     }
 }
 

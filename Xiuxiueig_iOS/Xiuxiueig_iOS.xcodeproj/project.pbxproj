@@ -37,6 +37,14 @@
 		454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD392C385A9400FA2CA5 /* PreferencesKeys.swift */; };
 		454CFD3C2C3949DF00FA2CA5 /* LoggedInFlowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD3B2C3949DF00FA2CA5 /* LoggedInFlowContext.swift */; };
 		454CFD3E2C394C7900FA2CA5 /* CollectionFlowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD3D2C394C7900FA2CA5 /* CollectionFlowContext.swift */; };
+		454CFD442C39864800FA2CA5 /* SettingsFlowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD432C39864800FA2CA5 /* SettingsFlowContext.swift */; };
+		454CFD462C39867800FA2CA5 /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD452C39867800FA2CA5 /* SettingsFlowCoordinator.swift */; };
+		454CFD482C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD472C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift */; };
+		454CFD4A2C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD492C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift */; };
+		454CFD4C2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD4B2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift */; };
+		454CFD4E2C39882D00FA2CA5 /* SettingsFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD4D2C39882D00FA2CA5 /* SettingsFlowView.swift */; };
+		454CFD512C398C7D00FA2CA5 /* XSettings in Frameworks */ = {isa = PBXBuildFile; productRef = 454CFD502C398C7D00FA2CA5 /* XSettings */; };
+		454CFD532C398C9700FA2CA5 /* XSettingsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD522C398C9700FA2CA5 /* XSettingsAdapter.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
@@ -94,6 +102,14 @@
 		454CFD392C385A9400FA2CA5 /* PreferencesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesKeys.swift; sourceTree = "<group>"; };
 		454CFD3B2C3949DF00FA2CA5 /* LoggedInFlowContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowContext.swift; sourceTree = "<group>"; };
 		454CFD3D2C394C7900FA2CA5 /* CollectionFlowContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowContext.swift; sourceTree = "<group>"; };
+		454CFD432C39864800FA2CA5 /* SettingsFlowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowContext.swift; sourceTree = "<group>"; };
+		454CFD452C39867800FA2CA5 /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
+		454CFD472C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
+		454CFD492C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
+		454CFD4B2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
+		454CFD4D2C39882D00FA2CA5 /* SettingsFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowView.swift; sourceTree = "<group>"; };
+		454CFD4F2C398BCC00FA2CA5 /* XSettings */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XSettings; sourceTree = "<group>"; };
+		454CFD522C398C9700FA2CA5 /* XSettingsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSettingsAdapter.swift; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 				454498722C27FDD4005357FD /* XLogin in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */,
+				454CFD512C398C7D00FA2CA5 /* XSettings in Frameworks */,
 				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,13 +184,13 @@
 		4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				454CFD382C385A7700FA2CA5 /* Tools */,
 				456038FA2C2203F500BE25FC /* Adapters */,
-				458100C62C16166500F2AC0A /* Flows */,
-				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
-				4524A0972C0A3CF1002A3B40 /* ContentView.swift */,
 				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
+				4524A0972C0A3CF1002A3B40 /* ContentView.swift */,
+				458100C62C16166500F2AC0A /* Flows */,
 				4524A09B2C0A3CF2002A3B40 /* Preview Content */,
+				454CFD382C385A7700FA2CA5 /* Tools */,
+				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
 			);
 			path = Xiuxiueig_iOS;
 			sourceTree = "<group>";
@@ -230,6 +247,19 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		454CFD3F2C3985B700FA2CA5 /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				454CFD432C39864800FA2CA5 /* SettingsFlowContext.swift */,
+				454CFD452C39867800FA2CA5 /* SettingsFlowCoordinator.swift */,
+				454CFD472C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift */,
+				454CFD492C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift */,
+				454CFD4B2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift */,
+				454CFD4D2C39882D00FA2CA5 /* SettingsFlowView.swift */,
+			);
+			path = SettingsFlow;
+			sourceTree = "<group>";
+		};
 		456038ED2C1ECFE200BE25FC /* DemoCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +277,7 @@
 				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				454498702C26E2F0005357FD /* XLogin */,
 				4544987F2C281CB3005357FD /* XOnboarding */,
+				454CFD4F2C398BCC00FA2CA5 /* XSettings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -271,6 +302,7 @@
 				454498692C2496E7005357FD /* XLectureDetailsAdapter.swift */,
 				454498752C281270005357FD /* XLoginAdapter.swift */,
 				454498822C281EF5005357FD /* XOnboardingAdapter.swift */,
+				454CFD522C398C9700FA2CA5 /* XSettingsAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -278,6 +310,7 @@
 		458100C62C16166500F2AC0A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				454CFD3F2C3985B700FA2CA5 /* SettingsFlow */,
 				4544986B2C26B30D005357FD /* LoggedInFlow */,
 				456038F52C20A8CC00BE25FC /* CollectionFlow */,
 				456038ED2C1ECFE200BE25FC /* DemoCode */,
@@ -336,6 +369,7 @@
 				454498712C27FDD4005357FD /* XLogin */,
 				454498802C281EA1005357FD /* XOnboarding */,
 				454CFD362C35C66D00FA2CA5 /* XPreferences */,
+				454CFD502C398C7D00FA2CA5 /* XSettings */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -475,13 +509,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454CFD4C2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift in Sources */,
 				4544986F2C26B754005357FD /* AppFlowView.swift in Sources */,
 				456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */,
 				456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */,
 				458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */,
+				454CFD4E2C39882D00FA2CA5 /* SettingsFlowView.swift in Sources */,
 				458100D72C18C25300F2AC0A /* Feature.swift in Sources */,
+				454CFD462C39867800FA2CA5 /* SettingsFlowCoordinator.swift in Sources */,
 				456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */,
 				454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */,
+				454CFD482C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454CFD3E2C394C7900FA2CA5 /* CollectionFlowContext.swift in Sources */,
 				4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */,
 				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
@@ -490,12 +528,15 @@
 				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
 				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
 				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
+				454CFD4A2C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift in Sources */,
 				454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */,
 				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
 				454498762C281270005357FD /* XLoginAdapter.swift in Sources */,
 				454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */,
+				454CFD442C39864800FA2CA5 /* SettingsFlowContext.swift in Sources */,
 				454498832C281EF5005357FD /* XOnboardingAdapter.swift in Sources */,
+				454CFD532C398C9700FA2CA5 /* XSettingsAdapter.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
 				4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */,
@@ -862,6 +903,10 @@
 		454CFD362C35C66D00FA2CA5 /* XPreferences */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XPreferences;
+		};
+		454CFD502C398C7D00FA2CA5 /* XSettings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XSettings;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

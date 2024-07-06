@@ -88,4 +88,25 @@ final class XCoordinationRequestProtocolMock: XCoordinationRequestProtocol {
 }
 final class XLoginServicesInterfaceMock: XLoginServicesInterface {
 
+    //MARK: - saveUser
+
+    var saveUserNameThrowableError: Error?
+    var saveUserNameCallsCount = 0
+    var saveUserNameCalled: Bool {
+        return saveUserNameCallsCount > 0
+    }
+    var saveUserNameReceivedName: String?
+    var saveUserNameReceivedInvocations: [String] = []
+    var saveUserNameClosure: ((String) throws -> Void)?
+
+    func saveUser(name: String) async throws {
+        if let error = saveUserNameThrowableError {
+            throw error
+        }
+        saveUserNameCallsCount += 1
+        saveUserNameReceivedName = name
+        saveUserNameReceivedInvocations.append(name)
+        try saveUserNameClosure?(name)
+    }
+
 }

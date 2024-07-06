@@ -88,4 +88,17 @@ final class XCoordinationRequestProtocolMock: XCoordinationRequestProtocol {
 }
 final class XOnboardingServicesInterfaceMock: XOnboardingServicesInterface {
 
+    //MARK: - onboardingCompleted
+
+    var onboardingCompletedCallsCount = 0
+    var onboardingCompletedCalled: Bool {
+        return onboardingCompletedCallsCount > 0
+    }
+    var onboardingCompletedClosure: (() -> Void)?
+
+    func onboardingCompleted() {
+        onboardingCompletedCallsCount += 1
+        onboardingCompletedClosure?()
+    }
+
 }

@@ -7,7 +7,7 @@ import Foundation
 /// package. It is mostly the Adapters that will handle them to the features, altho they
 /// could also be used on the Use Cases.
 enum PreferencesKeys: String {
-    
+
     /// Login user name
     case userName
 

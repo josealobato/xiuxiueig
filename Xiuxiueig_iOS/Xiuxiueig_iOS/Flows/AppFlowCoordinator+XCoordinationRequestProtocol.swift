@@ -32,6 +32,10 @@ extension AppFlowCoordinator: XCoordinationRequestProtocol {
                let context = loggedInFlowContextBuilder() {
                 updateState(.loggedIn(context: context))
             }
+        case .xSettings:
+            if case .logoOut = request {
+                restartOnLogout()
+            }
         default:
             logger.debug(
                 "AppFlowCoordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request)"

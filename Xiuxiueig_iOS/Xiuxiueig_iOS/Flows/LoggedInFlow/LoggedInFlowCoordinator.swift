@@ -50,10 +50,17 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         tabTwoCoordinator.parentCoordinator = self
         tabs.append(tabOneCoordinator)
         collectitonTabCoordinator = tabTwoCoordinator
+
+        let settingsFlowContext = SettingsFlowContext(userName: context.userName)
+        let tabThreeCoordinator = SettingsFlowCoordinator(context: settingsFlowContext)
+        tabThreeCoordinator.parentCoordinator = self
+        tabs.append(tabThreeCoordinator)
+        settingsTabCoordinator = tabThreeCoordinator
     }
 
     var playerTabCoordinator: SampleTabFlowCoordinator?
     var collectitonTabCoordinator: CollectionFlowCoordinator?
+    var settingsTabCoordinator: SettingsFlowCoordinator?
 }
 
 ///
@@ -75,9 +82,14 @@ extension LoggedInFlowCoordinator {
                     SampleTabFlowView(coordinator: playerTabCoordinator)
                 }
 
-                // Tab 1
+                // Tab 2
                 if let collectitonTabCoordinator = collectitonTabCoordinator {
                     CollectionFlowView(coordinator: collectitonTabCoordinator)
+                }
+
+                // Tab 2
+                if let settingsTabCoordinator = settingsTabCoordinator {
+                    SettingsFlowView(coordinator: settingsTabCoordinator)
                 }
             }
         }
@@ -98,8 +110,12 @@ extension LoggedInFlowCoordinator: XCoordinationRequestProtocol {
         switch feature {
         default:
             logger.debug(
-                "Coordinator: Nothing to coordinate for feature \(feature.rawValue) and request \(request)"
+                """
+                LoggedInFlowCoordinator: Nothing to coordinate for feature \(feature.rawValue)
+                and request \(request). Deferring to parent.
+                """
             )
+            parentCoordinator?.coordinate(from: feature, request: request)
         }
     }
 }

@@ -11,4 +11,5 @@ public enum XCoordinated: String, Equatable {
     case xLogin
     case xPlayer
     case xOnboarding
+    case xSettings
 }

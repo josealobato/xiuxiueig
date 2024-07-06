@@ -28,7 +28,6 @@ struct LoginView: View {
                 .font(.largeTitle)
                 .padding(.bottom)
             Text("How do you can to be called here?", bundle: .module)
-            
             TextField("Enter your nickname", text: $userName)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
