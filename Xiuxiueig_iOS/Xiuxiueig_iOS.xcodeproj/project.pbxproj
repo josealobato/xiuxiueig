@@ -33,6 +33,8 @@
 		4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */; };
 		454498812C281EA1005357FD /* XOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 454498802C281EA1005357FD /* XOnboarding */; };
 		454498832C281EF5005357FD /* XOnboardingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454498822C281EF5005357FD /* XOnboardingAdapter.swift */; };
+		454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */ = {isa = PBXBuildFile; productRef = 454CFD362C35C66D00FA2CA5 /* XPreferences */; };
+		454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454CFD392C385A9400FA2CA5 /* PreferencesKeys.swift */; };
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
@@ -87,6 +89,7 @@
 		454498822C281EF5005357FD /* XOnboardingAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOnboardingAdapter.swift; sourceTree = "<group>"; };
 		454498852C2F0748005357FD /* XRepositories */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XRepositories; sourceTree = "<group>"; };
 		454CFD352C330F8400FA2CA5 /* XPreferences */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XPreferences; sourceTree = "<group>"; };
+		454CFD392C385A9400FA2CA5 /* PreferencesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesKeys.swift; sourceTree = "<group>"; };
 		456038EE2C1ED91B00BE25FC /* XEntities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XEntities; sourceTree = "<group>"; };
 		456038F22C1EEDDB00BE25FC /* XLectureCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureCollection; sourceTree = "<group>"; };
 		456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 				454498812C281EA1005357FD /* XOnboarding in Frameworks */,
 				454498722C27FDD4005357FD /* XLogin in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
+				454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */,
 				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +163,7 @@
 		4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				454CFD382C385A7700FA2CA5 /* Tools */,
 				456038FA2C2203F500BE25FC /* Adapters */,
 				458100C62C16166500F2AC0A /* Flows */,
 				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
@@ -210,6 +215,14 @@
 				454498852C2F0748005357FD /* XRepositories */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		454CFD382C385A7700FA2CA5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				454CFD392C385A9400FA2CA5 /* PreferencesKeys.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		456038ED2C1ECFE200BE25FC /* DemoCode */ = {
@@ -316,6 +329,7 @@
 				454498612C248D80005357FD /* XLectureDetails */,
 				454498712C27FDD4005357FD /* XLogin */,
 				454498802C281EA1005357FD /* XOnboarding */,
+				454CFD362C35C66D00FA2CA5 /* XPreferences */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -466,6 +480,7 @@
 				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
+				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
 				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
 				454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */,
 				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
@@ -835,6 +850,10 @@
 		454498802C281EA1005357FD /* XOnboarding */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XOnboarding;
+		};
+		454CFD362C35C66D00FA2CA5 /* XPreferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XPreferences;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

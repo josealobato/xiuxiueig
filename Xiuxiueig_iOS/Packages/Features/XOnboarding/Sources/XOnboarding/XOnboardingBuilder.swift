@@ -8,12 +8,14 @@ public struct XOnboardingBuilder {
 
     public static func build(
         services: XOnboardingServicesInterface,
-        coordinator: XCoordinationRequestProtocol
+        coordinator: XCoordinationRequestProtocol,
+        userName: String
     ) -> some View {
 
         let interactor = Interactor(
             services: services,
-            coordinator: coordinator
+            coordinator: coordinator,
+            userName: userName
         )
 
         let presenter = Presenter()

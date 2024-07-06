@@ -6,12 +6,12 @@ import XToolKit
 enum InteractorEvents {
 
     enum Input {
-        case done
+        case done(String)
     }
 
     enum Output: Equatable {
 
-        case dummy
+        case errorOnSave
     }
 }
 

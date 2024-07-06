@@ -17,8 +17,8 @@ extension AppFlowCoordinator: XCoordinationRequestProtocol {
 
         switch feature {
         case .xLogin:
-            if case .done = request {
-                updateState(.onboarding)
+            if case .done = request, let userName = userName {
+                updateState(.onboarding(userName: userName))
             }
         case .xOnboarding:
             if case .done = request {

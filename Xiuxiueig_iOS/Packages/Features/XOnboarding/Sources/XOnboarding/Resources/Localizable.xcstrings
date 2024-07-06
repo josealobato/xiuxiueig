@@ -1,10 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Let's enter!" : {
+    "Hey %@, This is the onboarding, I'll show you around" : {
 
     },
-    "This is the onboarding, I'll show you around" : {
+    "Let's enter!" : {
 
     }
   },

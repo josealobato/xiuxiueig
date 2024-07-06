@@ -9,12 +9,16 @@ final class Interactor: InteractorInput {
     let services: XOnboardingServicesInterface
     let coordinator: XCoordinationRequestProtocol
 
+    let userName: String
+
     init(output: InteractorOutput? = nil,
          services: XOnboardingServicesInterface,
-         coordinator: XCoordinationRequestProtocol) {
+         coordinator: XCoordinationRequestProtocol,
+         userName: String) {
         self.output = output
         self.services = services
         self.coordinator = coordinator
+        self.userName = userName
     }
 
     // MARK: - Interactor input
@@ -22,6 +26,7 @@ final class Interactor: InteractorInput {
     func request(_ event: InteractorEvents.Input) async {
 
         switch event {
+        case .loadInitialData: await onLoadInitialData()
         case .done: await onDone()
         }
     }
@@ -30,19 +35,17 @@ final class Interactor: InteractorInput {
 
     func render(_ event: InteractorEvents.Output) {
 
-        // This is infact not needed
-        //     self.output?.dispatch(event)
-    }
-
-    // MARK: - Error
-
-    private func renderError(_ error: Error, retryAction: (() -> Void)? = nil) {
-        // Work with coordinator and the SnackBar.
+        self.output?.dispatch(event)
     }
 
     // MARK: - On actions
 
+    private func onLoadInitialData() async {
+        render(.userName(userName))
+    }
+
     private func onDone() async {
+        services.onboardingCompleted()
         coordinator.coordinate(from: .xOnboarding, request: .done)
     }
 }

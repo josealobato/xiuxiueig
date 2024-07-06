@@ -22,7 +22,7 @@ final class Interactor: InteractorInput {
     func request(_ event: InteractorEvents.Input) async {
 
         switch event {
-        case .done: await onDone()
+        case .done(let name): await onDone(with: name)
         }
     }
 
@@ -30,19 +30,19 @@ final class Interactor: InteractorInput {
 
     func render(_ event: InteractorEvents.Output) {
 
-        // This is infact not needed
-        //     self.output?.dispatch(event)
-    }
-
-    // MARK: - Error
-
-    private func renderError(_ error: Error, retryAction: (() -> Void)? = nil) {
-        // Work with coordinator and the SnackBar.
+        self.output?.dispatch(event)
     }
 
     // MARK: - On actions
 
-    private func onDone() async {
-        coordinator.coordinate(from: .xLogin, request: .done)
+    private func onDone(with name: String) async {
+
+        do {
+            try await services.saveUser(name: name)
+            coordinator.coordinate(from: .xLogin, request: .done)
+        } catch {
+
+            render(.errorOnSave)
+        }
     }
 }

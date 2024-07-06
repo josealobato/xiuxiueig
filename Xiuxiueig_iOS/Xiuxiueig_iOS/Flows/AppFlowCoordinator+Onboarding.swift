@@ -7,9 +7,10 @@ import XOnboarding
 extension AppFlowCoordinator {
 
     @ViewBuilder
-    func onboardingView() -> some View {
+    func onboardingView(userName: String) -> some View {
         let adapter = XOnboardingAdapter()
         XOnboardingBuilder.build(services: adapter,
-                                 coordinator: self)
+                                 coordinator: self,
+                                 userName: userName)
     }
 }

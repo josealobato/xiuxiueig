@@ -6,11 +6,12 @@ import XToolKit
 enum InteractorEvents {
 
     enum Input {
+        case loadInitialData
         case done
     }
 
     enum Output: Equatable {
-
+        case userName(String)
     }
 }
 

@@ -5,4 +5,6 @@ import XToolKit
 
 public protocol XLoginServicesInterface: AutoMockable {
 
+    /// Request to save the current user name.
+    func saveUser(name: String) async throws
 }

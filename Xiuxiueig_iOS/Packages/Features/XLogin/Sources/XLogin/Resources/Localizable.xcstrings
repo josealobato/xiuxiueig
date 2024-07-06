@@ -1,6 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Enter your nickname" : {
+
+    },
+    "Error on saving" : {
+
+    },
+    "How do you can to be called here?" : {
+
+    },
+    "Retry" : {
+
+    },
+    "There was an error while saving your name, please try again" : {
+
+    },
     "Welcome to Xiuxiueig!" : {
 
     },

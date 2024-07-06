@@ -4,10 +4,6 @@ import SwiftUI
 
 struct OnboardingView: View {
 
-    enum ViewState {
-        case loaded
-    }
-
     @StateObject private var presenter: Presenter
 
     // Warning here, the interactor might disappear the the view is refreshed.
@@ -26,13 +22,16 @@ struct OnboardingView: View {
 
     var body: some View {
         VStack {
-            Text("This is the onboarding, I'll show you around", bundle: .module)
+            if let userName = presenter.viewModel.userName {
+                Text("Hey \(userName), This is the onboarding, I'll show you around", bundle: .module)
+            }
             Button {
                 request(.done)
             } label: {
                 Text("Let's enter!", bundle: .module)
             }
         }
+        .onAppear { request(.loadInitialData) }
     }
 }
 
