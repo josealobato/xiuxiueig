@@ -7,6 +7,9 @@ import XLogin
 extension AppFlowCoordinator {
 
     @ViewBuilder
+    /// Create the feature for log in.
+    /// **Notice** that the logged out state does no require context.
+    /// - Returns: The login view ready to use
     func loggedOutView() -> some View {
         let adapter = XLoginAdapter()
         XLoginBuilder.build(services: adapter,

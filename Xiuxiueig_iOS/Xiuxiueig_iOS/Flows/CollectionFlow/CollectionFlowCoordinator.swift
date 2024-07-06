@@ -14,9 +14,11 @@ final class CollectionFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     var isStarted: Bool = false
     var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
+    let context: CollectionFlowContext
 
-    init() {
+    init(context: CollectionFlowContext) {
         logger.debug("init CollectionFlowCoordinator")
+        self.context = context
     }
 
     deinit {

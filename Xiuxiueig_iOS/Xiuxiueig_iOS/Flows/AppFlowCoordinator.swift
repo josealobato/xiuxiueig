@@ -13,7 +13,7 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     enum State {
         case loggedOut
         case onboarding(userName: String)
-        case loggedIn
+        case loggedIn(context: LoggedInFlowContext)
     }
 
     @Published var state: State = .loggedOut
@@ -65,12 +65,18 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         if let userName = userName {
             // If the onboad has already be done, go to the app directly
             if let onboardingPerformed = onboardingPerformed,
-               onboardingPerformed == true {
-                state = .loggedIn
+               onboardingPerformed == true,
+               // but only if you can build its context!
+               let loggedInFlowContext = loggedInFlowContextBuilder() {
+
+                // Launch the App
+                state = .loggedIn(context: loggedInFlowContext)
             } else {
+
+                // Go to the Onboarding page
                 state = .onboarding(userName: userName)
             }
-        }
+        } // Otherwise stay in the login page.
     }
 
     func loadPreferences() {
@@ -96,7 +102,7 @@ extension AppFlowCoordinator {
             switch state {
             case .loggedOut: loggedOutView()
             case .onboarding(let name): onboardingView(userName: name)
-            case .loggedIn: loggedInView()
+            case .loggedIn(let context): loggedInView(context: context)
             }
         }
     }

@@ -6,18 +6,26 @@ import XCoordinator
 extension AppFlowCoordinator {
 
     @ViewBuilder
-    func loggedInView() -> some View {
-        LoggedInFlowView(coordinator: buildLoggedInCoordinator())
+    func loggedInView(context: LoggedInFlowContext) -> some View {
+        LoggedInFlowView(coordinator: buildLoggedInCoordinator(context: context))
     }
 
-    private func buildLoggedInCoordinator() -> LoggedInFlowCoordinator {
+    private func buildLoggedInCoordinator(context: LoggedInFlowContext) -> LoggedInFlowCoordinator {
         if let coordinator = loggedInCoordinator {
             return coordinator
         } else {
-            let coordinator = LoggedInFlowCoordinator()
+            let coordinator = LoggedInFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
             loggedInCoordinator = coordinator
             return coordinator
         }
+    }
+
+    /// Tries to build the context for the flow.
+    /// Notice that the flow can not be build without context.
+    func loggedInFlowContextBuilder() -> LoggedInFlowContext? {
+        guard let userName = userName else { return nil }
+
+        return LoggedInFlowContext(userName: userName)
     }
 }

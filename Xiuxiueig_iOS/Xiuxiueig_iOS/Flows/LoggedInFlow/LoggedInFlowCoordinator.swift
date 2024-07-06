@@ -12,13 +12,15 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "LoggedInFlowCoordinator")
     var isStarted: Bool = false
+    let context: LoggedInFlowContext
 
     var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
 
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
-    init() {
+    init(context: LoggedInFlowContext) {
         logger.debug("init LoggedInFlowCoordinator")
+        self.context = context
         initializeTabs()
     }
 
@@ -43,7 +45,8 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         tabs.append(tabOneCoordinator)
         playerTabCoordinator = tabOneCoordinator
 
-        let tabTwoCoordinator = CollectionFlowCoordinator()
+        let collectionFlowContext = CollectionFlowContext(userName: context.userName)
+        let tabTwoCoordinator = CollectionFlowCoordinator(context: collectionFlowContext)
         tabTwoCoordinator.parentCoordinator = self
         tabs.append(tabOneCoordinator)
         collectitonTabCoordinator = tabTwoCoordinator
