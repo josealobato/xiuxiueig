@@ -53,6 +53,7 @@
 		458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D22C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift */; };
 		458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */; };
 		458100D72C18C25300F2AC0A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D62C18C25300F2AC0A /* Feature.swift */; };
+		45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C60B2C3AEEC900951264 /* XPlayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTabFlowView.swift; sourceTree = "<group>"; };
 		458100D62C18C25300F2AC0A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		45B086EC2C15A0020055659F /* XCoordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCoordinator; sourceTree = "<group>"; };
+		45E2C60A2C3AED4000951264 /* XPlayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XPlayer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
 				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
 				454498812C281EA1005357FD /* XOnboarding in Frameworks */,
+				45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */,
 				454498722C27FDD4005357FD /* XLogin in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */,
@@ -273,6 +276,7 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				45E2C60A2C3AED4000951264 /* XPlayer */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
 				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				454498702C26E2F0005357FD /* XLogin */,
@@ -370,6 +374,7 @@
 				454498802C281EA1005357FD /* XOnboarding */,
 				454CFD362C35C66D00FA2CA5 /* XPreferences */,
 				454CFD502C398C7D00FA2CA5 /* XSettings */,
+				45E2C60B2C3AEEC900951264 /* XPlayer */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -907,6 +912,10 @@
 		454CFD502C398C7D00FA2CA5 /* XSettings */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XSettings;
+		};
+		45E2C60B2C3AEEC900951264 /* XPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
