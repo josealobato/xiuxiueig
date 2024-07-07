@@ -21,7 +21,7 @@ public struct XLectureCollectionBuilder {
         let interactor = Interactor(services: services,
                                     coordinator: coordinator)
 
-        let presenter = Presenter(interactor: interactor)
+        let presenter = Presenter()
         interactor.output = presenter
 
         let view = LectureCollectionView(presenter: presenter,

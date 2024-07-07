@@ -9,18 +9,6 @@ final class Presenter: ObservableObject, InteractorOutput {
     @Published var lectures: [LectureViewModel] = []
     @Published var viewState: LectureCollectionView.ViewState? = .loading
 
-    let interactor: InteractorInput
-
-    init(interactor: InteractorInput) {
-
-        self.interactor = interactor
-    }
-
-    func request(_ event: InteractorEvents.Input) async {
-
-        await interactor.request(event)
-    }
-
     func dispatch(_ event: InteractorEvents.Output) {
 
         DispatchQueue.main.async {
