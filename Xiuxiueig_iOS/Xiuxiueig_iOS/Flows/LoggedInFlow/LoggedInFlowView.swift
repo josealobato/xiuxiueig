@@ -35,6 +35,9 @@ struct LoggedInFlowView: View {
                     print("App is Background")
                 }
             }
+            .onDisappear {
+                coordinator.stop()
+            }
     }
 }
 

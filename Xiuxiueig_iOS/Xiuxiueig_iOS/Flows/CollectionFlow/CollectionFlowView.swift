@@ -41,5 +41,11 @@ struct CollectionFlowView: View {
                 coordinator.start()
             }
         }
+        .onDisappear {
+            // Usualy you would Stop here the coordinator:
+            // `coordinator.stop()`
+            // But that doesn't work since this view will be located in tab and
+            // this method will be invoqued
+        }
     }
 }

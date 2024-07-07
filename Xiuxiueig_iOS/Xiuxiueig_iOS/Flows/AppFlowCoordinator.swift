@@ -46,7 +46,7 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     }
 
     deinit {
-        logger.debug("init AppFlowCoordinator")
+        logger.debug("deinit AppFlowCoordinator")
     }
 
     func start() {
@@ -58,12 +58,9 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     func stop() {
         logger.debug("stop AppFlowCoordinator")
         isStarted = false
+        childCoordinators.forEach { $0.parentCoordinator = nil }
+        removeAllChilds()
     }
-
-    // Temporal solution to hold the child flow coordinators instead of using the
-    // `childCoordinators` array. Under investigation to check if it is worth the
-    // complexity.
-    var loggedInCoordinator: LoggedInFlowCoordinator?
 
     func setUpStartingState() {
         // If there is already a user go to the onboarding directly.
@@ -75,13 +72,16 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
                let loggedInFlowContext = loggedInFlowContextBuilder() {
 
                 // Launch the App
-                state = .loggedIn(context: loggedInFlowContext)
+                updateState(.loggedIn(context: loggedInFlowContext))
             } else {
 
                 // Go to the Onboarding page
-                state = .onboarding(userName: userName)
+                updateState(.onboarding(userName: userName))
             }
-        } // Otherwise stay in the login page.
+        } else {
+            // Otherwise stay in the login page.
+            updateState(.loggedOut)
+        }
     }
 
     func loadPreferences() {
@@ -96,6 +96,12 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     }
 
     func restartOnLogout() {
+        // On all childs remove its parent link.
+        childCoordinators.forEach { $0.parentCoordinator = nil }
+        // Remove them from the child list
+        // Note: Not stoping them here because they will be stoped on their views disapear.
+        childCoordinators.removeAll()
+        // Restart.
         loadPreferences()
         setUpStartingState()
     }

@@ -18,5 +18,8 @@ struct AppFlowView: View {
                     coordinator.start()
                 }
             }
+            .onDisappear {
+                coordinator.stop()
+            }
     }
 }

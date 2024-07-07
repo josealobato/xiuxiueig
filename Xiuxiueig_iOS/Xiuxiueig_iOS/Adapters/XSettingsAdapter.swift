@@ -11,6 +11,6 @@ final class XSettingsAdapter: XSettingsServicesInterface {
     init() { }
 
     func deleteAllSettings() {
-        assert(false, "Missing implementation.")
+        preferences.clearAllPreferences()
     }
 }

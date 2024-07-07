@@ -14,18 +14,18 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     var isStarted: Bool = false
     let context: LoggedInFlowContext
 
-    var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
+    // Making the link to the parent weak to avoid circular reference.
+    weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
 
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
     init(context: LoggedInFlowContext) {
         logger.debug("init LoggedInFlowCoordinator")
         self.context = context
-        initializeTabs()
     }
 
     deinit {
-        logger.debug("init LoggedInFlowCoordinator")
+        logger.debug("deinit LoggedInFlowCoordinator")
     }
 
     func start() {
@@ -36,31 +36,50 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     func stop() {
         logger.debug("stop LoggedInFlowCoordinator")
         isStarted = false
+        childCoordinators.forEach {
+            // NOTE: Usually stop of a coordinator will be performed by its view, but these ones are
+            // located in tabs and their `onDisapear` is called on every tab switch. For this
+            // reason we stop them when the parent (this one) is stopped.
+            $0.stop()
+            $0.parentCoordinator = nil
+        }
+        removeAllChilds()
     }
 
-    var tabs: [XCoordinatorProtocol] = []
-    func initializeTabs() {
-        let tabOneCoordinator = SampleTabFlowCoordinator()
-        tabOneCoordinator.parentCoordinator = self
-        tabs.append(tabOneCoordinator)
-        playerTabCoordinator = tabOneCoordinator
-
-        let collectionFlowContext = CollectionFlowContext(userName: context.userName)
-        let tabTwoCoordinator = CollectionFlowCoordinator(context: collectionFlowContext)
-        tabTwoCoordinator.parentCoordinator = self
-        tabs.append(tabOneCoordinator)
-        collectitonTabCoordinator = tabTwoCoordinator
-
-        let settingsFlowContext = SettingsFlowContext(userName: context.userName)
-        let tabThreeCoordinator = SettingsFlowCoordinator(context: settingsFlowContext)
-        tabThreeCoordinator.parentCoordinator = self
-        tabs.append(tabThreeCoordinator)
-        settingsTabCoordinator = tabThreeCoordinator
+    func buildPlayerTabCoordinatorIfNeeded() -> SampleTabFlowCoordinator {
+        if let coordinator = getChild(ofType: SampleTabFlowCoordinator.self) as? SampleTabFlowCoordinator {
+            return coordinator
+        } else {
+            let coordinator = SampleTabFlowCoordinator()
+            coordinator.parentCoordinator = self
+            addChild(coordinator)
+            return coordinator
+        }
     }
 
-    var playerTabCoordinator: SampleTabFlowCoordinator?
-    var collectitonTabCoordinator: CollectionFlowCoordinator?
-    var settingsTabCoordinator: SettingsFlowCoordinator?
+    func buildCollectionTabCoordinatorIfNeeded() -> CollectionFlowCoordinator {
+        if let coordinator = getChild(ofType: CollectionFlowCoordinator.self) as? CollectionFlowCoordinator {
+            return coordinator
+        } else {
+            let context = CollectionFlowContext(userName: context.userName)
+            let coordinator = CollectionFlowCoordinator(context: context)
+            coordinator.parentCoordinator = self
+            addChild(coordinator)
+            return coordinator
+        }
+    }
+
+    func buildSettingsTabCoordinatorIfNeeded() -> SettingsFlowCoordinator {
+        if let coordinator = getChild(ofType: SettingsFlowCoordinator.self) as? SettingsFlowCoordinator {
+            return coordinator
+        } else {
+            let context = SettingsFlowContext(userName: context.userName)
+            let coordinator = SettingsFlowCoordinator(context: context)
+            coordinator.parentCoordinator = self
+            addChild(coordinator)
+            return coordinator
+        }
+    }
 }
 
 ///
@@ -78,19 +97,13 @@ extension LoggedInFlowCoordinator {
                 //       the future.
 
                 // Tab 1
-                if let playerTabCoordinator = playerTabCoordinator {
-                    SampleTabFlowView(coordinator: playerTabCoordinator)
-                }
+                SampleTabFlowView(coordinator: buildPlayerTabCoordinatorIfNeeded())
 
                 // Tab 2
-                if let collectitonTabCoordinator = collectitonTabCoordinator {
-                    CollectionFlowView(coordinator: collectitonTabCoordinator)
-                }
+                CollectionFlowView(coordinator: buildCollectionTabCoordinatorIfNeeded())
 
-                // Tab 2
-                if let settingsTabCoordinator = settingsTabCoordinator {
-                    SettingsFlowView(coordinator: settingsTabCoordinator)
-                }
+                // Tab 3
+                SettingsFlowView(coordinator: buildSettingsTabCoordinatorIfNeeded())
             }
         }
     }

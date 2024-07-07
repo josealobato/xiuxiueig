@@ -11,12 +11,12 @@ extension AppFlowCoordinator {
     }
 
     private func buildLoggedInCoordinator(context: LoggedInFlowContext) -> LoggedInFlowCoordinator {
-        if let coordinator = loggedInCoordinator {
+        if let coordinator = getChild(ofType: LoggedInFlowCoordinator.self) as? LoggedInFlowCoordinator {
             return coordinator
         } else {
             let coordinator = LoggedInFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
-            loggedInCoordinator = coordinator
+            addChild(coordinator)
             return coordinator
         }
     }

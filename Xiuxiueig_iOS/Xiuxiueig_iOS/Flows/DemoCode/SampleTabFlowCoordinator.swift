@@ -21,7 +21,7 @@ final class SampleTabFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     }
 
     deinit {
-        logger.debug("init SampleTabFlowCoordinator")
+        logger.debug("deinit SampleTabFlowCoordinator")
     }
 
     func start() {

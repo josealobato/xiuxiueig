@@ -12,7 +12,9 @@ final class SettingsFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     let logger = XLog.logger(category: "SettingsFlowCoordinator")
     var isStarted: Bool = false
-    var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
+
+    // Making the link to the parent weak to avoid circular reference.
+    weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
     let context: SettingsFlowContext
 
@@ -33,6 +35,8 @@ final class SettingsFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     func stop() {
         logger.debug("stop SettingsFlowCoordinator")
         isStarted = false
+        childCoordinators.forEach { $0.parentCoordinator = nil }
+        removeAllChilds()
     }
 
     // Navigation
