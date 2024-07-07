@@ -4,7 +4,7 @@ import Foundation
 import XToolKit
 
 /// Features use this protocol to request coordination actions to a given coordinator.
-public protocol XCoordinationRequestProtocol: AutoMockable {
+public protocol XCoordinationRequestProtocol: AnyObject, AutoMockable {
 
     /// Request for coordination to a coordinator.
     /// - Parameters:
