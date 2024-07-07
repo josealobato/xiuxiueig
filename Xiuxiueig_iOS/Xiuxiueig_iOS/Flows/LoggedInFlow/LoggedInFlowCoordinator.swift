@@ -46,11 +46,12 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         removeAllChilds()
     }
 
-    func buildPlayerTabCoordinatorIfNeeded() -> SampleTabFlowCoordinator {
-        if let coordinator = getChild(ofType: SampleTabFlowCoordinator.self) as? SampleTabFlowCoordinator {
+    func buildPlayerTabCoordinatorIfNeeded() -> PlayerFlowCoordinator {
+        if let coordinator = getChild(ofType: PlayerFlowCoordinator.self) as? PlayerFlowCoordinator {
             return coordinator
         } else {
-            let coordinator = SampleTabFlowCoordinator()
+            let context = PlayerFlowContext(userName: context.userName)
+            let coordinator = PlayerFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
             addChild(coordinator)
             return coordinator
@@ -97,7 +98,7 @@ extension LoggedInFlowCoordinator {
                 //       the future.
 
                 // Tab 1
-                SampleTabFlowView(coordinator: buildPlayerTabCoordinatorIfNeeded())
+                PlayerFlowView(coordinator: buildPlayerTabCoordinatorIfNeeded())
 
                 // Tab 2
                 CollectionFlowView(coordinator: buildCollectionTabCoordinatorIfNeeded())

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */; };
-		4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0972C0A3CF1002A3B40 /* ContentView.swift */; };
 		4524A09A2C0A3CF2002A3B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524A0992C0A3CF2002A3B40 /* Assets.xcassets */; };
 		4524A09D2C0A3CF2002A3B40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4524A09C2C0A3CF2002A3B40 /* Preview Assets.xcassets */; };
 		4524A0A72C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A0A62C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.swift */; };
@@ -50,10 +49,14 @@
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
 		458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */; };
 		458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */; };
-		458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D22C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift */; };
-		458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */; };
-		458100D72C18C25300F2AC0A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100D62C18C25300F2AC0A /* Feature.swift */; };
 		45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C60B2C3AEEC900951264 /* XPlayer */; };
+		45E2C60F2C3AF6FF00951264 /* PlayerFlowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C60E2C3AF6FF00951264 /* PlayerFlowContext.swift */; };
+		45E2C6152C3AF76500951264 /* PlayerFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6102C3AF76500951264 /* PlayerFlowCoordinator.swift */; };
+		45E2C6162C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6112C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift */; };
+		45E2C6172C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6122C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift */; };
+		45E2C6182C3AF76500951264 /* PlayerFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6132C3AF76500951264 /* PlayerFlowView.swift */; };
+		45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */; };
+		45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +79,6 @@
 /* Begin PBXFileReference section */
 		4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xiuxiueig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xiuxiueig_iOSApp.swift; sourceTree = "<group>"; };
-		4524A0972C0A3CF1002A3B40 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4524A0992C0A3CF2002A3B40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4524A09C2C0A3CF2002A3B40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4524A0A22C0A3CF2002A3B40 /* Xiuxiueig_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xiuxiueig_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,11 +122,15 @@
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
-		458100D22C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTabFlowCoordinator.swift; sourceTree = "<group>"; };
-		458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTabFlowView.swift; sourceTree = "<group>"; };
-		458100D62C18C25300F2AC0A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		45B086EC2C15A0020055659F /* XCoordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCoordinator; sourceTree = "<group>"; };
 		45E2C60A2C3AED4000951264 /* XPlayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XPlayer; sourceTree = "<group>"; };
+		45E2C60E2C3AF6FF00951264 /* PlayerFlowContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFlowContext.swift; sourceTree = "<group>"; };
+		45E2C6102C3AF76500951264 /* PlayerFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFlowCoordinator.swift; sourceTree = "<group>"; };
+		45E2C6112C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
+		45E2C6122C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
+		45E2C6132C3AF76500951264 /* PlayerFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFlowView.swift; sourceTree = "<group>"; };
+		45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
+		45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPlayerAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +195,6 @@
 			children = (
 				456038FA2C2203F500BE25FC /* Adapters */,
 				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
-				4524A0972C0A3CF1002A3B40 /* ContentView.swift */,
 				458100C62C16166500F2AC0A /* Flows */,
 				4524A09B2C0A3CF2002A3B40 /* Preview Content */,
 				454CFD382C385A7700FA2CA5 /* Tools */,
@@ -263,16 +268,6 @@
 			path = SettingsFlow;
 			sourceTree = "<group>";
 		};
-		456038ED2C1ECFE200BE25FC /* DemoCode */ = {
-			isa = PBXGroup;
-			children = (
-				458100D62C18C25300F2AC0A /* Feature.swift */,
-				458100D22C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift */,
-				458100D42C18C10300F2AC0A /* SampleTabFlowView.swift */,
-			);
-			path = DemoCode;
-			sourceTree = "<group>";
-		};
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +302,7 @@
 				454498752C281270005357FD /* XLoginAdapter.swift */,
 				454498822C281EF5005357FD /* XOnboardingAdapter.swift */,
 				454CFD522C398C9700FA2CA5 /* XSettingsAdapter.swift */,
+				45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -314,10 +310,10 @@
 		458100C62C16166500F2AC0A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				45E2C60D2C3AF60D00951264 /* PlayerFlow */,
 				454CFD3F2C3985B700FA2CA5 /* SettingsFlow */,
 				4544986B2C26B30D005357FD /* LoggedInFlow */,
 				456038F52C20A8CC00BE25FC /* CollectionFlow */,
-				456038ED2C1ECFE200BE25FC /* DemoCode */,
 				4544986C2C26B740005357FD /* AppFlowCoordinator.swift */,
 				4544986E2C26B754005357FD /* AppFlowView.swift */,
 				454498732C2811F9005357FD /* AppFlowCoordinator+Login.swift */,
@@ -345,6 +341,19 @@
 				458100CF2C17722700F2AC0A /* XToolKit */,
 			);
 			path = Packages;
+			sourceTree = "<group>";
+		};
+		45E2C60D2C3AF60D00951264 /* PlayerFlow */ = {
+			isa = PBXGroup;
+			children = (
+				45E2C6102C3AF76500951264 /* PlayerFlowCoordinator.swift */,
+				45E2C6112C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift */,
+				45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */,
+				45E2C6122C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift */,
+				45E2C6132C3AF76500951264 /* PlayerFlowView.swift */,
+				45E2C60E2C3AF6FF00951264 /* PlayerFlowContext.swift */,
+			);
+			path = PlayerFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,27 +524,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				454CFD4C2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift in Sources */,
+				45E2C6182C3AF76500951264 /* PlayerFlowView.swift in Sources */,
 				4544986F2C26B754005357FD /* AppFlowView.swift in Sources */,
 				456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */,
+				45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */,
 				456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */,
 				458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */,
 				454CFD4E2C39882D00FA2CA5 /* SettingsFlowView.swift in Sources */,
-				458100D72C18C25300F2AC0A /* Feature.swift in Sources */,
 				454CFD462C39867800FA2CA5 /* SettingsFlowCoordinator.swift in Sources */,
+				45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */,
+				45E2C6172C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift in Sources */,
 				456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */,
+				45E2C60F2C3AF6FF00951264 /* PlayerFlowContext.swift in Sources */,
 				454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */,
 				454CFD482C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454CFD3E2C394C7900FA2CA5 /* CollectionFlowContext.swift in Sources */,
-				4524A0982C0A3CF1002A3B40 /* ContentView.swift in Sources */,
 				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				454CFD3C2C3949DF00FA2CA5 /* LoggedInFlowContext.swift in Sources */,
-				458100D52C18C10300F2AC0A /* SampleTabFlowView.swift in Sources */,
 				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
 				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
 				454CFD4A2C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift in Sources */,
 				454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */,
-				458100D32C18C0F300F2AC0A /* SampleTabFlowCoordinator.swift in Sources */,
+				45E2C6152C3AF76500951264 /* PlayerFlowCoordinator.swift in Sources */,
 				454498762C281270005357FD /* XLoginAdapter.swift in Sources */,
 				454498662C2492A2005357FD /* CollectionFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */,
@@ -544,6 +555,7 @@
 				454CFD532C398C9700FA2CA5 /* XSettingsAdapter.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
+				45E2C6162C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */,
 				4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */,
 			);
