@@ -138,4 +138,27 @@ class PreferencesManager: XPreferencesInterface {
             }
         }
     }
+
+    func clearPreferences(for mode: XPreferenceMode) {
+
+        defer { lock.unlock() }
+        lock.lock()
+
+        // Check if there is any key in the given mode.
+        if var storage = storage(for: mode) {
+
+            // if any, go key by key and delete them.
+            let keys = storage.keys
+            for key in keys {
+                storage.removeValue(forKey: key)
+            }
+            saveStorage(data: storage, for: mode)
+            logger.debug("Removed all preferences for mode \(mode.rawValue)")
+        }
+    }
+
+    func clearAllPreferences() {
+        clearPreferences(for: .restricted)
+        clearPreferences(for: .universal)
+    }
 }

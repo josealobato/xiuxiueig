@@ -4,7 +4,7 @@ import Foundation
 
 /// PreferenceMode is selected when declaring a key to save, and informs the preferences
 /// engine about the desired storage type.
-public enum XPreferenceMode {
+public enum XPreferenceMode: String {
 
     // In this mode the same value is available always without restrictions.
     // For example a value that should be available at the level of the device.
@@ -71,4 +71,11 @@ public protocol XPreferencesInterface {
     ///   - key: The key of the preference to save.
     ///   - value: The value to save or `nil` to delete the value.
     func savePreference<T: Codable>(for key: String, value: T?)
+
+    /// Clear all the preferences for the given mode
+    /// - Parameter mode: The mode to clean up
+    func clearPreferences(for mode: XPreferenceMode)
+
+    /// Clear all preferences for all modes
+    func clearAllPreferences()
 }
