@@ -7,7 +7,7 @@ import Foundation
 /// as any moment (any), but since it is not needed yet It simplyfy things.
 public protocol XPlayerLecture {
 
-    var id: String { get }
+    var id: UUID { get }
     var title: String { get }
     var mediaURL: URL { get }
 }

@@ -6,10 +6,10 @@ import XEntities
 
 final class XLectureDetailsAdapter: XLectureDetailsServiceInterface {
 
-    func lecture(withId id: String) async throws -> XEntities.LectureEntity {
-        LectureEntity(id: "1",
+    func lecture(withId id: UUID) async throws -> XEntities.LectureEntity {
+        LectureEntity(id: id,
                       title: "What is a square root?",
-                      category: CategoryEntity(id: "id",
+                      category: CategoryEntity(id: UUID(),
                                                title: "Mathematics",
                                                imageURL: nil,
                                                defaultImage: "pyramid"),
@@ -18,11 +18,11 @@ final class XLectureDetailsAdapter: XLectureDetailsServiceInterface {
 
     func categories() async throws -> [XEntities.CategoryEntity] {
         [
-            CategoryEntity(id: "id",
+            CategoryEntity(id: UUID(),
                            title: "Mathematics",
                            imageURL: nil,
                            defaultImage: "pyramid"),
-            CategoryEntity(id: "id",
+            CategoryEntity(id: UUID(),
                            title: "History",
                            imageURL: nil,
                            defaultImage: "map")

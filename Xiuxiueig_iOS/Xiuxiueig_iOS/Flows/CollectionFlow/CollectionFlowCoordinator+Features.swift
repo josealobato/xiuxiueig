@@ -12,7 +12,7 @@ extension CollectionFlowCoordinator {
     /// needed to build that features. Therefore the parameters.
     enum Feature: Identifiable, Hashable {
 
-        case lectureDetails(String)
+        case lectureDetails(UUID)
 
         var id: String {
             switch self {

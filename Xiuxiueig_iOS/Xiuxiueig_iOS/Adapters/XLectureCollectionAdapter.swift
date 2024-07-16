@@ -7,16 +7,16 @@ import XEntities
 final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
     func lectures() async throws -> [XEntities.LectureEntity] {
         [
-            LectureEntity(id: "1",
+            LectureEntity(id: UUID(),
                           title: "What is a square root?",
-                          category: CategoryEntity(id: "id",
+                          category: CategoryEntity(id: UUID(),
                                                    title: "Mathematics",
                                                    imageURL: nil,
                                                    defaultImage: "pyramid"),
                           mediaURL: URL(string: "https://whatever.com")!),
-            LectureEntity(id: "2",
+            LectureEntity(id: UUID(),
                           title: "The Spanish inquisition",
-                          category: CategoryEntity(id: "id",
+                          category: CategoryEntity(id: UUID(),
                                                    title: "History",
                                                    imageURL: nil,
                                                    defaultImage: "map"),
@@ -24,11 +24,11 @@ final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
         ]
     }
 
-    func enqueueLecture(id: String) async throws {
+    func enqueueLecture(id: UUID) async throws {
 
     }
 
-    func dequeueLecture(id: String) async throws {
+    func dequeueLecture(id: UUID) async throws {
 
     }
 }

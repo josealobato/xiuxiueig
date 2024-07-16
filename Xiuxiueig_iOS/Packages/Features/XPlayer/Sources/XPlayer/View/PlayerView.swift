@@ -45,7 +45,7 @@ struct PlayerView_Previews: PreviewProvider {
     struct TestContainer: View {
 
         @State private var previewLecture: LectureViewModel =
-        LectureViewModel(id: "01",
+        LectureViewModel(id: UUID(),
                          title: "Title of One with some extra text for more space",
                          isEnabled: true,
                          isPlaying: false,

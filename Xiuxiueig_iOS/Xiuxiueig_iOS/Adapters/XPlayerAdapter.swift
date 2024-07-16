@@ -8,15 +8,15 @@ class XPlayerAdapter: XPlayerServiceInterface {
         nil
     }
 
-    func playing(id: String, in second: Int) async {
+    func playing(id: UUID, in second: Int) async {
     }
 
-    func paused(id: String, in second: Int) async {
+    func paused(id: UUID, in second: Int) async {
     }
 
-    func skipped(id: String, in second: Int) async {
+    func skipped(id: UUID, in second: Int) async {
     }
 
-    func donePlaying(id: String) async throws {
+    func donePlaying(id: UUID) async throws {
     }
 }

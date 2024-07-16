@@ -8,7 +8,7 @@ import Foundation
 /// It can be a subject, a season, a course, etc.
 public struct CategoryEntity: Identifiable, Equatable {
 
-    public let id: String
+    public let id: UUID
     public let title: String
 
     // A categorey will always have a default image
@@ -16,7 +16,7 @@ public struct CategoryEntity: Identifiable, Equatable {
     public let imageURL: URL?
     public let defaultImage: String
 
-    public init(id: String,
+    public init(id: UUID,
                 title: String,
                 imageURL: URL?,
                 defaultImage: String) {

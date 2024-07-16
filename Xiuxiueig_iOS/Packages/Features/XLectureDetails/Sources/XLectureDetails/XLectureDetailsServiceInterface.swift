@@ -17,7 +17,7 @@ public enum XLectureDetailsServiceError: Error {
 public protocol XLectureDetailsServiceInterface: AutoMockable {
 
     /// Get the lecture.
-    func lecture(withId id: String) async throws -> LectureEntity
+    func lecture(withId id: UUID) async throws -> LectureEntity
 
     /// Get the list of categories that can be applied to a lecture
     func categories() async throws -> [CategoryEntity]

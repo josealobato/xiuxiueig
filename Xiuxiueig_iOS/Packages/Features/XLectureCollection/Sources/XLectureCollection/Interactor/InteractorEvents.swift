@@ -7,11 +7,11 @@ enum InteractorEvents {
     enum Input {
 
         case loadInitialData
-        case select(String)
-        case play(String)
-        case enqueue(String)
-        case dequeue(String)
-        case delete(String)
+        case select(UUID)
+        case play(UUID)
+        case enqueue(UUID)
+        case dequeue(UUID)
+        case delete(UUID)
     }
 
     enum Output: Equatable {

@@ -113,11 +113,11 @@ final class XLectureCollectionServicesInterfaceMock: XLectureCollectionServicesI
     var enqueueLectureIdCalled: Bool {
         return enqueueLectureIdCallsCount > 0
     }
-    var enqueueLectureIdReceivedId: String?
-    var enqueueLectureIdReceivedInvocations: [String] = []
-    var enqueueLectureIdClosure: ((String) throws -> Void)?
+    var enqueueLectureIdReceivedId: UUID?
+    var enqueueLectureIdReceivedInvocations: [UUID] = []
+    var enqueueLectureIdClosure: ((UUID) throws -> Void)?
 
-    func enqueueLecture(id: String) async throws {
+    func enqueueLecture(id: UUID) async throws {
         if let error = enqueueLectureIdThrowableError {
             throw error
         }
@@ -134,11 +134,11 @@ final class XLectureCollectionServicesInterfaceMock: XLectureCollectionServicesI
     var dequeueLectureIdCalled: Bool {
         return dequeueLectureIdCallsCount > 0
     }
-    var dequeueLectureIdReceivedId: String?
-    var dequeueLectureIdReceivedInvocations: [String] = []
-    var dequeueLectureIdClosure: ((String) throws -> Void)?
+    var dequeueLectureIdReceivedId: UUID?
+    var dequeueLectureIdReceivedInvocations: [UUID] = []
+    var dequeueLectureIdClosure: ((UUID) throws -> Void)?
 
-    func dequeueLecture(id: String) async throws {
+    func dequeueLecture(id: UUID) async throws {
         if let error = dequeueLectureIdThrowableError {
             throw error
         }

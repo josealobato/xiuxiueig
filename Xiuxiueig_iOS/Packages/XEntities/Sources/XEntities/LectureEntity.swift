@@ -7,7 +7,7 @@ import Foundation
 /// as the media itself.
 public struct LectureEntity: Identifiable, Equatable {
 
-    public var id: String
+    public var id: UUID
     public var title: String
     public var category: CategoryEntity?
     public var mediaURL: URL
@@ -19,7 +19,7 @@ public struct LectureEntity: Identifiable, Equatable {
 
     public let defaultImageName: String = "book.closed"
 
-    public init(id: String,
+    public init(id: UUID,
                 title: String,
                 category: CategoryEntity? = nil,
                 mediaURL: URL,

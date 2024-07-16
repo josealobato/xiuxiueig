@@ -8,11 +8,11 @@ final class Interactor: InteractorInput {
 
     var output: InteractorOutput?
     let services: XLectureDetailsServiceInterface
-    let entityId: String
+    let entityId: UUID
     var lecture: LectureEntity?
     var categories: [CategoryEntity] = []
 
-    init(entityId: String,
+    init(entityId: UUID,
          services: XLectureDetailsServiceInterface) {
         self.entityId = entityId
         self.services = services

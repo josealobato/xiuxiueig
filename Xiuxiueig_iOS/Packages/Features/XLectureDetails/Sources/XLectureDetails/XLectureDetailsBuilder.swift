@@ -6,7 +6,7 @@ import SwiftUI
 public struct XLectureDetailsBuilder {
 
     public static func build(
-        entityId: String,
+        entityId: UUID,
         services: XLectureDetailsServiceInterface
     ) -> some View {
 

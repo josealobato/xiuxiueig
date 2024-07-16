@@ -112,11 +112,11 @@ final class XPlayerServiceInterfaceMock: XPlayerServiceInterface {
     var playingIdInCalled: Bool {
         return playingIdInCallsCount > 0
     }
-    var playingIdInReceivedArguments: (id: String, second: Int)?
-    var playingIdInReceivedInvocations: [(id: String, second: Int)] = []
-    var playingIdInClosure: ((String, Int) -> Void)?
+    var playingIdInReceivedArguments: (id: UUID, second: Int)?
+    var playingIdInReceivedInvocations: [(id: UUID, second: Int)] = []
+    var playingIdInClosure: ((UUID, Int) -> Void)?
 
-    func playing(id: String, in second: Int) async {
+    func playing(id: UUID, in second: Int) async {
         playingIdInCallsCount += 1
         playingIdInReceivedArguments = (id: id, second: second)
         playingIdInReceivedInvocations.append((id: id, second: second))
@@ -129,11 +129,11 @@ final class XPlayerServiceInterfaceMock: XPlayerServiceInterface {
     var pausedIdInCalled: Bool {
         return pausedIdInCallsCount > 0
     }
-    var pausedIdInReceivedArguments: (id: String, second: Int)?
-    var pausedIdInReceivedInvocations: [(id: String, second: Int)] = []
-    var pausedIdInClosure: ((String, Int) -> Void)?
+    var pausedIdInReceivedArguments: (id: UUID, second: Int)?
+    var pausedIdInReceivedInvocations: [(id: UUID, second: Int)] = []
+    var pausedIdInClosure: ((UUID, Int) -> Void)?
 
-    func paused(id: String, in second: Int) async {
+    func paused(id: UUID, in second: Int) async {
         pausedIdInCallsCount += 1
         pausedIdInReceivedArguments = (id: id, second: second)
         pausedIdInReceivedInvocations.append((id: id, second: second))
@@ -146,11 +146,11 @@ final class XPlayerServiceInterfaceMock: XPlayerServiceInterface {
     var skippedIdInCalled: Bool {
         return skippedIdInCallsCount > 0
     }
-    var skippedIdInReceivedArguments: (id: String, second: Int)?
-    var skippedIdInReceivedInvocations: [(id: String, second: Int)] = []
-    var skippedIdInClosure: ((String, Int) -> Void)?
+    var skippedIdInReceivedArguments: (id: UUID, second: Int)?
+    var skippedIdInReceivedInvocations: [(id: UUID, second: Int)] = []
+    var skippedIdInClosure: ((UUID, Int) -> Void)?
 
-    func skipped(id: String, in second: Int) async {
+    func skipped(id: UUID, in second: Int) async {
         skippedIdInCallsCount += 1
         skippedIdInReceivedArguments = (id: id, second: second)
         skippedIdInReceivedInvocations.append((id: id, second: second))
@@ -164,11 +164,11 @@ final class XPlayerServiceInterfaceMock: XPlayerServiceInterface {
     var donePlayingIdCalled: Bool {
         return donePlayingIdCallsCount > 0
     }
-    var donePlayingIdReceivedId: String?
-    var donePlayingIdReceivedInvocations: [String] = []
-    var donePlayingIdClosure: ((String) throws -> Void)?
+    var donePlayingIdReceivedId: UUID?
+    var donePlayingIdReceivedInvocations: [UUID] = []
+    var donePlayingIdClosure: ((UUID) throws -> Void)?
 
-    func donePlaying(id: String) async throws {
+    func donePlaying(id: UUID) async throws {
         if let error = donePlayingIdThrowableError {
             throw error
         }

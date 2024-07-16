@@ -5,7 +5,7 @@ import struct XEntities.LectureEntity
 
 struct LectureViewModel: Identifiable, Equatable {
 
-    let id: String
+    let id: UUID
     let title: String
     let isEnabled: Bool
     let isPlaying: Bool
@@ -13,7 +13,7 @@ struct LectureViewModel: Identifiable, Equatable {
     var currentPossitionInSeconds: Int
 
     static var none: LectureViewModel {
-        LectureViewModel(id: "None",
+        LectureViewModel(id: UUID(),
                          title: LocalizationKey.noAudioMessage.localize(),
                          isEnabled: false,
                          isPlaying: false,

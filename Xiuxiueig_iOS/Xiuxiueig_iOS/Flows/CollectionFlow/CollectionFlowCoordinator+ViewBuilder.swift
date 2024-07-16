@@ -25,7 +25,7 @@ extension CollectionFlowCoordinator {
     // MARK: - Collection of Feature builders.
 
     @ViewBuilder
-    private func buildLectureDetails(with id: String) -> some View {
+    private func buildLectureDetails(with id: UUID) -> some View {
         let adapter = XLectureDetailsAdapter()
         XLectureDetailsBuilder.build(entityId: id, services: adapter)
     }

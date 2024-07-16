@@ -57,6 +57,7 @@
 		45E2C6182C3AF76500951264 /* PlayerFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6132C3AF76500951264 /* PlayerFlowView.swift */; };
 		45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */; };
 		45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */; };
+		45E2C61F2C46756400951264 /* XRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C61E2C46756400951264 /* XRepositories */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 				454498812C281EA1005357FD /* XOnboarding in Frameworks */,
 				45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */,
 				454498722C27FDD4005357FD /* XLogin in Frameworks */,
+				45E2C61F2C46756400951264 /* XRepositories in Frameworks */,
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */,
 				454CFD512C398C7D00FA2CA5 /* XSettings in Frameworks */,
@@ -384,6 +386,7 @@
 				454CFD362C35C66D00FA2CA5 /* XPreferences */,
 				454CFD502C398C7D00FA2CA5 /* XSettings */,
 				45E2C60B2C3AEEC900951264 /* XPlayer */,
+				45E2C61E2C46756400951264 /* XRepositories */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -928,6 +931,10 @@
 		45E2C60B2C3AEEC900951264 /* XPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XPlayer;
+		};
+		45E2C61E2C46756400951264 /* XRepositories */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XRepositories;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

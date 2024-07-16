@@ -34,27 +34,27 @@ struct LectureList: View {
 
     // MARK: - Actions
 
-    public func onSelect(_ action: @escaping ((String) -> Void)) -> Self {
+    public func onSelect(_ action: @escaping ((UUID) -> Void)) -> Self {
         handlers.onSelect = action
         return self
     }
 
-    public func onPlay(_ action: @escaping ((String) -> Void)) -> Self {
+    public func onPlay(_ action: @escaping ((UUID) -> Void)) -> Self {
         handlers.onPlay = action
         return self
     }
 
-    public func onEnqueue(_ action: @escaping ((String) -> Void)) -> Self {
+    public func onEnqueue(_ action: @escaping ((UUID) -> Void)) -> Self {
         handlers.onEnqueue = action
         return self
     }
 
-    public func onDequeue(_ action: @escaping ((String) -> Void)) -> Self {
+    public func onDequeue(_ action: @escaping ((UUID) -> Void)) -> Self {
         handlers.onDequeue = action
         return self
     }
 
-    public func onDelete(_ action: @escaping ((String) -> Void)) -> Self {
+    public func onDelete(_ action: @escaping ((UUID) -> Void)) -> Self {
         handlers.onDelete = action
         return self
     }
@@ -62,32 +62,32 @@ struct LectureList: View {
 
 private class ActionHandlers {
 
-    var onSelect: ((String) -> Void)?
-    var onPlay: ((String) -> Void)?
-    var onEnqueue: ((String) -> Void)?
-    var onDequeue: ((String) -> Void)?
-    var onDelete: ((String) -> Void)?
+    var onSelect: ((UUID) -> Void)?
+    var onPlay: ((UUID) -> Void)?
+    var onEnqueue: ((UUID) -> Void)?
+    var onDequeue: ((UUID) -> Void)?
+    var onDelete: ((UUID) -> Void)?
 }
 
 private extension LectureList {
 
-    func select(id: String) {
+    func select(id: UUID) {
         handlers.onSelect?(id)
     }
 
-    func play(id: String) {
+    func play(id: UUID) {
         handlers.onPlay?(id)
     }
 
-    func enqueue(id: String) {
+    func enqueue(id: UUID) {
         handlers.onEnqueue?(id)
     }
 
-    func dequeue(id: String) {
+    func dequeue(id: UUID) {
         handlers.onDequeue?(id)
     }
 
-    func delete(id: String) {
+    func delete(id: UUID) {
         handlers.onDelete?(id)
     }
 }
@@ -96,19 +96,19 @@ struct SwiftUIView_Previews: PreviewProvider {
 
     // swiftlint:disable line_length
     @State static var models = [
-        LectureViewModel(id: "01",
+        LectureViewModel(id: UUID(),
                          title: "This a normal title",
                          subtitle: "",
                          timesPlayed: 25,
                          imageName: "book.circle",
                          isStacked: true),
-        LectureViewModel(id: "02",
+        LectureViewModel(id: UUID(),
                          title: "This is a somehow very long title to see how it behaves",
                          subtitle: "This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves This is a somehow very long title to see how it behaves",
                          timesPlayed: 0,
                          imageName: "book.fill",
                          isStacked: false),
-        LectureViewModel(id: "03",
+        LectureViewModel(id: UUID(),
                          title: "Three",
                          subtitle: "",
                          timesPlayed: 0,

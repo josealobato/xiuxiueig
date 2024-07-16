@@ -95,12 +95,12 @@ final class XLectureDetailsServiceInterfaceMock: XLectureDetailsServiceInterface
     var lectureWithIdCalled: Bool {
         return lectureWithIdCallsCount > 0
     }
-    var lectureWithIdReceivedId: String?
-    var lectureWithIdReceivedInvocations: [String] = []
+    var lectureWithIdReceivedId: UUID?
+    var lectureWithIdReceivedInvocations: [UUID] = []
     var lectureWithIdReturnValue: LectureEntity!
-    var lectureWithIdClosure: ((String) throws -> LectureEntity)?
+    var lectureWithIdClosure: ((UUID) throws -> LectureEntity)?
 
-    func lecture(withId id: String) async throws -> LectureEntity {
+    func lecture(withId id: UUID) async throws -> LectureEntity {
         if let error = lectureWithIdThrowableError {
             throw error
         }

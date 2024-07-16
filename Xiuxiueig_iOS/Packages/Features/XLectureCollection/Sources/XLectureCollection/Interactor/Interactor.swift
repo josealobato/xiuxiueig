@@ -47,14 +47,14 @@ final class Interactor: InteractorInput {
 
     // MARK: - On actions
 
-    private func onSelect(withId id: String) {
+    private func onSelect(withId id: UUID) {
 
         let detailsRequest = XCoordinationRequest.showLectureDetails(id: id)
         coordinator.coordinate(from: .xLectureCollection, request: detailsRequest)
 
     }
 
-    private func enqueueLecture(withId id: String) async {
+    private func enqueueLecture(withId id: UUID) async {
 
         do {
             try await services.enqueueLecture(id: id)
@@ -65,7 +65,7 @@ final class Interactor: InteractorInput {
         }
     }
 
-    private func dequeueLecture(withId id: String) async {
+    private func dequeueLecture(withId id: UUID) async {
 
         do {
             try await services.dequeueLecture(id: id)

@@ -21,7 +21,7 @@ public enum XCoordinationRequest: Equatable {
     // Specific requests.
     // Those request that direct to a concrete feature.
     // e.g.: `case showPlayer`
-    case showLectureDetails(id: String)
+    case showLectureDetails(id: UUID)
 
     // MARK: - Equatable
     public static func == (lhs: XCoordinationRequest, rhs: XCoordinationRequest) -> Bool {

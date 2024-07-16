@@ -39,7 +39,7 @@ struct PlayerCompositeView: View {
 
 struct PlayerCompositeView_Previews: PreviewProvider {
 
-    @State static var model = LectureViewModel(id: "01",
+    @State static var model = LectureViewModel(id: UUID(),
                                                title: "One",
                                                isEnabled: true,
                                                isPlaying: false,

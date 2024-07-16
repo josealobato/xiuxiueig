@@ -3,7 +3,7 @@ import struct XEntities.LectureEntity
 
 struct LectureViewModel: Identifiable, Equatable {
 
-    let id: String
+    let id: UUID
     let title: String
     let subtitle: String
     let timesPlayed: Int

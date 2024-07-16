@@ -43,19 +43,19 @@ struct LectureCollectionView_Previews: PreviewProvider {
     struct TestContainer: View {
 
         @State private var previewLectures: [LectureViewModel] = [
-            LectureViewModel(id: "01",
+            LectureViewModel(id: UUID(),
                              title: "One",
                              subtitle: "",
                              timesPlayed: 0,
                              imageName: "book.circle",
                             isStacked: true),
-            LectureViewModel(id: "02",
+            LectureViewModel(id: UUID(),
                              title: "Two",
                              subtitle: "",
                              timesPlayed: 0,
                              imageName: "book.fill",
                              isStacked: true),
-            LectureViewModel(id: "03",
+            LectureViewModel(id: UUID(),
                              title: "Three",
                              subtitle: "",
                              timesPlayed: 0,
