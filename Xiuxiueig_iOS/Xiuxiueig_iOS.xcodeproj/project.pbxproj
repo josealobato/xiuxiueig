@@ -47,6 +47,7 @@
 		456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F62C20A8F300BE25FC /* CollectionFlowCoordinator.swift */; };
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
+		457BD04F2C46C08200589246 /* XQueueManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = 457BD04E2C46C08200589246 /* XQueueManagementService */; };
 		458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */; };
 		458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */; };
 		45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C60B2C3AEEC900951264 /* XPlayer */; };
@@ -132,6 +133,7 @@
 		45E2C6132C3AF76500951264 /* PlayerFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFlowView.swift; sourceTree = "<group>"; };
 		45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
 		45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPlayerAdapter.swift; sourceTree = "<group>"; };
+		45E2C61D2C3C5E8C00951264 /* XQueueManagementService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XQueueManagementService; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				454498602C248D74005357FD /* XToolKit in Frameworks */,
 				454CFD372C35C66D00FA2CA5 /* XPreferences in Frameworks */,
 				454CFD512C398C7D00FA2CA5 /* XSettings in Frameworks */,
+				457BD04F2C46C08200589246 /* XQueueManagementService in Frameworks */,
 				4544985A2C248D5B005357FD /* XEntities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +339,7 @@
 		45B086EA2C159BC40055659F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				45E2C61C2C3C5E5000951264 /* Services */,
 				454498842C2F0705005357FD /* Data */,
 				456038F12C1EED7C00BE25FC /* Features */,
 				45B086EC2C15A0020055659F /* XCoordinator */,
@@ -356,6 +360,14 @@
 				45E2C60E2C3AF6FF00951264 /* PlayerFlowContext.swift */,
 			);
 			path = PlayerFlow;
+			sourceTree = "<group>";
+		};
+		45E2C61C2C3C5E5000951264 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				45E2C61D2C3C5E8C00951264 /* XQueueManagementService */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +399,7 @@
 				454CFD502C398C7D00FA2CA5 /* XSettings */,
 				45E2C60B2C3AEEC900951264 /* XPlayer */,
 				45E2C61E2C46756400951264 /* XRepositories */,
+				457BD04E2C46C08200589246 /* XQueueManagementService */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -927,6 +940,10 @@
 		454CFD502C398C7D00FA2CA5 /* XSettings */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XSettings;
+		};
+		457BD04E2C46C08200589246 /* XQueueManagementService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XQueueManagementService;
 		};
 		45E2C60B2C3AEEC900951264 /* XPlayer */ = {
 			isa = XCSwiftPackageProductDependency;

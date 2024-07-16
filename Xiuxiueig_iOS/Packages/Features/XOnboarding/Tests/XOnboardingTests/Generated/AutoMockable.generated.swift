@@ -86,6 +86,152 @@ final class XCoordinationRequestProtocolMock: XCoordinationRequestProtocol {
     }
 
 }
+final class XCoordinatorServiceLifeCycleProtocolMock: XCoordinatorServiceLifeCycleProtocol {
+    var coordinator: XCoordinationRequestProtocol?
+
+    //MARK: - willEnterForeground
+
+    var willEnterForegroundCallsCount = 0
+    var willEnterForegroundCalled: Bool {
+        return willEnterForegroundCallsCount > 0
+    }
+    var willEnterForegroundClosure: (() -> Void)?
+
+    func willEnterForeground() {
+        willEnterForegroundCallsCount += 1
+        willEnterForegroundClosure?()
+    }
+
+    //MARK: - didEnterForeground
+
+    var didEnterForegroundCallsCount = 0
+    var didEnterForegroundCalled: Bool {
+        return didEnterForegroundCallsCount > 0
+    }
+    var didEnterForegroundClosure: (() -> Void)?
+
+    func didEnterForeground() {
+        didEnterForegroundCallsCount += 1
+        didEnterForegroundClosure?()
+    }
+
+    //MARK: - willEnterBackground
+
+    var willEnterBackgroundCallsCount = 0
+    var willEnterBackgroundCalled: Bool {
+        return willEnterBackgroundCallsCount > 0
+    }
+    var willEnterBackgroundClosure: (() -> Void)?
+
+    func willEnterBackground() {
+        willEnterBackgroundCallsCount += 1
+        willEnterBackgroundClosure?()
+    }
+
+    //MARK: - didEnterBackground
+
+    var didEnterBackgroundCallsCount = 0
+    var didEnterBackgroundCalled: Bool {
+        return didEnterBackgroundCallsCount > 0
+    }
+    var didEnterBackgroundClosure: (() -> Void)?
+
+    func didEnterBackground() {
+        didEnterBackgroundCallsCount += 1
+        didEnterBackgroundClosure?()
+    }
+
+    //MARK: - attendToLocalNotification
+
+    var attendToLocalNotificationIdentifierCallsCount = 0
+    var attendToLocalNotificationIdentifierCalled: Bool {
+        return attendToLocalNotificationIdentifierCallsCount > 0
+    }
+    var attendToLocalNotificationIdentifierReceivedIdentifier: String?
+    var attendToLocalNotificationIdentifierReceivedInvocations: [String] = []
+    var attendToLocalNotificationIdentifierClosure: ((String) -> Void)?
+
+    func attendToLocalNotification(identifier: String) {
+        attendToLocalNotificationIdentifierCallsCount += 1
+        attendToLocalNotificationIdentifierReceivedIdentifier = identifier
+        attendToLocalNotificationIdentifierReceivedInvocations.append(identifier)
+        attendToLocalNotificationIdentifierClosure?(identifier)
+    }
+
+    //MARK: - start
+
+    var startCallsCount = 0
+    var startCalled: Bool {
+        return startCallsCount > 0
+    }
+    var startClosure: (() -> Void)?
+
+    func start() {
+        startCallsCount += 1
+        startClosure?()
+    }
+
+    //MARK: - stop
+
+    var stopCallsCount = 0
+    var stopCalled: Bool {
+        return stopCallsCount > 0
+    }
+    var stopClosure: (() -> Void)?
+
+    func stop() {
+        stopCallsCount += 1
+        stopClosure?()
+    }
+
+}
+final class XCoordinatorServiceProtocolMock: XCoordinatorServiceProtocol {
+    var coordinator: XCoordinationRequestProtocol?
+
+    //MARK: - attendToLocalNotification
+
+    var attendToLocalNotificationIdentifierCallsCount = 0
+    var attendToLocalNotificationIdentifierCalled: Bool {
+        return attendToLocalNotificationIdentifierCallsCount > 0
+    }
+    var attendToLocalNotificationIdentifierReceivedIdentifier: String?
+    var attendToLocalNotificationIdentifierReceivedInvocations: [String] = []
+    var attendToLocalNotificationIdentifierClosure: ((String) -> Void)?
+
+    func attendToLocalNotification(identifier: String) {
+        attendToLocalNotificationIdentifierCallsCount += 1
+        attendToLocalNotificationIdentifierReceivedIdentifier = identifier
+        attendToLocalNotificationIdentifierReceivedInvocations.append(identifier)
+        attendToLocalNotificationIdentifierClosure?(identifier)
+    }
+
+    //MARK: - start
+
+    var startCallsCount = 0
+    var startCalled: Bool {
+        return startCallsCount > 0
+    }
+    var startClosure: (() -> Void)?
+
+    func start() {
+        startCallsCount += 1
+        startClosure?()
+    }
+
+    //MARK: - stop
+
+    var stopCallsCount = 0
+    var stopCalled: Bool {
+        return stopCallsCount > 0
+    }
+    var stopClosure: (() -> Void)?
+
+    func stop() {
+        stopCallsCount += 1
+        stopClosure?()
+    }
+
+}
 final class XOnboardingServicesInterfaceMock: XOnboardingServicesInterface {
 
     //MARK: - onboardingCompleted
