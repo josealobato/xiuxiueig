@@ -56,7 +56,8 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         if let coordinator = getChild(ofType: PlayerFlowCoordinator.self) as? PlayerFlowCoordinator {
             return coordinator
         } else {
-            let context = PlayerFlowContext(userName: context.userName)
+            let context = PlayerFlowContext(userName: context.userName,
+                                            queueManagementService: context.queueManagementService)
             let coordinator = PlayerFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
             addChild(coordinator)
@@ -68,7 +69,8 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         if let coordinator = getChild(ofType: CollectionFlowCoordinator.self) as? CollectionFlowCoordinator {
             return coordinator
         } else {
-            let context = CollectionFlowContext(userName: context.userName)
+            let context = CollectionFlowContext(userName: context.userName,
+                                                queueManagementService: context.queueManagementService)
             let coordinator = CollectionFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
             addChild(coordinator)

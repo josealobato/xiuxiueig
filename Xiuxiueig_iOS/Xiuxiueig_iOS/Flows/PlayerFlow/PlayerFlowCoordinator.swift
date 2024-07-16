@@ -55,7 +55,7 @@ extension PlayerFlowCoordinator {
     /// The view use this method to request the main view it should hold.
     /// - Returns: the navigation root view of the `PlayerFlowView`
     func baseCoordinatorView() -> some View {
-        let adapter = XPlayerAdapter()
+        let adapter = XPlayerAdapter(queueManagement: context.queueManagementService)
         XPlayerBuilder.build(services: adapter)
     }
 }

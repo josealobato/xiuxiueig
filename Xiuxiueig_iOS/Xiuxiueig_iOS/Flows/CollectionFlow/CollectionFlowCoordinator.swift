@@ -6,6 +6,7 @@ import SwiftUI
 import XCoordinator
 import XToolKit
 import XLectureCollection
+import XRepositories
 
 /// The coordinator managing the flow on the collection flow.
 final class CollectionFlowCoordinator: XCoordinatorProtocol, ObservableObject {
@@ -55,7 +56,7 @@ extension CollectionFlowCoordinator {
     /// The view use this method to request the main view it should hold.
     /// - Returns: the navigation root view of the `CollectionFlowView`
     func baseCoordinatorView() -> some View {
-        let adapter = XLectureCollectionAdapter()
+        let adapter = XLectureCollectionAdapter(queueManagement: context.queueManagementService)
         XLectureCollectionBuilder.build(services: adapter,
                                         coordinator: self)
     }
