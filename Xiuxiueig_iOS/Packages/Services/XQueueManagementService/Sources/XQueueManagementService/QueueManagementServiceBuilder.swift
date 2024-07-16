@@ -5,7 +5,7 @@ import XRepositories
 
 public struct QueueManagementServiceBuilder {
 
-    public static func build(storage: LectureRepositoryInteface) -> QueueManagementServiceProtocol {
+    public static func build(storage: LectureRepositoryInteface) -> QueueManagementServiceInterface {
 
         QueueManagementService(storage: storage)
     }

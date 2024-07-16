@@ -5,7 +5,7 @@ import XCoordinator
 
 extension QueueManagementService: XCoordinatorServiceLifeCycleProtocol {
 
-    public func start() {
+    func start() {
 
         Task {
             await start()
@@ -33,5 +33,5 @@ extension QueueManagementService: XCoordinatorServiceLifeCycleProtocol {
         }
     }
 
-    public func stop() { /* Nothing to do */ }
+    func stop() { /* Nothing to do */ }
 }

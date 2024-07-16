@@ -15,5 +15,5 @@ struct LoggedInFlowContext {
     let userName: String
 
     /// The queue management service for the current user.
-    let queueManagementService: QueueManagementServiceProtocol
+    let queueManagementService: QueueManagementServiceInterface
 }

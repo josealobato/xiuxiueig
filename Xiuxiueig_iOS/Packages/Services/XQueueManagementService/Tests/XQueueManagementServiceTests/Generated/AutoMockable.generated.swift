@@ -238,7 +238,7 @@ final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
     }
 
 }
-final class QueueManagementServiceProtocolMock: QueueManagementServiceProtocol {
+final class QueueManagementServiceInterfaceMock: QueueManagementServiceInterface {
     var coordinator: XCoordinationRequestProtocol?
 
     //MARK: - getQueue

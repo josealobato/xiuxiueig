@@ -6,22 +6,22 @@ import XCoordinator
 import XRepositories
 import XToolKit
 
-extension QueueManagementService: QueueManagementServiceProtocol {
+extension QueueManagementService: QueueManagementServiceInterface {
 
     // MARK: - Getting lectures from the queue.
 
-    public func getQueue() -> [LectureEntity] {
+    func getQueue() -> [LectureEntity] {
         return queue
     }
 
-    public func getNext() -> LectureEntity? {
+    func getNext() -> LectureEntity? {
 
         return queue.count > 0 ? queue[0] : nil
     }
 
     // MARK: - Playing
 
-    public func startedPlayingLecture(id: UUID, in second: Int) async {
+    func startedPlayingLecture(id: UUID, in second: Int) async {
 
         // if the object is not in the queue do nothing.
         guard isLectureInQueue(id: id) else { return }
@@ -48,7 +48,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func pausedLecture(id: UUID, in second: Int) async {
+    func pausedLecture(id: UUID, in second: Int) async {
 
         // if the object is not in the queue do nothing.
         guard let index = indexInQueue(id: id) else { return }
@@ -68,7 +68,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func skippedLecture(id: UUID) async {
+    func skippedLecture(id: UUID) async {
 
         // if the object is not in the queue do nothing.
         guard let index = indexInQueue(id: id) else { return }
@@ -80,7 +80,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         await changeOrder(id: id, from: index, to: queue.count - 1)
     }
 
-    public func donePlayingLecture(id: UUID) async {
+    func donePlayingLecture(id: UUID) async {
 
         // if the object is not in the queue do nothing:
         guard let index = indexInQueue(id: id) else { return }
@@ -108,7 +108,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Play Request for any lecture
 
-    public func playLecture(id: UUID) async {
+    func playLecture(id: UUID) async {
 
         do {
             if !isLectureInQueue(id: id) {
@@ -138,7 +138,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Adding and Removing
 
-    public func addToQueueOnTop(id: UUID) async {
+    func addToQueueOnTop(id: UUID) async {
 
         // if the object is already there do nothing.
         guard !isLectureInQueue(id: id) else { return }
@@ -155,7 +155,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func addToQueueAtBottom(id: UUID) async {
+    func addToQueueAtBottom(id: UUID) async {
 
         // if the object is already there do nothing.
         guard !isLectureInQueue(id: id) else { return }
@@ -172,7 +172,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
         }
     }
 
-    public func removeFromQueue(id: UUID) async {
+    func removeFromQueue(id: UUID) async {
 
         // if the object is not in queue do nothing.
         guard isLectureInQueue(id: id) else { return }
@@ -198,7 +198,7 @@ extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Sorting
 
-    public func changeOrder(id: UUID, from origin: Int, to destination: Int) async {
+    func changeOrder(id: UUID, from origin: Int, to destination: Int) async {
 
         // Index should be valid
         guard isIndexInRange(index: origin) && isIndexInRange(index: destination)

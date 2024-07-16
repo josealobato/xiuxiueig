@@ -6,7 +6,7 @@ import XCoordinator
 import XRepositories
 import XToolKit
 
-public class QueueManagementService {
+class QueueManagementService {
 
     let logger = XLog.logger(category: "QueueManagementService")
 
