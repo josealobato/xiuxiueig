@@ -10,7 +10,7 @@ end
 
 
 desc "Generate mocks. Needs `brew install sourcery`."
-task :all_mocks do
+task :mocks do
   puts "Running all mocks..."
   # For every task in the rake file and the ones loaded gets the one
   # that belongs to the mocks namespace and invoke them.
@@ -19,5 +19,17 @@ task :all_mocks do
       Rake::Task[t.name].invoke
     end
   end
+end
+
+desc "Run the All Test test plan"
+task :ut do
+  puts "Running the All tests plan..."
+  scheme = "Xiuxiueig_iOS"
+  configuration = 'Debug'
+  test_plan = 'Xiuxiueig_iOS_AllTests'
+  destination = 'platform=iOS Simulator,name=iPhone 15,OS=17.5'
+
+  sh "set -oe pipefail && xcodebuild -scheme #{scheme} -configuration #{configuration} -testPlan #{test_plan} -destination '#{destination}' test | xcpretty"
+
 end
 

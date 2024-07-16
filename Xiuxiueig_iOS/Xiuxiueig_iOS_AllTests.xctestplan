@@ -1,0 +1,108 @@
+{
+  "configurations" : [
+    {
+      "id" : "5705844E-AA9D-4E8A-9299-A4BC1A0C0EAD",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/XCoordinator",
+        "identifier" : "XCoordinatorTests",
+        "name" : "XCoordinatorTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/XEntities",
+        "identifier" : "XEntitiesTests",
+        "name" : "XEntitiesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Xiuxiueig_iOS.xcodeproj",
+        "identifier" : "4524A0A12C0A3CF2002A3B40",
+        "name" : "Xiuxiueig_iOSTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XLectureCollection",
+        "identifier" : "XLectureCollectionTests",
+        "name" : "XLectureCollectionTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XLectureDetails",
+        "identifier" : "XLectureDetailsTests",
+        "name" : "XLectureDetailsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XLogin",
+        "identifier" : "XLoginTests",
+        "name" : "XLoginTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XOnboarding",
+        "identifier" : "XOnboardingTests",
+        "name" : "XOnboardingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XPlayer",
+        "identifier" : "XPlayerTests",
+        "name" : "XPlayerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Data\/XPreferences",
+        "identifier" : "XPreferencesTests",
+        "name" : "XPreferencesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Services\/XQueueManagementService",
+        "identifier" : "XQueueManagementServiceTests",
+        "name" : "XQueueManagementServiceTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Data\/XRepositories",
+        "identifier" : "XRepositoriesTests",
+        "name" : "XRepositoriesTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Features\/XSettings",
+        "identifier" : "XSettingsTests",
+        "name" : "XSettingsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/XToolKit",
+        "identifier" : "XToolKitTests",
+        "name" : "XToolKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

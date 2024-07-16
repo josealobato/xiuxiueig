@@ -121,6 +121,7 @@
 		456038F82C20A90900BE25FC /* CollectionFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowView.swift; sourceTree = "<group>"; };
 		456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureCollectionAdapter.swift; sourceTree = "<group>"; };
 		456038FD2C24891F00BE25FC /* XLectureDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureDetails; sourceTree = "<group>"; };
+		457BD0502C46E4A800589246 /* Xiuxiueig_iOS_AllTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xiuxiueig_iOS_AllTests.xctestplan; sourceTree = SOURCE_ROOT; };
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 				4524A09B2C0A3CF2002A3B40 /* Preview Content */,
 				454CFD382C385A7700FA2CA5 /* Tools */,
 				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
+				457BD0502C46E4A800589246 /* Xiuxiueig_iOS_AllTests.xctestplan */,
 			);
 			path = Xiuxiueig_iOS;
 			sourceTree = "<group>";
