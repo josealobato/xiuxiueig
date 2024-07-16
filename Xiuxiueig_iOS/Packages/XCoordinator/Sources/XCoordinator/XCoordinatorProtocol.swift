@@ -1,12 +1,17 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import Foundation
+import XToolKit
+import OSLog
 
 /// The `CoordinatorProtocol` define what a coordinator should provide to its users.
 /// All coordinators in the system should conform to this protocol. This will allow us
 /// to build a tree of coordinator and defer coordination tasks to other members of the
 /// tree.
 public protocol XCoordinatorProtocol: AnyObject {
+
+    /// Logger for debugging purposes.
+    var logger: Logger { get set }
 
     /// Start the coordinator.
     /// After that the coordinator shoiuld able to proccess coordination request.
@@ -38,6 +43,30 @@ public protocol XCoordinatorProtocol: AnyObject {
     /// - Parameter type: The type of the child coordinator to get.
     /// - Returns: The existing instance in the child array if any.
     func getChild<T>(ofType type: T.Type) -> XCoordinatorProtocol?
+
+    // MARK: - Services
+    var services: [XCoordinatorServiceProtocol] { get set }
+    func startServices()
+    func stopServices()
+}
+
+/// Default implementation of start/stop mechanism
+/// When override these methods, make sure to include this code.
+public extension XCoordinatorProtocol {
+
+    func start() {
+        logger.debug("start! \(Self.self)")
+        startServices()
+        isStarted = true
+    }
+
+    func stop() {
+        logger.debug("stop! \(Self.self)")
+        stopServices()
+        isStarted = false
+        childCoordinators.forEach { $0.parentCoordinator = nil }
+        removeAllChilds()
+    }
 }
 
 /// Extension implementing a version of the child coordinator management.
@@ -57,5 +86,21 @@ public extension XCoordinatorProtocol {
 
     func getChild<T>(ofType type: T.Type) -> XCoordinatorProtocol? {
         return childCoordinators.first { $0 is T }
+    }
+}
+
+/// Extension implementing a version of the services.
+public extension XCoordinatorProtocol {
+
+    func startServices() {
+        for service in services {
+            service.start()
+        }
+    }
+
+    func stopServices() {
+        for service in services {
+            service.stop()
+        }
     }
 }

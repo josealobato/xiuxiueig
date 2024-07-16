@@ -23,9 +23,11 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         }
     }
 
-    let logger = XLog.logger(category: "AppFlowCoordinator")
+    // It is a `var` due to protocol conformance (`XCoordinatorProtocol`)
+    var logger = XLog.logger(category: "AppFlowCoordinator")
     let prefereces = XPreferencesManagerBuilder.build()
     var isStarted: Bool = false
+    var services: [XCoordinatorServiceProtocol] = []
 
     var userName: String?
     var onboardingPerformed: Bool? = false
@@ -51,15 +53,9 @@ final class AppFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     func start() {
         logger.debug("start AppFlowCoordinator")
+        startServices()
         setUpStartingState()
         isStarted = true
-    }
-
-    func stop() {
-        logger.debug("stop AppFlowCoordinator")
-        isStarted = false
-        childCoordinators.forEach { $0.parentCoordinator = nil }
-        removeAllChilds()
     }
 
     func setUpStartingState() {

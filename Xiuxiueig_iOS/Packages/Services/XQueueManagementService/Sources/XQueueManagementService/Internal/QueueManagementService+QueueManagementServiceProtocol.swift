@@ -6,29 +6,6 @@ import XCoordinator
 import XRepositories
 import XToolKit
 
-public class QueueManagementService {
-
-    let logger = XLog.logger(category: "QueueManagementService")
-
-    let storage: LectureRepositoryInteface
-    private var timeProvider: TimeProvider
-
-    var queue: [LectureEntity] = []
-
-    public weak var coordinator: XCoordinationRequestProtocol?
-
-    convenience public init(storage: LectureRepositoryInteface) {
-        self.init(storage: storage, timeProvider: LocalTimeProvider())
-    }
-
-    init(storage: LectureRepositoryInteface, timeProvider: TimeProvider) {
-        /// Dev Note: The designated initializer is of package internal use so that
-        /// we can instantiate the time provider for proper testing.
-        self.storage = storage
-        self.timeProvider = timeProvider
-    }
-}
-
 extension QueueManagementService: QueueManagementServiceProtocol {
 
     // MARK: - Getting lectures from the queue.

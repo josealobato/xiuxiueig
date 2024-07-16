@@ -10,13 +10,15 @@ import XSettings
 /// The coordinator managing the flow on the collection flow.
 final class SettingsFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
-    let logger = XLog.logger(category: "SettingsFlowCoordinator")
+    // It is a `var` due to protocol conformance (`XCoordinatorProtocol`)
+    var logger = XLog.logger(category: "SettingsFlowCoordinator")
     var isStarted: Bool = false
 
     // Making the link to the parent weak to avoid circular reference.
     weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
     let context: SettingsFlowContext
+    var services: [XCoordinatorServiceProtocol] = []
 
     init(context: SettingsFlowContext) {
         logger.debug("init SettingsFlowCoordinator")
@@ -25,18 +27,6 @@ final class SettingsFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     deinit {
         logger.debug("deinit SettingsFlowCoordinator")
-    }
-
-    func start() {
-        logger.debug("start SettingsFlowCoordinator")
-        isStarted = true
-    }
-
-    func stop() {
-        logger.debug("stop SettingsFlowCoordinator")
-        isStarted = false
-        childCoordinators.forEach { $0.parentCoordinator = nil }
-        removeAllChilds()
     }
 
     // Navigation

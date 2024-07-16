@@ -10,13 +10,15 @@ import XPlayer
 /// The coordinator managing the flow on the collection flow.
 final class PlayerFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
-    let logger = XLog.logger(category: "PlayerFlowCoordinator")
+    // It is a `var` due to protocol conformance (`XCoordinatorProtocol`)
+    var logger = XLog.logger(category: "PlayerFlowCoordinator")
     var isStarted: Bool = false
 
     // Making the link to the parent weak to avoid circular reference.
     weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
     let context: PlayerFlowContext
+    var services: [XCoordinatorServiceProtocol] = []
 
     init(context: PlayerFlowContext) {
         logger.debug("init PlayerFlowCoordinator")
@@ -25,18 +27,6 @@ final class PlayerFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
     deinit {
         logger.debug("deinit PlayerFlowCoordinator")
-    }
-
-    func start() {
-        logger.debug("start PlayerFlowCoordinator")
-        isStarted = true
-    }
-
-    func stop() {
-        logger.debug("stop PlayerFlowCoordinator")
-        isStarted = false
-        childCoordinators.forEach { $0.parentCoordinator = nil }
-        removeAllChilds()
     }
 
     // Navigation

@@ -1,6 +1,7 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import Foundation
+import XQueueManagementService
 
 /// The context for a flow contains all data that is considered constant for the
 /// give flow. 
@@ -12,4 +13,7 @@ struct LoggedInFlowContext {
 
     /// A name that identifier the current user.
     let userName: String
+
+    /// The queue management service for the current user.
+    let queueManagementService: QueueManagementServiceProtocol
 }

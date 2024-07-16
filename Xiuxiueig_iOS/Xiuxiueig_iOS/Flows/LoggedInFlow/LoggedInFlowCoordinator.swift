@@ -3,6 +3,8 @@
 import SwiftUI
 import XCoordinator
 import XToolKit
+import XQueueManagementService
+import XRepositories
 
 /// The `LoggedInFlowCoordinator` is the main coordinator when the user
 /// is logged in.
@@ -10,9 +12,11 @@ import XToolKit
 /// It holds the tabview with a navigation flow for every tab.
 final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
 
-    let logger = XLog.logger(category: "LoggedInFlowCoordinator")
+    // It is a `var` due to protocol conformance (`XCoordinatorProtocol`)
+    var logger = XLog.logger(category: "LoggedInFlowCoordinator")
     var isStarted: Bool = false
     let context: LoggedInFlowContext
+    var services: [XCoordinatorServiceProtocol] = []
 
     // Making the link to the parent weak to avoid circular reference.
     weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
@@ -22,19 +26,21 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     init(context: LoggedInFlowContext) {
         logger.debug("init LoggedInFlowCoordinator")
         self.context = context
+
+        initializeServices()
+    }
+
+    func initializeServices() {
+        services.append(context.queueManagementService)
     }
 
     deinit {
         logger.debug("deinit LoggedInFlowCoordinator")
     }
 
-    func start() {
-        logger.debug("start LoggedInFlowCoordinator")
-        isStarted = true
-    }
-
     func stop() {
         logger.debug("stop LoggedInFlowCoordinator")
+        stopServices()
         isStarted = false
         childCoordinators.forEach {
             // NOTE: Usually stop of a coordinator will be performed by its view, but these ones are

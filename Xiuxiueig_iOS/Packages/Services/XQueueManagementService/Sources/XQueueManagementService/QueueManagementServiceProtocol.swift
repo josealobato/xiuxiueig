@@ -3,8 +3,13 @@
 import Foundation
 import struct XEntities.LectureEntity
 import XToolKit
+import XCoordinator
 
-public protocol QueueManagementServiceProtocol: AutoMockable {
+/// The interface of the Queue management Service servs two purposes.
+/// 1. It offers the methods to interact with the system, like add or remove from the queue.
+/// 2. It conforms to the coordinator service to inform the consumer that it can be added to the
+///    coordinator service mechanism.
+public protocol QueueManagementServiceProtocol: XCoordinatorServiceLifeCycleProtocol, AutoMockable {
 
     // MARK: - Getting lectures from the queue.
 

@@ -2,6 +2,8 @@
 
 import SwiftUI
 import XCoordinator
+import XQueueManagementService
+import XRepositories
 
 extension AppFlowCoordinator {
 
@@ -24,8 +26,12 @@ extension AppFlowCoordinator {
     /// Tries to build the context for the flow.
     /// Notice that the flow can not be build without context.
     func loggedInFlowContextBuilder() -> LoggedInFlowContext? {
-        guard let userName = userName else { return nil }
+        guard let userName = userName,
+              let storage = try? LectureRepositoryBuilder.build()
+        else { return nil }
 
-        return LoggedInFlowContext(userName: userName)
+        let queueManagementService = QueueManagementServiceBuilder.build(storage: storage)
+        return LoggedInFlowContext(userName: userName,
+                                   queueManagementService: queueManagementService)
     }
 }
