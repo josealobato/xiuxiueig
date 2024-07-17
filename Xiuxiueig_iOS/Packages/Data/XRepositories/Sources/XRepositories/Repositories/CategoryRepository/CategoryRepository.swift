@@ -42,4 +42,7 @@ extension CategoryRepository: CategoryRepositoryInteface {
         try await store.delete(CategoryModel.self, predicate: modelPredicate)
     }
 
+    func persist() async throws {
+        try await store.save()
+    }
 }

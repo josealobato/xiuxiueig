@@ -41,4 +41,8 @@ extension LectureRepository: LectureRepositoryInteface {
         let modelPredicate = #Predicate<LectureModel> { $0.id == id }
         try await store.delete(LectureModel.self, predicate: modelPredicate)
     }
+
+    func persist() async throws {
+        try await store.save()
+    }
 }

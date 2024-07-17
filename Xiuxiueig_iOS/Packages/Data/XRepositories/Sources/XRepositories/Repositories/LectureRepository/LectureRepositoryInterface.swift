@@ -18,4 +18,7 @@ public protocol LectureRepositoryInteface: AutoMockable {
 
     // Delete
     func deleteLecture(withId id: UUID) async throws
+
+    // Persist
+    func persist() async throws
 }

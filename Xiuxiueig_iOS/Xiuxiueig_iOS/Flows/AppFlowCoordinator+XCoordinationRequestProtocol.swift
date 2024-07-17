@@ -25,6 +25,8 @@ extension AppFlowCoordinator: XCoordinationRequestProtocol {
             // Change the state to Onboarding only if the context can be built (only userName in this case)
             if case .done = request, let userName = userName {
                 updateState(.onboarding(userName: userName))
+                // When leaving the login state add the demo data.
+                addSeedData()
             }
         case .xOnboarding:
             if case .done = request,

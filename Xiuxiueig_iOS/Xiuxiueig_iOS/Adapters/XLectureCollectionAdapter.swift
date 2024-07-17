@@ -16,7 +16,7 @@ final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
     init(queueManagement: QueueManagementServiceInterface) {
         do {
             self.repository = try LectureRepositoryBuilder.build()
-        } catch  {
+        } catch {
             logger.error("XLectureCollectionAdapter error creating repository")
             self.repository = nil
         }
@@ -26,27 +26,7 @@ final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
     // MARK: - XLectureCollectionServicesInterface
 
     func lectures() async throws -> [XEntities.LectureEntity] {
-
-        // For now this method shows demo data, uncomment this and remove demo data when ready.
-
-//        try await repository?.lectures().map { $0.toLectureEntity() }
-
-        [
-            LectureEntity(id: UUID(),
-                          title: "What is a square root?",
-                          category: CategoryEntity(id: UUID(),
-                                                   title: "Mathematics",
-                                                   imageURL: nil,
-                                                   defaultImage: "pyramid"),
-                          mediaURL: URL(string: "https://whatever.com")!),
-            LectureEntity(id: UUID(),
-                          title: "The Spanish inquisition",
-                          category: CategoryEntity(id: UUID(),
-                                                   title: "History",
-                                                   imageURL: nil,
-                                                   defaultImage: "map"),
-                          mediaURL: URL(string: "https://whatever.com")!)
-        ]
+        try await repository?.lectures().map { $0.toLectureEntity() } ?? []
     }
 
     func enqueueLecture(id: UUID) async throws {

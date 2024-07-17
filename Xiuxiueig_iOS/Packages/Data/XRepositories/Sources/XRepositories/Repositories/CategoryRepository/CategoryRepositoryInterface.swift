@@ -18,4 +18,7 @@ public protocol CategoryRepositoryInteface: AutoMockable {
 
     // Delete
     func deleteCategory(withId id: UUID) async throws
+
+    // Persist
+    func persist() async throws
 }

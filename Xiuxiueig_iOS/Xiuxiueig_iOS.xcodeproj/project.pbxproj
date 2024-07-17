@@ -48,6 +48,11 @@
 		456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038F82C20A90900BE25FC /* CollectionFlowView.swift */; };
 		456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */; };
 		457BD04F2C46C08200589246 /* XQueueManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = 457BD04E2C46C08200589246 /* XQueueManagementService */; };
+		457BD0522C47A8B300589246 /* AppFlowCoordinator+SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0512C47A8B300589246 /* AppFlowCoordinator+SeedData.swift */; };
+		457BD0552C47B7FE00589246 /* LectureEntity+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0542C47B7FE00589246 /* LectureEntity+FromDataEntity.swift */; };
+		457BD0592C47B83E00589246 /* LectureEntity+ToDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0562C47B83E00589246 /* LectureEntity+ToDataEntity.swift */; };
+		457BD05A2C47B83E00589246 /* CategoryEntity+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0572C47B83E00589246 /* CategoryEntity+FromDataEntity.swift */; };
+		457BD05B2C47B83E00589246 /* CategoryEntity+ToDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0582C47B83E00589246 /* CategoryEntity+ToDataEntity.swift */; };
 		458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */; };
 		458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */; };
 		45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C60B2C3AEEC900951264 /* XPlayer */; };
@@ -122,6 +127,11 @@
 		456038FB2C22055700BE25FC /* XLectureCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLectureCollectionAdapter.swift; sourceTree = "<group>"; };
 		456038FD2C24891F00BE25FC /* XLectureDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XLectureDetails; sourceTree = "<group>"; };
 		457BD0502C46E4A800589246 /* Xiuxiueig_iOS_AllTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Xiuxiueig_iOS_AllTests.xctestplan; sourceTree = SOURCE_ROOT; };
+		457BD0512C47A8B300589246 /* AppFlowCoordinator+SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppFlowCoordinator+SeedData.swift"; sourceTree = "<group>"; };
+		457BD0542C47B7FE00589246 /* LectureEntity+FromDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LectureEntity+FromDataEntity.swift"; sourceTree = "<group>"; };
+		457BD0562C47B83E00589246 /* LectureEntity+ToDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LectureEntity+ToDataEntity.swift"; sourceTree = "<group>"; };
+		457BD0572C47B83E00589246 /* CategoryEntity+FromDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+FromDataEntity.swift"; sourceTree = "<group>"; };
+		457BD0582C47B83E00589246 /* CategoryEntity+ToDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+ToDataEntity.swift"; sourceTree = "<group>"; };
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 		4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				457BD0532C47B79E00589246 /* Mappers */,
 				456038FA2C2203F500BE25FC /* Adapters */,
 				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
 				458100C62C16166500F2AC0A /* Flows */,
@@ -314,6 +325,17 @@
 			path = Adapters;
 			sourceTree = "<group>";
 		};
+		457BD0532C47B79E00589246 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				457BD0572C47B83E00589246 /* CategoryEntity+FromDataEntity.swift */,
+				457BD0582C47B83E00589246 /* CategoryEntity+ToDataEntity.swift */,
+				457BD0562C47B83E00589246 /* LectureEntity+ToDataEntity.swift */,
+				457BD0542C47B7FE00589246 /* LectureEntity+FromDataEntity.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		458100C62C16166500F2AC0A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +349,7 @@
 				454498772C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift */,
 				454498792C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift */,
 				4544987B2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift */,
+				457BD0512C47A8B300589246 /* AppFlowCoordinator+SeedData.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -541,13 +564,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457BD0592C47B83E00589246 /* LectureEntity+ToDataEntity.swift in Sources */,
 				454CFD4C2C3987FF00FA2CA5 /* SettingsFlowCoordinator+ViewBuilder.swift in Sources */,
+				457BD0522C47A8B300589246 /* AppFlowCoordinator+SeedData.swift in Sources */,
 				45E2C6182C3AF76500951264 /* PlayerFlowView.swift in Sources */,
 				4544986F2C26B754005357FD /* AppFlowView.swift in Sources */,
 				456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */,
 				45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */,
 				456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */,
 				458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */,
+				457BD0552C47B7FE00589246 /* LectureEntity+FromDataEntity.swift in Sources */,
 				454CFD4E2C39882D00FA2CA5 /* SettingsFlowView.swift in Sources */,
 				454CFD462C39867800FA2CA5 /* SettingsFlowCoordinator.swift in Sources */,
 				45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */,
@@ -558,6 +584,7 @@
 				454CFD482C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				454CFD3E2C394C7900FA2CA5 /* CollectionFlowContext.swift in Sources */,
 				4544986D2C26B740005357FD /* AppFlowCoordinator.swift in Sources */,
+				457BD05B2C47B83E00589246 /* CategoryEntity+ToDataEntity.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				454CFD3C2C3949DF00FA2CA5 /* LoggedInFlowContext.swift in Sources */,
 				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
@@ -570,6 +597,7 @@
 				454498742C2811F9005357FD /* AppFlowCoordinator+Login.swift in Sources */,
 				454CFD442C39864800FA2CA5 /* SettingsFlowContext.swift in Sources */,
 				454498832C281EF5005357FD /* XOnboardingAdapter.swift in Sources */,
+				457BD05A2C47B83E00589246 /* CategoryEntity+FromDataEntity.swift in Sources */,
 				454CFD532C398C9700FA2CA5 /* XSettingsAdapter.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
