@@ -102,6 +102,13 @@
         "identifier" : "XToolKitTests",
         "name" : "XToolKitTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Data\/MediaFileSystem",
+        "identifier" : "MediaFileSystemTests",
+        "name" : "MediaFileSystemTests"
+      }
     }
   ],
   "version" : 1

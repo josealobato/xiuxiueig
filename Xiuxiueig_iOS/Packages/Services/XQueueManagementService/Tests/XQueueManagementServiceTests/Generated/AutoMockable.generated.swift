@@ -131,6 +131,23 @@ final class CategoryRepositoryIntefaceMock: CategoryRepositoryInteface {
         try deleteCategoryWithIdClosure?(id)
     }
 
+    //MARK: - persist
+
+    var persistThrowableError: Error?
+    var persistCallsCount = 0
+    var persistCalled: Bool {
+        return persistCallsCount > 0
+    }
+    var persistClosure: (() throws -> Void)?
+
+    func persist() async throws {
+        if let error = persistThrowableError {
+            throw error
+        }
+        persistCallsCount += 1
+        try persistClosure?()
+    }
+
 }
 final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
 
@@ -235,6 +252,23 @@ final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
         deleteLectureWithIdReceivedId = id
         deleteLectureWithIdReceivedInvocations.append(id)
         try deleteLectureWithIdClosure?(id)
+    }
+
+    //MARK: - persist
+
+    var persistThrowableError: Error?
+    var persistCallsCount = 0
+    var persistCalled: Bool {
+        return persistCallsCount > 0
+    }
+    var persistClosure: (() throws -> Void)?
+
+    func persist() async throws {
+        if let error = persistThrowableError {
+            throw error
+        }
+        persistCallsCount += 1
+        try persistClosure?()
     }
 
 }

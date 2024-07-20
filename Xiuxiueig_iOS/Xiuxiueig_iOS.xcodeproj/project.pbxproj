@@ -132,6 +132,7 @@
 		457BD0562C47B83E00589246 /* LectureEntity+ToDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LectureEntity+ToDataEntity.swift"; sourceTree = "<group>"; };
 		457BD0572C47B83E00589246 /* CategoryEntity+FromDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+FromDataEntity.swift"; sourceTree = "<group>"; };
 		457BD0582C47B83E00589246 /* CategoryEntity+ToDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+ToDataEntity.swift"; sourceTree = "<group>"; };
+		457BD05C2C48064200589246 /* MediaFileSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MediaFileSystem; sourceTree = "<group>"; };
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 		454498842C2F0705005357FD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				457BD05C2C48064200589246 /* MediaFileSystem */,
 				454CFD352C330F8400FA2CA5 /* XPreferences */,
 				454498852C2F0748005357FD /* XRepositories */,
 			);
