@@ -1,6 +1,7 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import Foundation
+import XToolKit
 
 /// Public interface of the Media File System allowing accessing the existing file
 /// by state (managed, unmanaged,...), and allowing to modify the file and change its state.
@@ -35,7 +36,7 @@ import Foundation
 /// demo or tutorial files. If they are deleted you can force to recreate them with `resetDefaultMediaFiles`.
 /// By default the files are located in new files to show the user the whole flow with files.
 ///
-public protocol MediaFileSystemInteface {
+public protocol MediaFileSystemInteface: AutoMockable {
 
     /// Access to all the existing managed files.
     /// - Returns: a list of the existing media files
@@ -44,6 +45,14 @@ public protocol MediaFileSystemInteface {
     /// Access to all the existing new files.
     /// - Returns: a list of the existing new files in the inbox.
     func unmanagedFiles() -> [MediaFile]
+
+    /// Access to all archived Files
+    /// - Returns: a list of the existing archived files.
+    func archivedFiles() -> [MediaFile]
+
+    /// Access to all discarded Files
+    /// - Returns: a list of the existing discarded files.
+    func discardedFiles() -> [MediaFile]
 
     /// Update a file name in the file system with the new information.
     /// Any file can be updated independently of it location, but is should be ready
@@ -88,6 +97,11 @@ public protocol MediaFileSystemInteface {
     /// delete a file
     /// - Parameter file: file to delete.
     func deleteFile(file: MediaFile)
+
+    /// discard a file
+    /// - Parameter file: file to discard
+    /// - Returns: the discarded managed file.
+    func discardFile(file: MediaFile) -> MediaFile?
 
     /// Recreate the folders if needed and set the default media files
     /// in place (the new files folder).

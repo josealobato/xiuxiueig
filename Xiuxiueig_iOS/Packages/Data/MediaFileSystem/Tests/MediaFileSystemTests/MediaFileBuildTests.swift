@@ -1,6 +1,7 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import XCTest
+import XToolKit
 @testable import MediaFileSystem
 
 final class MediaFileBuildTests: XCTestCase {
@@ -51,39 +52,42 @@ final class MediaFileBuildTests: XCTestCase {
     func testCreateAFileFromURL_MFS1020() throws {
 
         // GIVEN a url without hypens
-        let url = URL(string: "file:///Users/ana.maria/ID123-this%20is%20a%20sample%20file%20name.mp3")!
+        let uuid = XToolKit.uuidString("1")
+        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
 
         // WHEN a media file is created from that
         let mediaFile = MediaFile(url: url)!
 
         // THEN the Media file should have ID and the rest is name.
-        XCTAssertEqual(mediaFile.id, "ID123")
+        XCTAssertEqual(mediaFile.id, uuid)
         XCTAssertEqual(mediaFile.name, "this is a sample file name")
     }
 
     func testCreateAFileFromURLWithSpaces_MFS1020() throws {
 
         // GIVEN a url without hypens
-        let url = URL(string: "file:///Users/ana.maria/ID123%20-%20this%20is%20a%20sample%20file%20name.mp3")!
+        let uuid = XToolKit.uuidString("1")
+        let url = URL(string: "file:///Users/ana.maria/\(uuid)%20-%20this%20is%20a%20sample%20file%20name.mp3")!
 
         // WHEN a media file is created from that
         let mediaFile = MediaFile(url: url)!
 
         // THEN the Media file id should be reveded without the extra spaces.
-        XCTAssertEqual(mediaFile.id, "ID123")
+        XCTAssertEqual(mediaFile.id, uuid)
         XCTAssertEqual(mediaFile.name, "this is a sample file name")
     }
 
     func testCreateAFileFromURLWithSpacesAndHyphens_MFS1020() throws {
 
         // GIVEN a url without hypens
-        let url = URL(string: "file:///Users/ana.maria/ID123%20-%20this%20is%20a-%20sample%20file-%20name%20.mp3")!
+        let uuid = XToolKit.uuidString("1")
+        let url = URL(string: "file:///Users/ana.maria/\(uuid)%20-%20this%20is%20a-%20sample%20file-%20name%20.mp3")!
 
         // WHEN a media file is created from that
         let mediaFile = MediaFile(url: url)!
 
         // THEN the Media file id should be reveded without the extra spaces and hyphens.
-        XCTAssertEqual(mediaFile.id, "ID123")
+        XCTAssertEqual(mediaFile.id, uuid)
         XCTAssertEqual(mediaFile.name, "this is a- sample file- name")
     }
 
@@ -92,7 +96,8 @@ final class MediaFileBuildTests: XCTestCase {
     func testCreateNonNewFileMediaFailsIfDoesNotContainsIdAndName_MFS1020() throws {
 
         // GIVEN a url with no separation hyphens
-        let url = URL(string: "file:///Users/ana.maria/ID123%20%20this%20is%20a%20sample%20file%20name%20.mp3")!
+        let uuid = XToolKit.uuidString("1")
+        let url = URL(string: "file:///Users/ana.maria/\(uuid).mp3")!
 
         // WHEN a media file is created from that
         let mediaFile = MediaFile(url: url)

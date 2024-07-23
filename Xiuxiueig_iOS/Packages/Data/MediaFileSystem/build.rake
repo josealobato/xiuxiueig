@@ -4,7 +4,7 @@ namespace :mocks do
 
   task :gen_mocks do
     feat_name = "MediaFileSystem"
-    puts "....Generate #{feat_name} mocks #{Dir.pwd} "
+    puts "\n....Generate #{feat_name} mocks #{Dir.pwd} "
     # The following two variables should be injected as parameters on the rake
     # task in the parent rake file. Under investigation
     prefix_path = "Xiuxiueig_iOS/Packages/Data/MediaFileSystem"

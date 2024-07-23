@@ -60,43 +60,6 @@ Abstract the file system details to the rest of the application.
 └─────────────────────────────────────────────────────────────────────────────────┘                           
 ```
 
-## Testing
-
-Since we are dealing here with the file system we are not using unit test, instead you can test 
-with the following code:
-
-```
-            // get the files
-            let manageFiles = await fileSystem.managedFiles()
-
-            // Pause here and manually copy files to the inbox
-            let newFiles = fileSystem.unmanagedFiles()
-            print(" ------------- ")
-            print(" New: \(newFiles[0])")
-
-            var newFile = newFiles[0]
-            newFile.id = "666"
-            newFile.name = "The Number Of The Beast"
-            let managedFile = fileSystem.manageFile(file: newFile)
-            print(" ------------- ")
-            print(" Managed: \(managedFile)")
-
-            let archived = fileSystem.archiveFile(file: managedFile!)
-            print(" ------------- ")
-            print(" Archved: \(archived)")
-
-            var unarchived = fileSystem.unarchiveFile(file: archived!)!
-            print(" ------------- ")
-            print(" Unarchived: \(unarchived)")
-
-            // modify one
-            unarchived.id = "222"
-            unarchived.name = "My best version"
-            let modified = fileSystem.updateFile(file: unarchived)
-            print(" ------------- ")
-            print(" Unarchived: \(modified)")
-```
-
 
 ## Overview
 

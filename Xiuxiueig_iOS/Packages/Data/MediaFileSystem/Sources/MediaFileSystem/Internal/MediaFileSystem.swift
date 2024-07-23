@@ -5,13 +5,18 @@ import XToolKit
 
 struct MediaFileSystem {
 
+    enum MediaFileSystemError: Error {
+
+        case convertingFileToNew
+    }
+
     let logger = XLog.logger(category: "MediaFileSystem")
 
     enum Constants {
         static let managedFolderName: String = "Managed"
         static let inboxFolderName: String = "Inbox"
         static let archivedFolderName: String = "Archived"
-        static let rejectedFolderName: String = "Rejected"
+        static let discardedFolderName: String = "Discarded"
     }
 
     init() {
@@ -23,10 +28,7 @@ struct MediaFileSystem {
         setUpInboxFolderIfNeeded(copyDefaultFiles: forceDefaultFiles)
         setUpManageFolderIfNeeded()
         setUpArchivedFolderIfNeeded()
-
-        // Rejected folder is for now deactivated.
-        // we could created when there is a file rejected.
-        // setUpRejectedFolderIfNeeded()
+        setUpDiscardedFolderIfNeeded()
     }
 
     let defaultMediaFilesFilesInBundle = [
@@ -57,18 +59,13 @@ struct MediaFileSystem {
                 appropriateFor: nil,
                 create: false
             )
+
             logger.debug("documents URL: \(docsURL.absoluteString)")
 
             let manageFolderULR = docsURL.appendingPathComponent(Constants.managedFolderName)
             if !existDirectory(url: manageFolderULR) {
 
                 try fileMng.createDirectory(at: manageFolderULR, withIntermediateDirectories: false)
-//                for mediaFileURL in defaultMediaFilesFilesInBundle {
-//
-//                    let fileName = mediaFileURL.lastPathComponent
-//                    let newUrl = manageFolderULR.appendingPathComponent(fileName)
-//                    try fileMng.copyItem(at: mediaFileURL, to: newUrl)
-//                }
             }
         } catch {
             logger.error("Error encounter when setting the '\(Constants.managedFolderName)' folder \(error)")
@@ -130,7 +127,7 @@ struct MediaFileSystem {
         }
     }
 
-    private func setUpRejectedFolderIfNeeded() {
+    private func setUpDiscardedFolderIfNeeded() {
 
         do {
             let fileMng = FileManager.default
@@ -141,13 +138,13 @@ struct MediaFileSystem {
                 create: false
             )
 
-            let manageFolderULR = docsURL.appendingPathComponent(Constants.rejectedFolderName)
-            if !existDirectory(url: manageFolderULR) {
+            let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+            if !existDirectory(url: discardedFolderULR) {
 
-                try fileMng.createDirectory(at: manageFolderULR, withIntermediateDirectories: false)
+                try fileMng.createDirectory(at: discardedFolderULR, withIntermediateDirectories: false)
             }
         } catch {
-            logger.error("Error encounter when setting the '\(Constants.rejectedFolderName)' folder \(error)")
+            logger.error("Error encounter when setting the '\(Constants.discardedFolderName)' folder \(error)")
         }
     }
 }

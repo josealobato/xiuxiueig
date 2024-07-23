@@ -15,7 +15,7 @@ final class MediaFileSystemCreationTest: XCTestCase {
         static let managedFolderName: String = "Managed"
         static let inboxFolderName: String = "Inbox"
         static let archivedFolderName: String = "Archived"
-        static let rejectedFolderName: String = "Rejected"
+        static let discardedFolderName: String = "Discarded"
     }
 
     func deleteAllBeforeTest() {
@@ -35,6 +35,8 @@ final class MediaFileSystemCreationTest: XCTestCase {
         try? fileMng.removeItem(at: managedFolderULR)
         let archivedFolderULR = docsURL.appendingPathComponent(Constants.archivedFolderName)
         try? fileMng.removeItem(at: archivedFolderULR)
+        let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+        try? fileMng.removeItem(at: discardedFolderULR)
     }
 
     private func existDirectory(url: URL) -> Bool {
@@ -81,5 +83,7 @@ final class MediaFileSystemCreationTest: XCTestCase {
         XCTAssert(existDirectory(url: managedFolderULR))
         let archivedFolderULR = docsURL.appendingPathComponent(Constants.archivedFolderName)
         XCTAssert(existDirectory(url: archivedFolderULR))
+        let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+        XCTAssert(existDirectory(url: discardedFolderULR))
     }
 }

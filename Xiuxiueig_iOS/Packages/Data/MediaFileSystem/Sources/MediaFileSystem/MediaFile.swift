@@ -78,10 +78,15 @@ public struct MediaFile {
         } else {
 
             let fullFileName = url.lastPathComponent
-            let components = fullFileName.split(separator: "-")
-            guard components.count >= 2 else { throw Error.invalidFileURL }
-            let id = String(components[0])
-            return id.trimmingCharacters(in: NSCharacterSet.whitespaces)
+            if let values = extractUUIDAndName(fullFileName) {
+                if let idString = values.0 {
+                    return idString
+                } else {
+                    return nil
+                }
+            } else {
+                throw Error.invalidFileURL
+            }
         }
     }
 
@@ -98,18 +103,54 @@ public struct MediaFile {
         guard allowedExtensions.contains(ext) else { throw Error.unsupportedMediaFile }
 
         let fullFileName = url.lastPathComponent
-        let fileName = fullFileName.dropLast(4)
-        if isNew {
-
-            let newName = String(fileName)
-            return newName.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        if let values = extractUUIDAndName(fullFileName) {
+            return values.1.trimmingCharacters(in: NSCharacterSet.whitespaces)
         } else {
-
-            let components = fileName.split(separator: "-")
-            let nameComponents = components[1...]
-            let newName = nameComponents.joined(separator: "-")
-            return newName.trimmingCharacters(in: NSCharacterSet.whitespaces)
+            throw Error.invalidFileURL
         }
+    }
+
+    static func extractUUIDAndName(_ fileName: String) -> (String?, String)? {
+        // The matching pattern for "<UUID> - <text>" being the spaces and the hypen optional.
+        let pattern = "^(\\d{8}-\\d{4}-\\d{4}-\\d{4}-\\d{12})\\s?-?\\s?(.*)$"
+
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [])
+
+            // remove the extention from the fileName
+            let fileURL = URL(fileURLWithPath: String(fileName))
+            let fileNameWithoutExtension = fileURL.deletingPathExtension().lastPathComponent
+
+            // Find matches in the text
+            let matches = regex.matches(
+                in: fileNameWithoutExtension,
+                options: [],
+                range: NSRange(location: 0, length: fileNameWithoutExtension.utf16.count)
+            )
+
+            // Check if there is a match
+            if let match = matches.first {
+                if let range1 = Range(match.range(at: 1), in: fileNameWithoutExtension),
+                   let range2 = Range(match.range(at: 2), in: fileNameWithoutExtension) {
+                    let idPattern: String? = String(fileNameWithoutExtension[range1])
+                    let restOfString = fileNameWithoutExtension[range2]
+
+                    // A file name with just ID is invalid
+                    if restOfString.count == 0 { return nil }
+                    // Remove the extension if any.
+                    let fileURL = URL(fileURLWithPath: String(restOfString))
+                    let fileNameWithoutExtension = fileURL.deletingPathExtension().lastPathComponent
+                    return (idPattern, fileNameWithoutExtension)
+                }
+            } else {
+                // No matching to return the text without the extension
+                return (nil, fileNameWithoutExtension)
+            }
+        } catch {
+            // Ups Exception with the regex.
+            return nil
+        }
+        return nil
     }
 
     // MARK: - Getting the file name from name and id
