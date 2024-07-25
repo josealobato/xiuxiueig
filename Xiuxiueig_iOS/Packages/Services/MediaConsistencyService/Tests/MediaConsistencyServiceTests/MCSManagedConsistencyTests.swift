@@ -84,7 +84,7 @@ final class MCSManagedConsistencyTests: XCTestCase {
         fileSystemMock.managedFilesReturnValue = [aManagedFile]
 
         // The entity won't be removed
-        repoMock.deleteLectureWithIdClosure = { uuid in
+        repoMock.deleteLectureWithIdClosure = { _ in
             XCTFail("No lecture should be deleted")
         }
 

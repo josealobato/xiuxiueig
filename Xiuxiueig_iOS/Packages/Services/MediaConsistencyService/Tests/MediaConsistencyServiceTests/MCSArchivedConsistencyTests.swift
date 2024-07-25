@@ -83,7 +83,7 @@ final class MCSArchivedConsistencyTests: XCTestCase {
         fileSystemMock.archivedFilesReturnValue = [aArchivedFile]
 
         // No action will be taken
-        repoMock.deleteLectureWithIdClosure = { uuid in
+        repoMock.deleteLectureWithIdClosure = { _ in
             XCTFail("No lecture should be deleted")
         }
 

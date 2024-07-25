@@ -275,6 +275,57 @@ final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
 final class MediaConsistencyServiceInterfaceMock: MediaConsistencyServiceInterface {
     var coordinator: XCoordinationRequestProtocol?
 
+    //MARK: - manage
+
+    var manageEntityCallsCount = 0
+    var manageEntityCalled: Bool {
+        return manageEntityCallsCount > 0
+    }
+    var manageEntityReceivedEntity: LectureDataEntity?
+    var manageEntityReceivedInvocations: [LectureDataEntity] = []
+    var manageEntityClosure: ((LectureDataEntity) -> Void)?
+
+    func manage(entity: LectureDataEntity) {
+        manageEntityCallsCount += 1
+        manageEntityReceivedEntity = entity
+        manageEntityReceivedInvocations.append(entity)
+        manageEntityClosure?(entity)
+    }
+
+    //MARK: - archive
+
+    var archiveEntityCallsCount = 0
+    var archiveEntityCalled: Bool {
+        return archiveEntityCallsCount > 0
+    }
+    var archiveEntityReceivedEntity: LectureDataEntity?
+    var archiveEntityReceivedInvocations: [LectureDataEntity] = []
+    var archiveEntityClosure: ((LectureDataEntity) -> Void)?
+
+    func archive(entity: LectureDataEntity) {
+        archiveEntityCallsCount += 1
+        archiveEntityReceivedEntity = entity
+        archiveEntityReceivedInvocations.append(entity)
+        archiveEntityClosure?(entity)
+    }
+
+    //MARK: - delete
+
+    var deleteEntityCallsCount = 0
+    var deleteEntityCalled: Bool {
+        return deleteEntityCallsCount > 0
+    }
+    var deleteEntityReceivedEntity: LectureDataEntity?
+    var deleteEntityReceivedInvocations: [LectureDataEntity] = []
+    var deleteEntityClosure: ((LectureDataEntity) -> Void)?
+
+    func delete(entity: LectureDataEntity) {
+        deleteEntityCallsCount += 1
+        deleteEntityReceivedEntity = entity
+        deleteEntityReceivedInvocations.append(entity)
+        deleteEntityClosure?(entity)
+    }
+
     //MARK: - willEnterForeground
 
     var willEnterForegroundCallsCount = 0

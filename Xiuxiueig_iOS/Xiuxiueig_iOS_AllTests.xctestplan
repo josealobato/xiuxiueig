@@ -109,6 +109,13 @@
         "identifier" : "MediaFileSystemTests",
         "name" : "MediaFileSystemTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MediaConsistencyServiceTests",
+        "name" : "MediaConsistencyServiceTests"
+      }
     }
   ],
   "version" : 1

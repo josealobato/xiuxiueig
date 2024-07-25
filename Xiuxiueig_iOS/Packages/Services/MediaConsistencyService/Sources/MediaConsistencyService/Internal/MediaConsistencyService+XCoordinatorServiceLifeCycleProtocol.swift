@@ -16,7 +16,7 @@ extension MediaConsistencyService: XCoordinatorServiceLifeCycleProtocol {
     func willEnterForeground() {
 
         processorSerialQueue.async {
-            
+
             // New files
             self.scanForNewFiles()
             self.checkNewFilesEntitiesConsistency()

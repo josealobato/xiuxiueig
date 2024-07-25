@@ -5,7 +5,7 @@ import XCoordinator
 import MediaFileSystem
 import XRepositories
 
-class MediaConsistencyService: MediaConsistencyServiceInterface {
+class MediaConsistencyService {
 
     var coordinator: XCoordinationRequestProtocol?
 
@@ -52,7 +52,7 @@ extension MediaConsistencyService: MediaConsistencyServiceInterface {
 // MARK: - Scan for new files
 
 extension MediaConsistencyService {
-    
+
     // MARK: - New files and entities
 
     /// This method will scan for new files and create entities for the ones that
@@ -90,7 +90,7 @@ extension MediaConsistencyService {
             try await self.repository.persist()
         }
     }
-    
+
     /// This method will check that all entities in the DB have a valid file
     /// in the file system
     func checkNewFilesEntitiesConsistency() {
@@ -105,7 +105,8 @@ extension MediaConsistencyService {
             // 3. For every entity...
             for entity in newEntities {
                 // find a file with matching URL
-                if !(newFiles.contains(where: { $0.url == entity.mediaURL })) {
+                let fileExist = newFiles.contains(where: { $0.url == entity.mediaURL })
+                if !fileExist {
                     // If none is found, delete the entity:
                     try await self.repository.deleteLecture(withId: entity.id)
                 }
@@ -136,23 +137,22 @@ extension MediaConsistencyService {
                 }
             }
         }
-
     }
 
     func checkManagedEntitiesConsistency() {
 
         Task {
             // 1. Get all managed Entities
-            let managedEntities: [LectureDataEntity] = (try? await self.repository.lectures().filter({ $0.state == .managed })) ?? []
+            let managedEntities: [LectureDataEntity] =
+                (try? await self.repository.lectures().filter({ $0.state == .managed })) ?? []
 
             // 2. Get all managed files
             let managedFiles = self.fileSystem.managedFiles()
 
             // 3. For every Entity, there should be a matching File
             for entity in managedEntities {
-                if let _ = managedFiles.first(where: { $0.id == entity.id.uuidString }) {
-                    /* file exist so nothing to do */
-                } else {
+                let file = managedFiles.first(where: { $0.id == entity.id.uuidString })
+                if file == nil {
                     try await self.repository.deleteLecture(withId: entity.id)
                 }
             }
@@ -180,23 +180,22 @@ extension MediaConsistencyService {
                 }
             }
         }
-
     }
 
     func checkArchivedEntitiesConsistency() {
 
         Task {
             // 1. Get all archived Entities
-            let archivedEntities: [LectureDataEntity] = (try? await self.repository.lectures().filter({ $0.state == .archived })) ?? []
+            let archivedEntities: [LectureDataEntity] =
+                (try? await self.repository.lectures().filter({ $0.state == .archived })) ?? []
 
             // 2. Get all arvhived files
             let archivedFiles = self.fileSystem.archivedFiles()
 
             // 3. For every Entity, there should be a matching File
             for entity in archivedEntities {
-                if let _ = archivedFiles.first(where: { $0.id == entity.id.uuidString }) {
-                    /* file exist so nothing to do */
-                } else {
+                let archive = archivedFiles.first(where: { $0.id == entity.id.uuidString })
+                if archive == nil {
                     try await self.repository.deleteLecture(withId: entity.id)
                 }
             }
