@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Xiuxiueig_iOS/Packages/Services/MediaConsistencyService/Sources/MediaConsistencyService/MediaConsistencyService.docc/Requirements.md">
+   </FileRef>
+   <FileRef
       location = "group:Xiuxiueig_iOS/Xiuxiueig_iOS.xcodeproj">
    </FileRef>
 </Workspace>

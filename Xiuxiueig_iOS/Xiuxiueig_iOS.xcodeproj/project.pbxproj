@@ -133,6 +133,7 @@
 		457BD0572C47B83E00589246 /* CategoryEntity+FromDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+FromDataEntity.swift"; sourceTree = "<group>"; };
 		457BD0582C47B83E00589246 /* CategoryEntity+ToDataEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CategoryEntity+ToDataEntity.swift"; sourceTree = "<group>"; };
 		457BD05C2C48064200589246 /* MediaFileSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MediaFileSystem; sourceTree = "<group>"; };
+		457BD05D2C4C162F00589246 /* MediaConsistencyService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MediaConsistencyService; sourceTree = "<group>"; };
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 		45E2C61C2C3C5E5000951264 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				457BD05D2C4C162F00589246 /* MediaConsistencyService */,
 				45E2C61D2C3C5E8C00951264 /* XQueueManagementService */,
 			);
 			path = Services;
