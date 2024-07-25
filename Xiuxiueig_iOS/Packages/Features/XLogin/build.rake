@@ -3,7 +3,7 @@ require 'rake'
 namespace :mocks do
 
   task :gen_mocks do
-    puts "....Generate Xlogin mocks #{Dir.pwd} "
+    puts "\n....Generate Xlogin mocks #{Dir.pwd} "
     feat_name = "XLogin"
     # The following two variables should be injected as parameters on the rake
     # task in the parent rake file. Under investigation
