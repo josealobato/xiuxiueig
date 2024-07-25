@@ -25,6 +25,30 @@ class MediaConsistencyService: MediaConsistencyServiceInterface {
     }
 }
 
+// MARK: - MediaConsistencyServiceInterface
+
+extension MediaConsistencyService: MediaConsistencyServiceInterface {
+
+    func manage(entity: XRepositories.LectureDataEntity) {
+        if let unmanagedFile = fileSystem.unmanagedFiles().first(where: { $0.id == entity.id.uuidString}) {
+            _ = fileSystem.manageFile(file: unmanagedFile)
+        }
+    }
+
+    func archive(entity: XRepositories.LectureDataEntity) {
+        if let managedFile = fileSystem.managedFiles().first(where: { $0.id == entity.id.uuidString}) {
+            _ = fileSystem.archiveFile(file: managedFile)
+        }
+    }
+
+    func delete(entity: XRepositories.LectureDataEntity) {
+        let files: [MediaFile] = fileSystem.unmanagedFiles() + fileSystem.managedFiles()
+        if let file = files.first(where: { $0.id == entity.id.uuidString}) {
+            _ = fileSystem.deleteFile(file: file)
+        }
+    }
+}
+
 // MARK: - Scan for new files
 
 extension MediaConsistencyService {
