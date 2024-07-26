@@ -78,6 +78,19 @@ extension MediaFileSystem: MediaFileSystemInteface {
         return []
     }
 
+    func file(from url: URL) -> MediaFile? {
+        let fileMng = FileManager.default
+
+        if fileMng.fileExists(atPath: url.path) {
+            let pathComponents = url.pathComponents
+            let pathContainsInbox = pathComponents.contains(Constants.inboxFolderName)
+            return MediaFile(url: url, isNew: pathContainsInbox)
+        } else {
+            logger.debug("Not existing file by url: \(url)")
+            return nil
+        }
+    }
+
     func updateFile(file: MediaFile) -> MediaFile? {
 
         // Before calling this method the Media file should be modified with a

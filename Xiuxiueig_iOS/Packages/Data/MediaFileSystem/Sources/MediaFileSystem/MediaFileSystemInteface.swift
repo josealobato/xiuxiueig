@@ -54,6 +54,13 @@ public protocol MediaFileSystemInteface: AutoMockable {
     /// - Returns: a list of the existing discarded files.
     func discardedFiles() -> [MediaFile]
 
+    /// Given a URL it return a file that matches the URL.
+    /// The returning file will have valid data accoding of the
+    /// location of the file.
+    /// - Parameter url: the URL of the file to be located
+    /// - Returns: The file associated to the URl if any.
+    func file(from url: URL) -> MediaFile?
+
     /// Update a file name in the file system with the new information.
     /// Any file can be updated independently of it location, but is should be ready
     /// to be managed which means that it should be previously given and id and a name.
