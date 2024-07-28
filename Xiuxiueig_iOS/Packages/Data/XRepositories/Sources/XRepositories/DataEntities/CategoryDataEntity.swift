@@ -29,14 +29,14 @@ public struct CategoryDataEntity: Identifiable, Equatable {
 extension CategoryDataEntity {
 
     func categoryModel() -> CategoryModel {
-        CategoryModel(id: self.id,
+        CategoryModel(externalId: self.id,
                       title: self.title,
                       imageURL: self.imageURL)
     }
 
     static func from(model: CategoryModel) -> Self {
 
-        CategoryDataEntity(id: model.id ?? UUID(),
+        CategoryDataEntity(id: model.externalId ?? UUID(),
                            title: model.title ?? "",
                            imageURL: model.imageURL)
 

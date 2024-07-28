@@ -5,18 +5,20 @@ import XCTest
 
 @testable import XRepositories
 
-final class CategoryCRUDTest: CRUDBaseTestCase<CategoryModel> {
+final class LectureModelCRUDTest: CRUDModelBaseTestCase<LectureModel> {
 
     // MARK: - Build facilities.
 
-    let createModel = { CategoryModel(id: UUID(), title: "Maths", imageURL: URL(string: "http://test.com")) }
+    let createModel = {
+        LectureModel(externalId: UUID(), title: "My great lessson")
+    }
     let createModels = {
         [
-            CategoryModel(id: UUID(), title: "Maths", imageURL: URL(string: "http://test.com")),
-            CategoryModel(id: UUID(), title: "Physics", imageURL: URL(string: "http://test.com"))
+            LectureModel(externalId: UUID(), title: "My great lessson"),
+            LectureModel(externalId: UUID(), title: "My other great lessson")
         ]
     }
-    let modelPredicate = #Predicate<CategoryModel> { $0.title == "Maths" }
+    let modelPredicate = #Predicate<LectureModel> { $0.title == "My great lessson" }
 
     // MARK: - Crud - Create
 

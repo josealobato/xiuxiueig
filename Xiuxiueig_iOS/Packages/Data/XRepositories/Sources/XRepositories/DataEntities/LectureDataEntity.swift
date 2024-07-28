@@ -39,6 +39,17 @@ public struct LectureDataEntity: Identifiable, Equatable {
         self.played = played
         self.state = state
     }
+//
+//    mutating func update(with updatedLecture: LectureDataEntity) {
+//        // id is not updated
+//        title = updatedLecture.title
+//        category = updatedLecture.category
+//        // Media URL is not updated
+//        queuePosition = updatedLecture.queuePosition
+//        playPosition = updatedLecture.playPosition
+//        played = updatedLecture.played
+//        state = updatedLecture.state
+//    }
 }
 
 // MARK: - Extensions to convert to and from model
@@ -54,7 +65,7 @@ extension LectureDataEntity {
         case .managed: state = .managed
         }
 
-        return LectureModel(id: self.id,
+        return LectureModel(externalId: self.id,
                             title: self.title,
                             category: self.category?.categoryModel(),
                             mediaURL: self.mediaURL,
@@ -82,7 +93,7 @@ extension LectureDataEntity {
         default: state = .new
         }
 
-        return LectureDataEntity(id: model.id ?? UUID(),
+        return LectureDataEntity(id: model.externalId ?? UUID(),
                                  title: model.title ?? "",
                                  category: categoryDataEntity,
                                  mediaURL: mediaURL,

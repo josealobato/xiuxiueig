@@ -11,7 +11,7 @@ import SwiftData
 
 /// Generic test case to allow for a quick way of writing test
 /// for different Models.
-class CRUDBaseTestCase<T: PersistentModel>: XCTestCase {
+class CRUDModelBaseTestCase<T: PersistentModel>: XCTestCase {
     var store: ModelStore!
 
     override func setUp() async throws {

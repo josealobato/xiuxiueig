@@ -5,8 +5,13 @@ import Foundation
 /// Facility to build a Lecture Repository.
 public struct LectureRepositoryBuilder {
 
-    public static func build() throws -> LectureRepositoryInteface {
+    public static func build(autopersist: Bool = false) throws -> LectureRepositoryInteface {
 
-        try LectureRepository(store: ModelStoreBuilder.build())
+        try LectureRepository(store: ModelStoreBuilder.build(), autopersist: autopersist)
+    }
+
+    public static func buildInMemory(autopersist: Bool = false) throws -> LectureRepositoryInteface {
+
+        try LectureRepository(store: ModelStoreBuilder.build(inMemory: true), autopersist: autopersist)
     }
 }

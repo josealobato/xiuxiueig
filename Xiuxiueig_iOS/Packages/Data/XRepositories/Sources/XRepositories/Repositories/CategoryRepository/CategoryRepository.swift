@@ -24,7 +24,7 @@ extension CategoryRepository: CategoryRepositoryInteface {
     }
 
     func category(withId id: UUID) async throws -> CategoryDataEntity? {
-        let modelPredicate = #Predicate<CategoryModel> { $0.id == id }
+        let modelPredicate = #Predicate<CategoryModel> { $0.externalId == id }
         let model: [CategoryModel] = try await store.fetch(modelPredicate)
         if let model = model.first {
             let dataEntity = CategoryDataEntity.from(model: model)
@@ -38,7 +38,7 @@ extension CategoryRepository: CategoryRepositoryInteface {
     }
 
     func deleteCategory(withId id: UUID) async throws {
-        let modelPredicate = #Predicate<CategoryModel> { $0.id == id }
+        let modelPredicate = #Predicate<CategoryModel> { $0.externalId == id }
         try await store.delete(CategoryModel.self, predicate: modelPredicate)
     }
 

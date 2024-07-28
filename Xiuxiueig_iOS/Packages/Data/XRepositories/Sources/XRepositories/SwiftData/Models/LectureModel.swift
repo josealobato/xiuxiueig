@@ -5,7 +5,7 @@ import SwiftData
 
 @Model
 final class LectureModel {
-    var id: UUID?
+    var externalId: UUID?
     var title: String?
 
     @Relationship(deleteRule: .nullify)
@@ -22,10 +22,18 @@ final class LectureModel {
         case new
         case managed
         case archived
+
+        static func from(entityState: LectureDataEntity.State) -> State {
+            switch entityState {
+            case .new: return .new
+            case .managed: return .managed
+            case .archived: return .archived
+            }
+        }
     }
     var state: State?
 
-    init(id: UUID? = nil,
+    init(externalId: UUID? = nil,
          title: String? = nil,
          category: CategoryModel? = nil,
          mediaURL: URL? = nil,
@@ -34,7 +42,7 @@ final class LectureModel {
          playPosition: Int? = nil,
          played: [Date]? = nil,
          state: State? = nil) {
-        self.id = id
+        self.externalId = externalId
         self.title = title
         self.category = category
         self.mediaURL = mediaURL
@@ -43,5 +51,19 @@ final class LectureModel {
         self.playPosition = playPosition
         self.played = played
         self.state = state
+    }
+}
+
+extension LectureModel {
+
+    func updateWith(entity: LectureDataEntity) {
+        // id is not updated
+        title = entity.title
+        // Not updating the category
+        // Media URL is not updated (we might need to)
+        queuePosition = entity.queuePosition
+        playPosition = entity.playPosition
+        played = entity.played
+        state = State.from(entityState: entity.state)
     }
 }

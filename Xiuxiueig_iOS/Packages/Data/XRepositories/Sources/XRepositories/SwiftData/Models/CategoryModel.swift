@@ -5,12 +5,12 @@ import SwiftData
 
 @Model
 final class CategoryModel {
-    var id: UUID?
+    var externalId: UUID?
     var title: String?
     var imageURL: URL?
 
-    init(id: UUID? = nil, title: String? = nil, imageURL: URL?) {
-        self.id = id
+    init(externalId: UUID? = nil, title: String? = nil, imageURL: URL?) {
+        self.externalId = externalId
         self.title = title
         self.imageURL = imageURL
     }
