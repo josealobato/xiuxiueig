@@ -112,7 +112,7 @@
     },
     {
       "target" : {
-        "containerPath" : "container:",
+        "containerPath" : "container:Packages\/Services\/MediaConsistencyService",
         "identifier" : "MediaConsistencyServiceTests",
         "name" : "MediaConsistencyServiceTests"
       }
