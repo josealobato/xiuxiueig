@@ -30,7 +30,7 @@ public struct MediaFile {
     /// Is new means that the file was found in the inbox and it will
     /// treated as a new file so the id will be nil and the name will
     /// be the full file name.
-    let isNew: Bool
+    public let isNew: Bool
 
     /// Internal constructor.
     /// Only the MediaFileSystem can create MediaFiles.

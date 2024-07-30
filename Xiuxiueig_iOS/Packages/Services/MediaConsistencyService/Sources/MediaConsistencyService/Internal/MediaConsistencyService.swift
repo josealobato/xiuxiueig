@@ -4,8 +4,11 @@ import Foundation
 import XCoordinator
 import MediaFileSystem
 import XRepositories
+import XToolKit
 
 class MediaConsistencyService {
+
+    let logger = XLog.logger(category: "MediaConsistencyService")
 
     var coordinator: XCoordinationRequestProtocol?
 
@@ -29,22 +32,103 @@ class MediaConsistencyService {
 
 extension MediaConsistencyService: MediaConsistencyServiceInterface {
 
-    func manage(entity: XRepositories.LectureDataEntity) {
-        if let unmanagedFile = fileSystem.unmanagedFiles().first(where: { $0.id == entity.id.uuidString}) {
-            _ = fileSystem.manageFile(file: unmanagedFile)
+    func update(entity: LectureDataEntity) throws -> LectureDataEntity {
+        // Get the file entity by the url.
+        guard var mediaFile = fileSystem.file(from: entity.mediaURL) else {
+            logger.warning("On Update, no existing file for entity \(entity.title)")
+            throw MediaConsistencyServiceError.noMediaFileForGivenEntity
+        }
+
+        var needUpdate = false
+        // Change the ID if needed
+        if mediaFile.id != entity.id.uuidString {
+            mediaFile.id = entity.id.uuidString
+            needUpdate = true
+        }
+
+        // change the name if needed
+        let newValidFileName = validFileName(from: entity.title)
+        if mediaFile.name != newValidFileName {
+            mediaFile.name = newValidFileName
+            needUpdate = true
+        }
+
+        // Check the state and update the file system if needed
+        var updatedMediaFile: MediaFile?
+        switch (entity.state, mediaFile.isNew) {
+        case (.new, true): // No change in new state
+            if needUpdate {
+                updatedMediaFile = fileSystem.updateFile(file: mediaFile)
+            }
+        case (.new, false): throw MediaConsistencyServiceError.movingToNewIsNotAllowed
+        case (.managed, _): // No matter the previous value, it needs to manage.
+            // Manage (independently if it needs update)
+            // Notice that archive will also update taking into accoun the changes in ID or name.
+            updatedMediaFile = try manage(unmanagedFile: mediaFile)
+        case (.archived, _): // No matter the previous value, it needs to archive.
+            // Archive (independently if it needs update)
+            // Notice that archive will also update taking into accoun the changes in ID or name.
+            updatedMediaFile = try archive(managedFile: mediaFile)
+        }
+
+        // After all changes are done in the
+        // Update entity with media file and return it.
+
+        if let mediaFile = updatedMediaFile {
+            var modifiedEntity = entity
+            modifiedEntity.mediaURL = mediaFile.url
+            return modifiedEntity
+        } else {
+            return entity
         }
     }
 
-    func archive(entity: XRepositories.LectureDataEntity) {
-        if let managedFile = fileSystem.managedFiles().first(where: { $0.id == entity.id.uuidString}) {
-            _ = fileSystem.archiveFile(file: managedFile)
+    /// Generate a valid macOS name from a string.
+    /// - Parameter title: The input string
+    /// - Returns: based on the input string a value macOS file name.
+    private func validFileName(from title: String) -> String {
+        let invalidCharacters = CharacterSet(charactersIn: ":/\\?%*|\"<>")
+        let maxLength = 255
+
+        let sanitizedTitle = title
+            .components(separatedBy: invalidCharacters)
+            .joined(separator: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+        let fileName = sanitizedTitle.prefix(maxLength)
+
+        return fileName.isEmpty ? "untitled" : String(fileName)
+    }
+
+    private func manage(unmanagedFile: MediaFile) throws -> MediaFile {
+        if let mediaFile = fileSystem.manageFile(file: unmanagedFile) {
+            logger.debug("MCS managed file: \(unmanagedFile.name)")
+            return mediaFile
+        } else {
+            logger.error("MCS not possible to manage file: \(unmanagedFile.name)")
+            throw MediaConsistencyServiceError.notPossibleToManageMediaFile
         }
     }
 
-    func delete(entity: XRepositories.LectureDataEntity) {
+    private func archive(managedFile: MediaFile) throws -> MediaFile {
+        if let mediaFile = fileSystem.archiveFile(file: managedFile) {
+            logger.debug("MCS archived file: \(managedFile.name)")
+            return mediaFile
+        } else {
+            logger.error("MCS not possible to archive file: \(managedFile.name)")
+            throw MediaConsistencyServiceError.notPossibleToArchiveMediaFile
+        }
+    }
+
+    public func delete(entity: LectureDataEntity) throws {
         let files: [MediaFile] = fileSystem.unmanagedFiles() + fileSystem.managedFiles()
-        if let file = files.first(where: { $0.id == entity.id.uuidString}) {
-            _ = fileSystem.deleteFile(file: file)
+        // We do not use the id to check the file because unmanaged files do not have id.
+        if let file = files.first(where: { $0.url == entity.mediaURL}) {
+            logger.debug("MCS request to delete file: \(entity.title)")
+            fileSystem.deleteFile(file: file)
+        } else {
+            logger.error("MCS no media file for entity: \(entity.title)")
+            throw MediaConsistencyServiceError.noMediaFileForGivenEntity
         }
     }
 }
@@ -58,7 +142,7 @@ extension MediaConsistencyService {
     /// This method will scan for new files and create entities for the ones that
     /// do not have.
     func scanForNewFiles() {
-
+        logger.debug("MCS scanning for new files")
         Task {
             // 1. Get all new files from the file system
             let newFiles = self.fileSystem.unmanagedFiles()
@@ -84,6 +168,7 @@ extension MediaConsistencyService {
                         state: .new
                     )
                     try? await self.repository.add(lecture: newEntity)
+                    logger.debug("MCS add new entity: \(newEntity.title)")
                 }
             }
             // 4. Finally save the changes
@@ -94,7 +179,7 @@ extension MediaConsistencyService {
     /// This method will check that all entities in the DB have a valid file
     /// in the file system
     func checkNewFilesEntitiesConsistency() {
-
+        logger.debug("MCS check new files entities")
         Task {
             // 1. Get all new files from the file system
             let newFiles = self.fileSystem.unmanagedFiles()
@@ -109,6 +194,7 @@ extension MediaConsistencyService {
                 if !fileExist {
                     // If none is found, delete the entity:
                     try await self.repository.deleteLecture(withId: entity.id)
+                    logger.warning("MCS delete entity: \(entity.title)")
                 }
             }
             // 4. Finally save the changes
@@ -119,7 +205,7 @@ extension MediaConsistencyService {
     // MARK: - Managed files and entities
 
     func checkManagedFilesConsistency() {
-
+        logger.debug("MCS check managing files")
         Task {
             // 1. Get all managed files
             let managedFiles = self.fileSystem.managedFiles()
@@ -134,13 +220,14 @@ extension MediaConsistencyService {
                 } else {
                     // Otherwise discard the file.
                     _ = self.fileSystem.discardFile(file: managedFile)
+                    logger.warning("MCS discard managed file: \(managedFile.name)")
                 }
             }
         }
     }
 
     func checkManagedEntitiesConsistency() {
-
+        logger.debug("MCS check managed entities")
         Task {
             // 1. Get all managed Entities
             let managedEntities: [LectureDataEntity] =
@@ -154,6 +241,7 @@ extension MediaConsistencyService {
                 let file = managedFiles.first(where: { $0.id == entity.id.uuidString })
                 if file == nil {
                     try await self.repository.deleteLecture(withId: entity.id)
+                    logger.warning("MCS delete entity: \(entity.title)")
                 }
             }
         }
@@ -162,7 +250,7 @@ extension MediaConsistencyService {
     // MARK: - Archived files and entities
 
     func checkArchivedFilesConsistency() {
-
+        logger.debug("MCS check archived files")
         Task {
             // 1. Get all archived files
             let archivedFiles = self.fileSystem.archivedFiles()
@@ -177,13 +265,14 @@ extension MediaConsistencyService {
                 } else {
                     // Otherwise discard the file.
                     _ = self.fileSystem.discardFile(file: archivedFile)
+                    logger.warning("MCS discard archived file: \(archivedFile.name)")
                 }
             }
         }
     }
 
     func checkArchivedEntitiesConsistency() {
-
+        logger.debug("MCS check archived entities")
         Task {
             // 1. Get all archived Entities
             let archivedEntities: [LectureDataEntity] =
@@ -197,6 +286,7 @@ extension MediaConsistencyService {
                 let archive = archivedFiles.first(where: { $0.id == entity.id.uuidString })
                 if archive == nil {
                     try await self.repository.deleteLecture(withId: entity.id)
+                    logger.warning("MCS delete archived entity: \(entity.title)")
                 }
             }
         }

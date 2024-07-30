@@ -275,55 +275,47 @@ final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
 final class MediaConsistencyServiceInterfaceMock: MediaConsistencyServiceInterface {
     var coordinator: XCoordinationRequestProtocol?
 
-    //MARK: - manage
-
-    var manageEntityCallsCount = 0
-    var manageEntityCalled: Bool {
-        return manageEntityCallsCount > 0
-    }
-    var manageEntityReceivedEntity: LectureDataEntity?
-    var manageEntityReceivedInvocations: [LectureDataEntity] = []
-    var manageEntityClosure: ((LectureDataEntity) -> Void)?
-
-    func manage(entity: LectureDataEntity) {
-        manageEntityCallsCount += 1
-        manageEntityReceivedEntity = entity
-        manageEntityReceivedInvocations.append(entity)
-        manageEntityClosure?(entity)
-    }
-
-    //MARK: - archive
-
-    var archiveEntityCallsCount = 0
-    var archiveEntityCalled: Bool {
-        return archiveEntityCallsCount > 0
-    }
-    var archiveEntityReceivedEntity: LectureDataEntity?
-    var archiveEntityReceivedInvocations: [LectureDataEntity] = []
-    var archiveEntityClosure: ((LectureDataEntity) -> Void)?
-
-    func archive(entity: LectureDataEntity) {
-        archiveEntityCallsCount += 1
-        archiveEntityReceivedEntity = entity
-        archiveEntityReceivedInvocations.append(entity)
-        archiveEntityClosure?(entity)
-    }
-
     //MARK: - delete
 
+    var deleteEntityThrowableError: Error?
     var deleteEntityCallsCount = 0
     var deleteEntityCalled: Bool {
         return deleteEntityCallsCount > 0
     }
     var deleteEntityReceivedEntity: LectureDataEntity?
     var deleteEntityReceivedInvocations: [LectureDataEntity] = []
-    var deleteEntityClosure: ((LectureDataEntity) -> Void)?
+    var deleteEntityClosure: ((LectureDataEntity) throws -> Void)?
 
-    func delete(entity: LectureDataEntity) {
+    func delete(entity: LectureDataEntity) throws {
+        if let error = deleteEntityThrowableError {
+            throw error
+        }
         deleteEntityCallsCount += 1
         deleteEntityReceivedEntity = entity
         deleteEntityReceivedInvocations.append(entity)
-        deleteEntityClosure?(entity)
+        try deleteEntityClosure?(entity)
+    }
+
+    //MARK: - update
+
+    var updateEntityThrowableError: Error?
+    var updateEntityCallsCount = 0
+    var updateEntityCalled: Bool {
+        return updateEntityCallsCount > 0
+    }
+    var updateEntityReceivedEntity: LectureDataEntity?
+    var updateEntityReceivedInvocations: [LectureDataEntity] = []
+    var updateEntityReturnValue: LectureDataEntity!
+    var updateEntityClosure: ((LectureDataEntity) throws -> LectureDataEntity)?
+
+    func update(entity: LectureDataEntity) throws -> LectureDataEntity {
+        if let error = updateEntityThrowableError {
+            throw error
+        }
+        updateEntityCallsCount += 1
+        updateEntityReceivedEntity = entity
+        updateEntityReceivedInvocations.append(entity)
+        return try updateEntityClosure.map({ try $0(entity) }) ?? updateEntityReturnValue
     }
 
     //MARK: - willEnterForeground
@@ -478,6 +470,24 @@ final class MediaFileSystemIntefaceMock: MediaFileSystemInteface {
     func discardedFiles() -> [MediaFile] {
         discardedFilesCallsCount += 1
         return discardedFilesClosure.map({ $0() }) ?? discardedFilesReturnValue
+    }
+
+    //MARK: - file
+
+    var fileFromCallsCount = 0
+    var fileFromCalled: Bool {
+        return fileFromCallsCount > 0
+    }
+    var fileFromReceivedUrl: URL?
+    var fileFromReceivedInvocations: [URL] = []
+    var fileFromReturnValue: MediaFile?
+    var fileFromClosure: ((URL) -> MediaFile?)?
+
+    func file(from url: URL) -> MediaFile? {
+        fileFromCallsCount += 1
+        fileFromReceivedUrl = url
+        fileFromReceivedInvocations.append(url)
+        return fileFromClosure.map({ $0(url) }) ?? fileFromReturnValue
     }
 
     //MARK: - updateFile

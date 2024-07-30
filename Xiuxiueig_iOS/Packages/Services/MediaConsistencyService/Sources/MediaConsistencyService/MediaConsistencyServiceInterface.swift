@@ -3,17 +3,23 @@
 import XCoordinator
 import XRepositories
 
+enum MediaConsistencyServiceError: Error {
+    case noMediaFileForGivenEntity
+    case movingToNewIsNotAllowed
+    case notPossibleToManageMediaFile
+    case notPossibleToArchiveMediaFile
+    case notPossibleToDeleteMediaFile // not used ATM
+}
+
 public protocol MediaConsistencyServiceInterface: XCoordinatorServiceLifeCycleProtocol {
-
-    /// Manage a new file.
-    /// - Parameter entity: new file to manage.
-    func manage(entity: LectureDataEntity)
-
-    /// Archive a managed file.
-    /// - Parameter entity: managed file to archive.
-    func archive(entity: LectureDataEntity)
 
     /// Delete a new or managed file.
     /// - Parameter entity: file to delete.
-    func delete(entity: LectureDataEntity)
+    func delete(entity: LectureDataEntity) throws
+    
+    /// Update the lecture and the underlinging file system according with
+    /// the changes included in the given Entity
+    /// - Parameter entity: Entity with modifications.
+    /// - Returns: The modified entity matching the file system (URL)
+    func update(entity: LectureDataEntity) throws -> LectureDataEntity
 }

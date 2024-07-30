@@ -33,3 +33,34 @@ R2M == Repository to Media
 * [MCS0510] [x] [T] All NEW LectureDataEntity has a valid Media file. When not, the entity is removed.
 * [MCS0520] [x] [T] All MANAGED LectureDataEntity has a valid Media file. When not, the entity is removed.
 * [MCS0530] [x] [T] All ARCHIVED LectureDataEntity has a valid Media file. When not, the entity is removed.
+
+### Entity update
+
+Rationale:
+When the repo is about to update a data entity it will ask the MCS to update 
+the Media file first. If that works (the MediaFile is updated properly), re repo
+with use the returned data entity modified (only the URL will be updated) to persist
+the update
+
+On request of update of a DataEntity ...
+* [MCS0710] [x] [T] MCS will fail if the is no file with the given URL.
+* [MCS0720] [x] [T] MCS will update the file when there is no updates in state
+                     but title and id has changed.
+* [MCS0730] [x] [T] A successful update will end up in an updated entity.
+
+* [MCS0740] [x] [T] Changing from managed to new will throw.
+* [MCS0750] [x] [T] We should be able to manage a new file
+* [MCS0760] [x] [T] We should be able to archive a new file
+* [MCS0770] [x] [T] We should be able to archive a managed file
+
+### Entity delte
+
+* [MCS0910] [x] [T] Deleting an entity that does not have an associated file
+                     will throw.
+* [MCS0920] [x] [T] User should be able to delete an new entity an its file 
+                     will be deleted.
+* [MCS0930] [x] [T] User should be able to delete an managed entity an its file 
+                     will be deleted.
+* [MCS0940] [x] [T] User should be able to delete an archived entity an its file 
+                     will be deleted.
+
