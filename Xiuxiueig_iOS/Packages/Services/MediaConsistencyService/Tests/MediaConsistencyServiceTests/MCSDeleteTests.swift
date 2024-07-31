@@ -1,9 +1,6 @@
 // Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
 
 import XCTest
-// Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
-
-import XCTest
 import XRepositories
 import XToolKit
 
@@ -96,7 +93,6 @@ final class MCSDeleteTests: XCTestCase {
         XCTAssert(deletedFile.url == aManagedFile.url)
     }
 
-
     // MARK: - Test Data
 
     // New
@@ -105,7 +101,6 @@ final class MCSDeleteTests: XCTestCase {
         let url = URL(string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: true)!
     }
-
 
     var aNewEntity: LectureDataEntity {
         let url = URL(

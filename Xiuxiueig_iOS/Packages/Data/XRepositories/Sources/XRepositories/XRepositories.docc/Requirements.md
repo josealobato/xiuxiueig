@@ -35,6 +35,9 @@ Here the term "user" refers to the user o the repositories (not the user of the 
 * [REP0130] [x] [T]  User can delete individual lectures.
 * [REP0140] [ ] [ ]  User can delete all lectures.
 * [REP0150] [x] [T]  User can update (modify) a lecture.
+* [REP0151] [x] [T]  When User updates a lecture the consistecy system will be requested
+                     to update that lecture. Only if that operation succeed the lecture
+                     will be updated.
 * [REP0160] [x] [-]  User can explicitly request to persist the lectures.
 
 ### Category repositories

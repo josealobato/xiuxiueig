@@ -59,8 +59,8 @@ extension LectureModel {
     func updateWith(entity: LectureDataEntity) {
         // id is not updated
         title = entity.title
-        // Not updating the category
-        // Media URL is not updated (we might need to)
+        // Not updating the category here.
+        mediaURL = entity.mediaURL
         queuePosition = entity.queuePosition
         playPosition = entity.playPosition
         played = entity.played

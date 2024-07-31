@@ -71,7 +71,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
         // The file system will update the file and return an updated file.
         // (The URL will change)
-        fileSystemMock.updateFileFileClosure = { updatedFile in
+        fileSystemMock.updateFileFileClosure = { _ in
             return self.aNewModifiedFile
         }
 
@@ -202,7 +202,6 @@ final class MCSUpdateConsistencyTests: XCTestCase {
         // AND the resulting entity is managed with URL Updated.
         XCTAssertEqual(updatedEntity.mediaURL.absoluteString, "file://a/new/url.mp3")
     }
-
 
     // MARK: - Support Methods
 

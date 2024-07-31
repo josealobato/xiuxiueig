@@ -15,7 +15,9 @@ final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
 
     init(queueManagement: QueueManagementServiceInterface) {
         do {
-            self.repository = try LectureRepositoryBuilder.build()
+            self.repository = try LectureRepositoryBuilder.build(
+                uRLConsistencyHandler: DataLectureURLConsistencyHandler()
+            )
         } catch {
             logger.error("XLectureCollectionAdapter error creating repository")
             self.repository = nil
@@ -35,5 +37,11 @@ final class XLectureCollectionAdapter: XLectureCollectionServicesInterface {
 
     func dequeueLecture(id: UUID) async throws {
         await queueManagement.removeFromQueue(id: id)
+    }
+}
+
+class DataLectureURLConsistencyHandler: LectureURLConsistencyHandler {
+    func update(entity: XRepositories.LectureDataEntity) throws -> XRepositories.LectureDataEntity {
+        entity // FIXME extract this to its own file and use it in any adapter.
     }
 }

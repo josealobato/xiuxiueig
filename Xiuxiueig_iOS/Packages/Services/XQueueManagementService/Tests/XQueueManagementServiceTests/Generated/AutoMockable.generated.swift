@@ -272,6 +272,31 @@ final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
     }
 
 }
+final class LectureURLConsistencyHandlerMock: LectureURLConsistencyHandler {
+
+    //MARK: - update
+
+    var updateEntityThrowableError: Error?
+    var updateEntityCallsCount = 0
+    var updateEntityCalled: Bool {
+        return updateEntityCallsCount > 0
+    }
+    var updateEntityReceivedEntity: LectureDataEntity?
+    var updateEntityReceivedInvocations: [LectureDataEntity] = []
+    var updateEntityReturnValue: LectureDataEntity!
+    var updateEntityClosure: ((LectureDataEntity) throws -> LectureDataEntity)?
+
+    func update(entity: LectureDataEntity) throws -> LectureDataEntity {
+        if let error = updateEntityThrowableError {
+            throw error
+        }
+        updateEntityCallsCount += 1
+        updateEntityReceivedEntity = entity
+        updateEntityReceivedInvocations.append(entity)
+        return try updateEntityClosure.map({ try $0(entity) }) ?? updateEntityReturnValue
+    }
+
+}
 final class QueueManagementServiceInterfaceMock: QueueManagementServiceInterface {
     var coordinator: XCoordinationRequestProtocol?
 

@@ -16,7 +16,7 @@ public protocol MediaConsistencyServiceInterface: XCoordinatorServiceLifeCyclePr
     /// Delete a new or managed file.
     /// - Parameter entity: file to delete.
     func delete(entity: LectureDataEntity) throws
-    
+
     /// Update the lecture and the underlinging file system according with
     /// the changes included in the given Entity
     /// - Parameter entity: Entity with modifications.

@@ -3,6 +3,16 @@
 import Foundation
 import XToolKit
 
+/// Errors that the LectureRepositoryInteface will throw
+/// (not all errors are covered ATM)
+public enum LectureRepositoryIntefaceError: Error {
+    case noModelForGivenEntity
+    case canNotUpdateWithoutConsistencyHandler
+}
+
+// Developer Note: this interface is throwing some interal errors.
+// Need to be improved.
+
 /// CRUD interface to manange `LectureDataEntities`.
 public protocol LectureRepositoryInteface: AutoMockable {
 
