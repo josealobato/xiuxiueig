@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Xiuxiueig_iOS_AllTests.xctestplan"
+            reference = "container:Xiuxiueig_iOSTests/Xiuxiueig_iOS_AllTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -54,6 +54,17 @@
                BlueprintIdentifier = "4524A0AB2C0A3CF2002A3B40"
                BuildableName = "Xiuxiueig_iOSUITests.xctest"
                BlueprintName = "Xiuxiueig_iOSUITests"
+               ReferencedContainer = "container:Xiuxiueig_iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "458C16712C564929001B3651"
+               BuildableName = "Xiuxiueig_iOSIntegrationTests.xctest"
+               BlueprintName = "Xiuxiueig_iOSIntegrationTests"
                ReferencedContainer = "container:Xiuxiueig_iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>

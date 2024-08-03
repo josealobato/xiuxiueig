@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BF447785-3827-4D89-92C9-BBA77EE98979",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Xiuxiueig_iOS.xcodeproj",
+        "identifier" : "458C16712C564929001B3651",
+        "name" : "Xiuxiueig_iOSIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
