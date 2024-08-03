@@ -157,7 +157,6 @@ extension MediaConsistencyService {
     /// This method will scan for new files and create entities for the ones that
     /// do not have.
     func scanForNewFiles() async throws {
-        logger.debug("MCS scanning for new files starts")
         // 1. Get all new files from the file system
         let newFiles = self.fileSystem.unmanagedFiles()
 
@@ -182,18 +181,17 @@ extension MediaConsistencyService {
                     state: .new
                 )
                 try? await self.repository.add(lecture: newEntity)
-                logger.debug("MCS add new entity: \(newEntity.title)")
+                logger.debug("MCS add new entity for new file: \(newEntity.title)")
             }
         }
         // 4. Finally save the changes
         try await self.repository.persist()
-        logger.debug("MCS scanning for new files ends")
     }
 
     /// This method will check that all entities in the DB have a valid file
     /// in the file system
     func checkNewFilesEntitiesConsistency() async throws {
-        logger.debug("MCS check new files entities start")
+
         // 1. Get all new files from the file system
         let newFiles = self.fileSystem.unmanagedFiles()
 
@@ -207,18 +205,17 @@ extension MediaConsistencyService {
             if !fileExist {
                 // If none is found, delete the entity:
                 try await self.repository.deleteLecture(withId: entity.id)
-                logger.warning("MCS delete entity: \(entity.title)")
+                logger.warning("MCS delete new entity: \(entity.title), file is not there")
             }
         }
         // 4. Finally save the changes
         try await self.repository.persist()
-        logger.debug("MCS check new files entities end")
     }
 
     // MARK: - Managed files and entities
 
     func checkManagedFilesConsistency() async throws {
-        logger.debug("MCS check managing files start")
+
         // 1. Get all managed files
         let managedFiles = self.fileSystem.managedFiles()
 
@@ -232,15 +229,13 @@ extension MediaConsistencyService {
             } else {
                 // Otherwise discard the file.
                 _ = self.fileSystem.discardFile(file: managedFile)
-                logger.warning("MCS discard managed file: \(managedFile.name)")
+                logger.warning("MCS discard managed file: \(managedFile.name) no lecture found")
             }
         }
-        logger.debug("MCS check managing files end")
     }
 
     func checkManagedEntitiesConsistency() async throws {
 
-        logger.debug("MCS check managed entities start")
         // 1. Get all managed Entities
         let managedEntities: [LectureDataEntity] =
         (try? await self.repository.lectures().filter({ $0.state == .managed })) ?? []
@@ -253,16 +248,15 @@ extension MediaConsistencyService {
             let file = managedFiles.first(where: { $0.id == entity.id.uuidString })
             if file == nil {
                 try await self.repository.deleteLecture(withId: entity.id)
-                logger.warning("MCS delete entity: \(entity.title)")
+                logger.warning("MCS delete managed entity: \(entity.title) no file found")
             }
         }
-        logger.debug("MCS check managed entities end")
     }
 
     // MARK: - Archived files and entities
 
     func checkArchivedFilesConsistency() async throws {
-        logger.debug("MCS check archived files start")
+
         // 1. Get all archived files
         let archivedFiles = self.fileSystem.archivedFiles()
 
@@ -276,14 +270,13 @@ extension MediaConsistencyService {
             } else {
                 // Otherwise discard the file.
                 _ = self.fileSystem.discardFile(file: archivedFile)
-                logger.warning("MCS discard archived file: \(archivedFile.name)")
+                logger.warning("MCS discard archived file: \(archivedFile.name) no entity found")
             }
         }
-        logger.debug("MCS check archived files end")
     }
 
     func checkArchivedEntitiesConsistency() async throws {
-        logger.debug("MCS check archived entities start")
+
         // 1. Get all archived Entities
         let archivedEntities: [LectureDataEntity] =
         (try? await self.repository.lectures().filter({ $0.state == .archived })) ?? []
@@ -296,9 +289,8 @@ extension MediaConsistencyService {
             let archive = archivedFiles.first(where: { $0.id == entity.id.uuidString })
             if archive == nil {
                 try await self.repository.deleteLecture(withId: entity.id)
-                logger.warning("MCS delete archived entity: \(entity.title)")
+                logger.warning("MCS delete archived entity: \(entity.title) no file found")
             }
         }
-        logger.debug("MCS check archived entities end")
     }
 }
