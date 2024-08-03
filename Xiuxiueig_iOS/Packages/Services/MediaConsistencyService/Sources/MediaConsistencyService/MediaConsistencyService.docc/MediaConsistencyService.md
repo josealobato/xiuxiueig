@@ -3,13 +3,20 @@
 The media consistency service will execute strategically to keep consistency between the 
 database storage (repositories) and files in the system (Media File System).
 
-In general it will verify that the status of all items in the repository represente a 
+It is a service so It will be associated to a flow (Coordinator) to run.
+
+As a principle the MCS do its best to preserve the user media.
+
+In general it will verify that the status of all items in the repository represent a 
 a valid media on the file system. At the same time It will check that all files in the 
 file system have a valid representation on the repository.
 
-It is a service so It will be associated to a flow (Coordinator) to run.
+I will have a second responsibility, change a file when a data entity is updated.
 
-The MCS do its best to preserve the user media.
+Those two actions act on the file system and to avoid that they interfere with each other
+they are run in a serial queue.
+
+DEV NOTE: That queue could be done with and actor but I wanted to try this way.
 
 ## Single Responsibility
 

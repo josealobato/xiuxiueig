@@ -17,17 +17,24 @@ extension MediaConsistencyService: XCoordinatorServiceLifeCycleProtocol {
 
         processorSerialQueue.async {
 
-            // New files
-            self.scanForNewFiles()
-            self.checkNewFilesEntitiesConsistency()
+            Task {
+                self.logger.debug("MCS Consistency Check Start -> ")
 
-            // Managed files
-            self.checkManagedFilesConsistency()
-            self.checkManagedEntitiesConsistency()
+                // Notice that we are ignoring all exeptions here.
 
-            // Archived files
-            self.checkArchivedFilesConsistency()
-            self.checkArchivedEntitiesConsistency()
+                // New files
+                try? await self.scanForNewFiles()
+                try? await self.checkNewFilesEntitiesConsistency()
+
+                // Managed files
+                try? await self.checkManagedFilesConsistency()
+                try? await self.checkManagedEntitiesConsistency()
+
+                // Archived files
+                try? await self.checkArchivedFilesConsistency()
+                try? await self.checkArchivedEntitiesConsistency()
+                self.logger.debug("<- MCS Consistency Check End")
+            }
         }
     }
 
