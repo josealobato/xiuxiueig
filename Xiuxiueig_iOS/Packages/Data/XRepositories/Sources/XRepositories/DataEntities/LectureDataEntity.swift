@@ -13,7 +13,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public var playPosition: Int?
     public var played: [Date]
 
-    public enum State: String, Codable {
+    public enum State: String, Codable, Equatable {
         case new
         case managed
         case archived
@@ -39,17 +39,6 @@ public struct LectureDataEntity: Identifiable, Equatable {
         self.played = played
         self.state = state
     }
-//
-//    mutating func update(with updatedLecture: LectureDataEntity) {
-//        // id is not updated
-//        title = updatedLecture.title
-//        category = updatedLecture.category
-//        // Media URL is not updated
-//        queuePosition = updatedLecture.queuePosition
-//        playPosition = updatedLecture.playPosition
-//        played = updatedLecture.played
-//        state = updatedLecture.state
-//    }
 }
 
 // MARK: - Extensions to convert to and from model
