@@ -98,8 +98,6 @@ extension MediaFileSystem: MediaFileSystemInteface {
 
         // If the file is not dirty, there is nothing to update.
         guard file.isDirty else { return file }
-        // If the file is not ready to be managed (have valid data) fail by returning no file.
-        guard file.canBeManaged else { return nil }
 
         do {
             let currentLocation = file.url
@@ -148,7 +146,7 @@ extension MediaFileSystem: MediaFileSystemInteface {
 
         do {
             let currentLocation = file.url
-            let destination = try managedFolder().appendingPathComponent(file.fileName)
+            let destination = try managedFolder().appendingPathComponent(file.managedFileName)
 
             let fileMng = FileManager.default
             try fileMng.moveItem(at: currentLocation, to: destination)

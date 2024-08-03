@@ -47,6 +47,23 @@ final class MediaFileBuildTests: XCTestCase {
         XCTAssertEqual(mediaFile.name, "this is a- sample file- name")
     }
 
+    func testCreatingANewFileFromRealURL() throws {
+
+        // GIVEN a url with hypens and spaces
+        // swiftlint:disable:next line_length
+        let url = URL(string: "file:///Users/josealobato/Library/Developer/XCTestDevices/0F786E2E-DCFB-4FB2-885F-7ED344EC72BB/data/Containers/Data/Application/C57EAABF-5D53-4E25-9821-35AB0B8D3C39/Documents/Managed/0252D708-A238-4109-B4A3-8E940E70D63B-My%20modified%20new%20lecture%20file.mp3")!
+
+        // WHEN a media file is created from that
+        let mediaFile = MediaFile(url: url, isNew: true)!
+
+        // THEN the Media file should have nil ID and the rest is name with the hyphens and not extra spaces.
+        XCTAssertNil(mediaFile.id)
+        XCTAssertEqual(mediaFile.name, "My modified new lecture file")
+        XCTAssertEqual(mediaFile.fileName, "My modified new lecture file.mp3")
+        XCTAssertEqual(mediaFile.managedFileName, "My modified new lecture file.mp3")
+        XCTAssertEqual(mediaFile.url.absoluteString, url.absoluteString)
+    }
+
     // MARK: - Not new file
 
     func testCreateAFileFromURL_MFS1020() throws {
@@ -89,6 +106,26 @@ final class MediaFileBuildTests: XCTestCase {
         // THEN the Media file id should be reveded without the extra spaces and hyphens.
         XCTAssertEqual(mediaFile.id, uuid)
         XCTAssertEqual(mediaFile.name, "this is a- sample file- name")
+    }
+
+    func testCreatingAManagedFileFromRealURL() throws {
+
+        // GIVEN a url with hypens and spaces
+        // swiftlint:disable:next line_length
+        let url = URL(string: "file:///Users/josealobato/Library/Developer/XCTestDevices/0F786E2E-DCFB-4FB2-885F-7ED344EC72BB/data/Containers/Data/Application/C57EAABF-5D53-4E25-9821-35AB0B8D3C39/Documents/Managed/0252D708-A238-4109-B4A3-8E940E70D63B-My%20modified%20new%20lecture%20file.mp3")!
+
+        // WHEN a media file is created from that
+        let mediaFile = MediaFile(url: url, isNew: false)!
+
+        // THEN the Media file should have nil ID and the rest is name with the hyphens and not extra spaces.
+        XCTAssertEqual(mediaFile.id, "0252D708-A238-4109-B4A3-8E940E70D63B")
+        XCTAssertEqual(mediaFile.name, "My modified new lecture file")
+        XCTAssertEqual(mediaFile.fileName, "0252D708-A238-4109-B4A3-8E940E70D63B-My modified new lecture file.mp3")
+        XCTAssertEqual(
+            mediaFile.managedFileName,
+            "0252D708-A238-4109-B4A3-8E940E70D63B-My modified new lecture file.mp3"
+        )
+        XCTAssertEqual(mediaFile.url.absoluteString, url.absoluteString)
     }
 
     // MARK: - Errors

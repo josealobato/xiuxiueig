@@ -35,6 +35,8 @@
 
 * [MFS1010] [x] [T] When creating a Media file from new URL the file name 
                     is the name and the ID. is nil
+* [MFS1011] [x] [T] When creating a Media file from new URL with a UUID it will
+                    be ignored.
 * [MFS1020] [x] [T] When creating a Media file from managed URL the file 
                     name is `id - name`.
 * [MFS1030] [x] [T] The id of a media file take the form of a UUID.
@@ -44,6 +46,8 @@
 * [MFS1110] [x] [T] Whe a media file is not modified it is not dirty.
 * [MFS1120] [x] [T] Whe a media file is modified it is dirty.
 * [MFS1130] [x] [NT] A Dirty file means that the Media File contains data changes that has not be refected on the file system yet. You should use the update/manage/archive methods to persist those changes.
+* [MFS1140] [x] [NT] A new media file when its id is changed will offer a 
+                     `managedFileName` that will be used to manage the file.
 
 ## Settings
 

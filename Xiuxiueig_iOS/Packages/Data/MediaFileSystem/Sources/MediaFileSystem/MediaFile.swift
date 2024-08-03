@@ -16,6 +16,7 @@ public struct MediaFile {
     public var id: String? {
         didSet { isDirty = true }
     }
+
     public var name: String {
         didSet { isDirty = true }
     }
@@ -112,7 +113,7 @@ public struct MediaFile {
 
     static func extractUUIDAndName(_ fileName: String) -> (String?, String)? {
         // The matching pattern for "<UUID> - <text>" being the spaces and the hypen optional.
-        let pattern = "^(\\d{8}-\\d{4}-\\d{4}-\\d{4}-\\d{12})\\s?-?\\s?(.*)$"
+        let pattern = "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})\\s?-?\\s?(.*)$"
 
         do {
             let regex = try NSRegularExpression(pattern: pattern, options: [])
@@ -157,6 +158,19 @@ public struct MediaFile {
 
     /// Get the name to use on create or update a file.
     var fileName: String {
+
+        if let id, !isNew {
+            return id + "-" + name + "." + url.pathExtension
+        } else {
+            return name + "." + url.pathExtension
+        }
+    }
+
+    /// The `fileName` method will send the "right" name of the file
+    /// according to its state (new), but for managing the file we might
+    /// need the file that it will take when managed, including the id
+    /// independendly of the current state.
+    var managedFileName: String {
 
         if let id {
             return id + "-" + name + "." + url.pathExtension

@@ -32,6 +32,6 @@ final class MediaFileDirtyTests: XCTestCase {
 
         // THEN the Media file is dirty and the file name is changed
         XCTAssertTrue(mediaFile.isDirty)
-        XCTAssertEqual(mediaFile.fileName, "33-la bamba.mp3")
+        XCTAssertEqual(mediaFile.fileName, "la bamba.mp3")
     }
 }
