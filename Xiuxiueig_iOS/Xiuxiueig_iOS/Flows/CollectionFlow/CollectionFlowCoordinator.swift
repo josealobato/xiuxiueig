@@ -56,8 +56,18 @@ extension CollectionFlowCoordinator {
     /// The view use this method to request the main view it should hold.
     /// - Returns: the navigation root view of the `CollectionFlowView`
     func baseCoordinatorView() -> some View {
-        let adapter = XLectureCollectionAdapter(queueManagement: context.queueManagementService)
-        XLectureCollectionBuilder.build(services: adapter,
-                                        coordinator: self)
+
+        if let repository = try? context.lectureRepositoryFactory() {
+            let adapter = XLectureCollectionAdapter(
+                queueManagement: context.queueManagementService,
+                lectureRepository: repository
+            )
+            XLectureCollectionBuilder.build(services: adapter,
+                                            coordinator: self)
+        } else {
+            // Nothice that we do not want to build the view without the
+            // repository.
+            Text("Ups! Something went wrong")
+        }
     }
 }

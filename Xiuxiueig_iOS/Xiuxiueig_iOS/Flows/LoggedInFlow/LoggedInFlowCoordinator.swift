@@ -21,17 +21,35 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
     // Making the link to the parent weak to avoid circular reference.
     weak var parentCoordinator: (any XCoordinator.XCoordinationRequestProtocol)?
 
+    // For information on the structe of these types go to
+    // `URLConsistencyHandlerBridge` documentation.
+    var consistencyHandlerBridge: URLConsistencyHandlerBridge
+
+    // Create a mechanism to build lecture repositories that uses the consistency
+    // system to keep consistency of the file system. It is created here and will
+    // be injected in any adapter that needs a lecture repository.
+    var lectureRepositoryFactory: () throws -> LectureRepositoryInteface
+
     var childCoordinators: [any XCoordinator.XCoordinatorProtocol] = []
 
     init(context: LoggedInFlowContext) {
         logger.debug("init LoggedInFlowCoordinator")
         self.context = context
 
-        initializeServices()
-    }
+        let bridge = URLConsistencyHandlerBridge()
+        self.consistencyHandlerBridge = bridge
+        self.lectureRepositoryFactory = {
+            let repository = try LectureRepositoryBuilder.build(
+                uRLConsistencyHandler: bridge,
+                autopersist: true)
+            // Notice that we want all repository to autopersist.
+            // That way other systems do not need to care about persisting
+            // the status of the repository.
+            // We keep that option to false when we need batch storage.
+            return repository
+        }
 
-    func initializeServices() {
-        services.append(context.queueManagementService)
+        initializeServices()
     }
 
     deinit {
@@ -69,8 +87,11 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         if let coordinator = getChild(ofType: CollectionFlowCoordinator.self) as? CollectionFlowCoordinator {
             return coordinator
         } else {
-            let context = CollectionFlowContext(userName: context.userName,
-                                                queueManagementService: context.queueManagementService)
+            let context = CollectionFlowContext(
+                userName: context.userName,
+                queueManagementService: context.queueManagementService,
+                lectureRepositoryFactory: lectureRepositoryFactory
+            )
             let coordinator = CollectionFlowCoordinator(context: context)
             coordinator.parentCoordinator = self
             addChild(coordinator)

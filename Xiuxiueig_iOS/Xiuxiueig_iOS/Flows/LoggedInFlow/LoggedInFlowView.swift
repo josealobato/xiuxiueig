@@ -27,12 +27,16 @@ struct LoggedInFlowView: View {
             }
             // Example of Getting system events that are system level.
             .onChange(of: scenePhase, initial: false) { _, newPhase  in
-                if newPhase == .inactive {
-                    print("App is Inactive")
-                } else if newPhase == .active {
-                    print("App is Active")
-                } else if newPhase == .background {
-                    print("App is Background")
+                switch newPhase {
+                case .background:
+                    coordinator.process(systemEvent: .didEnterBackground)
+                case .inactive:
+                    coordinator.process(systemEvent: .willEnterBackground)
+                case .active:
+                    coordinator.process(systemEvent: .willEnterForeground)
+                    coordinator.process(systemEvent: .didEnterForeground)
+                @unknown default:
+                    break
                 }
             }
             .onDisappear {

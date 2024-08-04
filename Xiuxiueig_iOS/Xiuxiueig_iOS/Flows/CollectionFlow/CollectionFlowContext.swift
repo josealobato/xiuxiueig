@@ -2,6 +2,7 @@
 
 import Foundation
 import XQueueManagementService
+import XRepositories
 
 /// The context for a flow contains all data that is considered constant for the
 /// give flow.
@@ -16,4 +17,8 @@ struct CollectionFlowContext {
 
     /// The queue management service for the current user.
     let queueManagementService: QueueManagementServiceInterface
+    
+    /// A mechanism to securely build (keep consistency) the lecture
+    /// repository.
+    let lectureRepositoryFactory: () throws -> LectureRepositoryInteface
 }
