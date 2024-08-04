@@ -4,6 +4,17 @@ import Foundation
 import XToolKit
 import OSLog
 
+// NOTE: This file contains the `XCoordinatorProtocol` followed by a default implementation
+//       of some of it methods
+
+/// Define the systems events that the coordinator can handle
+public enum XCoordinatorSystemEvents {
+    case willEnterBackground
+    case didEnterBackground
+    case willEnterForeground
+    case didEnterForeground
+}
+
 /// The `CoordinatorProtocol` define what a coordinator should provide to its users.
 /// All coordinators in the system should conform to this protocol. This will allow us
 /// to build a tree of coordinator and defer coordination tasks to other members of the
@@ -48,6 +59,9 @@ public protocol XCoordinatorProtocol: AnyObject {
     var services: [XCoordinatorServiceProtocol] { get set }
     func startServices()
     func stopServices()
+
+    // MARK: - System Events
+    func process(systemEvent event: XCoordinatorSystemEvents)
 }
 
 /// Default implementation of start/stop mechanism
@@ -89,7 +103,7 @@ public extension XCoordinatorProtocol {
     }
 }
 
-/// Extension implementing a version of the services.
+/// Extension implementing the default version of starting and stopping the services.
 public extension XCoordinatorProtocol {
 
     func startServices() {
@@ -101,6 +115,19 @@ public extension XCoordinatorProtocol {
     func stopServices() {
         for service in services {
             service.stop()
+        }
+    }
+}
+
+/// Extension implementing the default version of handling events
+public extension XCoordinatorProtocol {
+
+    func process(systemEvent event: XCoordinatorSystemEvents) {
+        for service in services {
+            if let liveCycleService = service as? XCoordinatorServiceLifeCycleProtocol {
+
+                liveCycleService.process(systemEvent: event)
+            }
         }
     }
 }

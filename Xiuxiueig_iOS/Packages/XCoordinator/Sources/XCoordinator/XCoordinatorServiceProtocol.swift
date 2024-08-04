@@ -35,18 +35,13 @@ public extension XCoordinatorServiceProtocol {
 /// application. In that case this is a specializatio of the basic one.
 public protocol XCoordinatorServiceLifeCycleProtocol: XCoordinatorServiceProtocol {
 
-    func willEnterForeground()
-    func didEnterForeground()
-    func willEnterBackground()
-    func didEnterBackground()
+    func process(systemEvent event: XCoordinatorSystemEvents)
 }
 
-/// Extension to provide default implementation. Most of the time
-/// we do not need all methods, so just implement the one needed.
+/// Extension to provide default implementation.
 public extension XCoordinatorServiceLifeCycleProtocol {
 
-    func willEnterForeground() { }
-    func didEnterForeground() { }
-    func willEnterBackground() { }
-    func didEnterBackground() { }
+    func process(systemEvent event: XCoordinatorSystemEvents) {
+        /* Nothing to do */
+    }
 }
