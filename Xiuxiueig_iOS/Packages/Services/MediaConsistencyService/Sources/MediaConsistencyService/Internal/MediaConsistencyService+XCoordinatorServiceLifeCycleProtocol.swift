@@ -5,15 +5,17 @@ import XCoordinator
 
 extension MediaConsistencyService: XCoordinatorServiceLifeCycleProtocol {
 
-    func start() {
+    func start() { /* Nothing to do */ }
+    func stop() { /* Nothing to do */ }
 
+    func process(systemEvent event: XCoordinatorSystemEvents) {
+
+        if case .willEnterForeground = event {
+            willEnterForeground()
+        }
     }
 
-    func stop() {
-
-    }
-
-    func willEnterForeground() {
+    private func willEnterForeground() {
 
         processorSerialQueue.async {
 

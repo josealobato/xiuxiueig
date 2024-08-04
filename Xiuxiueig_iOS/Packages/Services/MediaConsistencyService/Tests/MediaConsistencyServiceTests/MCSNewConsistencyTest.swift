@@ -47,7 +47,7 @@ final class MCSNewConsistencyTest: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [expectation], timeout: 2.0)
@@ -65,7 +65,7 @@ final class MCSNewConsistencyTest: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [], timeout: 0.5)
@@ -88,7 +88,7 @@ final class MCSNewConsistencyTest: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [expectation], timeout: 0.5)
@@ -106,7 +106,7 @@ final class MCSNewConsistencyTest: XCTestCase {
             XCTFail("No lecture should be deleted")
         }
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [], timeout: 0.5)

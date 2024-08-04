@@ -23,6 +23,9 @@ struct LoggedInFlowView: View {
                 if onFirstLoad {
                     onFirstLoad = false
                     coordinator.start()
+                    // Let's generate a load event on the services when
+                    // the LoggedIn screen shows.
+                    coordinator.process(systemEvent: .willEnterForeground)
                 }
             }
             // Example of Getting system events that are system level.

@@ -251,6 +251,8 @@ extension MediaConsistencyService {
                 logger.warning("MCS delete managed entity: \(entity.title) no file found")
             }
         }
+        // 4. Finally save the changes
+        try await self.repository.persist()
     }
 
     // MARK: - Archived files and entities
@@ -292,5 +294,7 @@ extension MediaConsistencyService {
                 logger.warning("MCS delete archived entity: \(entity.title) no file found")
             }
         }
+        // 4. Finally save the changes
+        try await self.repository.persist()
     }
 }

@@ -59,12 +59,12 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         // 1. Adding a file that creates an entity (state: new) ---------------
 
         // GIVEN that the stack is set up AND the MCS runs
-        mcs.willEnterForeground(); sleep(1)
+        mcs.process(systemEvent: .willEnterForeground); sleep(1)
 
         // WHEN we add another file and run it again
         let initialFileName = "My new lecture file"
         addAFile(name: initialFileName)
-        mcs.willEnterForeground(); sleep(1)
+        mcs.process(systemEvent: .willEnterForeground); sleep(1)
 
         // THEN we can get that file with correct state and value
         var lecture: LectureDataEntity!
@@ -173,12 +173,12 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         // 1. Adding a file that creates an entity (state: new) ---------------
 
         // GIVEN that the stack is set up AND the MCS runs
-        mcs.willEnterForeground(); sleep(1)
+        mcs.process(systemEvent: .willEnterForeground); sleep(1)
 
         // WHEN we add another file and run it again
         let initialFileName = "My new lecture file"
         addAFile(name: initialFileName)
-        mcs.willEnterForeground(); sleep(1)
+        mcs.process(systemEvent: .willEnterForeground); sleep(1)
 
         // THEN we can get that file with correct state and value
         var lecture: LectureDataEntity!
@@ -192,7 +192,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         XCTAssert(fileExistWith(path: Constants.inboxFolderName + "/\(initialFileName).mp3"))
 
         // EXTRA RUN of Consistency
-        sleep(1); mcs.willEnterForeground(); sleep(1)
+        sleep(1); mcs.process(systemEvent: .willEnterForeground); sleep(1)
         assertNumberOfFiles(inbox: 4, managed: 0, archived: 0, discarded: 0)
 
         // 2. Modifying that entity (state: new) ------------------------------
@@ -219,7 +219,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         } else { XCTFail("There should be an entity") }
 
         // EXTRA RUN of Consistency
-        sleep(1); mcs.willEnterForeground(); sleep(1)
+        sleep(1); mcs.process(systemEvent: .willEnterForeground); sleep(1)
         assertNumberOfFiles(inbox: 4, managed: 0, archived: 0, discarded: 0)
 
         // 3. Managing that entity (state: managed) ---------------------------
@@ -244,7 +244,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         } else { XCTFail("There should be an entity") }
 
         // EXTRA RUN of Consistency
-        sleep(1); mcs.willEnterForeground(); sleep(1)
+        sleep(1); mcs.process(systemEvent: .willEnterForeground); sleep(1)
         assertNumberOfFiles(inbox: 3, managed: 1, archived: 0, discarded: 0)
 
         // 4. Modifying that managed entity (state: managed) --------------------------
@@ -271,7 +271,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         } else { XCTFail("There should be an entity") }
 
         // EXTRA RUN of Consistency
-        sleep(1); mcs.willEnterForeground(); sleep(1)
+        sleep(1); mcs.process(systemEvent: .willEnterForeground); sleep(1)
         assertNumberOfFiles(inbox: 3, managed: 1, archived: 0, discarded: 0)
 
         // 5. Archiving that managed entity (state: Archive) --------------------------
@@ -296,7 +296,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
         } else { XCTFail("There should be an entity") }
 
         // EXTRA RUN of Consistency
-        sleep(1); mcs.willEnterForeground(); sleep(1)
+        sleep(1); mcs.process(systemEvent: .willEnterForeground); sleep(1)
         assertNumberOfFiles(inbox: 3, managed: 0, archived: 1, discarded: 0)
     }
 

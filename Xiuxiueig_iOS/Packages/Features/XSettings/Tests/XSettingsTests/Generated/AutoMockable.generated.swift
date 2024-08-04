@@ -89,56 +89,21 @@ final class XCoordinationRequestProtocolMock: XCoordinationRequestProtocol {
 final class XCoordinatorServiceLifeCycleProtocolMock: XCoordinatorServiceLifeCycleProtocol {
     var coordinator: XCoordinationRequestProtocol?
 
-    //MARK: - willEnterForeground
+    //MARK: - process
 
-    var willEnterForegroundCallsCount = 0
-    var willEnterForegroundCalled: Bool {
-        return willEnterForegroundCallsCount > 0
+    var processSystemEventCallsCount = 0
+    var processSystemEventCalled: Bool {
+        return processSystemEventCallsCount > 0
     }
-    var willEnterForegroundClosure: (() -> Void)?
+    var processSystemEventReceivedEvent: XCoordinatorSystemEvents?
+    var processSystemEventReceivedInvocations: [XCoordinatorSystemEvents] = []
+    var processSystemEventClosure: ((XCoordinatorSystemEvents) -> Void)?
 
-    func willEnterForeground() {
-        willEnterForegroundCallsCount += 1
-        willEnterForegroundClosure?()
-    }
-
-    //MARK: - didEnterForeground
-
-    var didEnterForegroundCallsCount = 0
-    var didEnterForegroundCalled: Bool {
-        return didEnterForegroundCallsCount > 0
-    }
-    var didEnterForegroundClosure: (() -> Void)?
-
-    func didEnterForeground() {
-        didEnterForegroundCallsCount += 1
-        didEnterForegroundClosure?()
-    }
-
-    //MARK: - willEnterBackground
-
-    var willEnterBackgroundCallsCount = 0
-    var willEnterBackgroundCalled: Bool {
-        return willEnterBackgroundCallsCount > 0
-    }
-    var willEnterBackgroundClosure: (() -> Void)?
-
-    func willEnterBackground() {
-        willEnterBackgroundCallsCount += 1
-        willEnterBackgroundClosure?()
-    }
-
-    //MARK: - didEnterBackground
-
-    var didEnterBackgroundCallsCount = 0
-    var didEnterBackgroundCalled: Bool {
-        return didEnterBackgroundCallsCount > 0
-    }
-    var didEnterBackgroundClosure: (() -> Void)?
-
-    func didEnterBackground() {
-        didEnterBackgroundCallsCount += 1
-        didEnterBackgroundClosure?()
+    func process(systemEvent event: XCoordinatorSystemEvents) {
+        processSystemEventCallsCount += 1
+        processSystemEventReceivedEvent = event
+        processSystemEventReceivedInvocations.append(event)
+        processSystemEventClosure?(event)
     }
 
     //MARK: - attendToLocalNotification

@@ -52,6 +52,7 @@
 		4567EB6B2C5F769C00B159B3 /* URLConsistencyHandlerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4567EB6A2C5F769C00B159B3 /* URLConsistencyHandlerBridge.swift */; };
 		4567EB6D2C5F7ADD00B159B3 /* MediaConsistencyService in Frameworks */ = {isa = PBXBuildFile; productRef = 4567EB6C2C5F7ADD00B159B3 /* MediaConsistencyService */; };
 		4567EB6F2C5F7ADD00B159B3 /* MediaFileSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 4567EB6E2C5F7ADD00B159B3 /* MediaFileSystem */; };
+		4567EB712C5FC4C300B159B3 /* XToolKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4567EB702C5FC4C300B159B3 /* XToolKit */; };
 		457BD04F2C46C08200589246 /* XQueueManagementService in Frameworks */ = {isa = PBXBuildFile; productRef = 457BD04E2C46C08200589246 /* XQueueManagementService */; };
 		457BD0522C47A8B300589246 /* AppFlowCoordinator+SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0512C47A8B300589246 /* AppFlowCoordinator+SeedData.swift */; };
 		457BD0552C47B7FE00589246 /* LectureEntity+FromDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457BD0542C47B7FE00589246 /* LectureEntity+FromDataEntity.swift */; };
@@ -220,6 +221,7 @@
 			files = (
 				458C16802C564A48001B3651 /* MediaFileSystem in Frameworks */,
 				458C16822C564A48001B3651 /* XRepositories in Frameworks */,
+				4567EB712C5FC4C300B159B3 /* XToolKit in Frameworks */,
 				458C167E2C564A48001B3651 /* MediaConsistencyService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,6 +552,7 @@
 				458C167D2C564A48001B3651 /* MediaConsistencyService */,
 				458C167F2C564A48001B3651 /* MediaFileSystem */,
 				458C16812C564A48001B3651 /* XRepositories */,
+				4567EB702C5FC4C300B159B3 /* XToolKit */,
 			);
 			productName = Xiuxiueig_iOSIntegrationTests;
 			productReference = 458C16722C564929001B3651 /* Xiuxiueig_iOSIntegrationTests.xctest */;
@@ -1140,6 +1143,10 @@
 		4567EB6E2C5F7ADD00B159B3 /* MediaFileSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MediaFileSystem;
+		};
+		4567EB702C5FC4C300B159B3 /* XToolKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XToolKit;
 		};
 		457BD04E2C46C08200589246 /* XQueueManagementService */ = {
 			isa = XCSwiftPackageProductDependency;

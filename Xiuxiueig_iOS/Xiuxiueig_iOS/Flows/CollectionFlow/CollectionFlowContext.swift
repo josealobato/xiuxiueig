@@ -17,7 +17,7 @@ struct CollectionFlowContext {
 
     /// The queue management service for the current user.
     let queueManagementService: QueueManagementServiceInterface
-    
+
     /// A mechanism to securely build (keep consistency) the lecture
     /// repository.
     let lectureRepositoryFactory: () throws -> LectureRepositoryInteface

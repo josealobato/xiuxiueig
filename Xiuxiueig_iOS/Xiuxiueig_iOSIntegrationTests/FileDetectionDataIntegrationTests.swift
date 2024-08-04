@@ -36,7 +36,7 @@ final class FileDetectionDataIntegrationTests: XCTestCase {
     func testInitialCleanState() async throws {
         // GIVEN that the stack is setup
         // WHEN the MCS runs
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
         sleep(1) // Wait for the process to finish.
         // THEN we should have 3 lectures from the three demo files.
         let entities = try! await repo.lectures()
@@ -52,12 +52,12 @@ final class FileDetectionDataIntegrationTests: XCTestCase {
     func testAddingANew() async throws {
         // GIVEN that the stack is set up
         // AND the MCS runs
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
         sleep(1) // Wait for the process to finish.
 
         // WHEN we add another file and run it again
         addAFile()
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
         sleep(1) // Wait for the process to finish.
 
         // THEN we should have 3 lectures from the three demo files.
@@ -71,7 +71,7 @@ final class FileDetectionDataIntegrationTests: XCTestCase {
         assertNumberOfFiles(inbox: 4, managed: 0, archived: 0, discarded: 0)
 
         // WHEN running MCS a second time
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
         sleep(1) // Wait for the process to finish.
 
         // THEN it will not alter the state in any way

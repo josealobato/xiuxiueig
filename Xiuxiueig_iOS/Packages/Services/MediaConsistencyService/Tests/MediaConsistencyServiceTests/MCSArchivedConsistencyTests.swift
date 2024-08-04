@@ -48,7 +48,7 @@ final class MCSArchivedConsistencyTests: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [], timeout: 1.0)
@@ -70,7 +70,7 @@ final class MCSArchivedConsistencyTests: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [expectation], timeout: 1.0)
@@ -90,7 +90,7 @@ final class MCSArchivedConsistencyTests: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [], timeout: 1.0)
@@ -111,7 +111,7 @@ final class MCSArchivedConsistencyTests: XCTestCase {
         }
 
         // WHEN we run the MCS
-        mcs.willEnterForeground()
+        mcs.process(systemEvent: .willEnterForeground)
 
         // THEN (see expectation above)
         wait(for: [expectation], timeout: 1.0)
