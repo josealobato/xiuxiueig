@@ -14,6 +14,8 @@ final class MCSUpdateConsistencyTests: XCTestCase {
     var fileSystemMock: MediaFileSystemIntefaceMock!
     var repoMock: LectureRepositoryIntefaceMock!
 
+    let documentBaseURL: URL = URL(string: "file:///user/document/")!
+
     override func setUp() {
         super.setUp()
         fileSystemMock = MediaFileSystemIntefaceMock()
@@ -24,7 +26,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
         fileSystemMock.unmanagedFilesReturnValue = []
         fileSystemMock.archivedFilesReturnValue = []
         repoMock.lecturesReturnValue = []
-
+        MediaFile.baseURL = { self.documentBaseURL }
     }
 
     override func tearDown() {
@@ -34,7 +36,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     func testUpdateAMissingFileWithThrow_MCS0710() throws {
         // GIVEN there is no managed file
-        fileSystemMock.fileFromReturnValue = nil
+        fileSystemMock.fileFromTailURLReturnValue = nil
 
         // WHEN update that entity
         // THEN it will throw
@@ -45,7 +47,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     func testUpdateANewFileWithoutChangeInStateWillUpdateFile_MCS0720() throws {
         // GIVEN there is new file
-        fileSystemMock.fileFromReturnValue = aNewFile
+        fileSystemMock.fileFromTailURLReturnValue = aNewFile
         // and a new entity
         let newEntity = aNewModifiedEntity
 
@@ -65,8 +67,8 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     func testUpdateANewFileWithoutChangeInStateWillReturnUpdatedEntity_MCS0730() throws {
         // GIVEN there is new file
-        fileSystemMock.fileFromReturnValue = aNewFile
-        // and a new entity
+        fileSystemMock.fileFromTailURLReturnValue = aNewFile
+        // and a new modified entity
         let newEntity = aNewModifiedEntity
 
         // The file system will update the file and return an updated file.
@@ -79,7 +81,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
         let updatedEntity = try mcs.update(entity: newEntity)
 
         // THEN it match expectation (see above)
-        XCTAssertEqual(updatedEntity.mediaURL.absoluteString, "file://a/new/url.mp3")
+        XCTAssertEqual(updatedEntity.mediaTailURL.path, "Inbox/Updated Title.mp3")
     }
 
     // MARK: - Managed File No Changes in State (To Manage)
@@ -87,7 +89,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
     // NOTE to update a managed file we manage it.
     func testUpdateAManageFileWithoutChangeInStateWillManageFile_MCS0720() throws {
         // GIVEN there is manage file
-        fileSystemMock.fileFromReturnValue = aManagedFile
+        fileSystemMock.fileFromTailURLReturnValue = aManagedFile
         let modifiedManagedEntity = aModifiedManagedEntity
 
         // expectation
@@ -109,7 +111,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
     // NOTE to update (archive) a managed file we archive it.
     func testUpdateAManageFileWithoutChangeInStateWillArchivedFile_MCS0720() throws {
         // GIVEN there is manage file
-        fileSystemMock.fileFromReturnValue = aManagedFile
+        fileSystemMock.fileFromTailURLReturnValue = aManagedFile
         // And an archived entity
         let modifiedArchivedEntity = aModifiedArchivedEntity
 
@@ -131,7 +133,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     func testUpdateAManagedFileWithNewEntity_MCS0710() throws {
         // GIVEN there is managed file
-        fileSystemMock.fileFromReturnValue = aManagedFile
+        fileSystemMock.fileFromTailURLReturnValue = aManagedFile
 
         // WHEN update with entity in state new
         // THEN it will throw
@@ -140,7 +142,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     func testManagingANewFile_MCS0750() throws {
         // GIVEN a new file
-        fileSystemMock.fileFromReturnValue = aNewFile
+        fileSystemMock.fileFromTailURLReturnValue = aNewFile
 
         // The file is managed (call) and the data is updated from the entity
         let managedEntity = aManagedEntity
@@ -156,12 +158,12 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
         // THEN (see expectation above)
         // AND the resulting entity is managed with URL Updated.
-        XCTAssertEqual(updatedEntity.mediaURL.absoluteString, "file://a/new/url.mp3")
+        XCTAssertEqual(updatedEntity.mediaTailURL.path, "Managed/Updated Title.mp3")
     }
 
     func testArchiveANewFile_MCS0760() throws {
         // GIVEN a new file
-        fileSystemMock.fileFromReturnValue = aNewFile
+        fileSystemMock.fileFromTailURLReturnValue = aNewFile
         // and an archive entity for the request
         let archivedEntity = aArchivedEntity
 
@@ -178,12 +180,12 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
         // THEN (see expectation above)
         // AND the resulting entity is managed with URL Updated.
-        XCTAssertEqual(updatedEntity.mediaURL.absoluteString, "file://a/new/url.mp3")
+        XCTAssertEqual(updatedEntity.mediaTailURL.path, "Managed/Updated Title.mp3")
     }
 
     func testArchivieAManagedFile_MCS0770() throws {
         // GIVEN a managed file
-        fileSystemMock.fileFromReturnValue = aManagedFile
+        fileSystemMock.fileFromTailURLReturnValue = aManagedFile
         // and an archive entity for the request
         let archivedEntity = aArchivedEntity
 
@@ -200,7 +202,7 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
         // THEN (see expectation above)
         // AND the resulting entity is managed with URL Updated.
-        XCTAssertEqual(updatedEntity.mediaURL.absoluteString, "file://a/new/url.mp3")
+        XCTAssertEqual(updatedEntity.mediaTailURL.path, "Managed/Updated Title.mp3")
     }
 
     // MARK: - Support Methods
@@ -210,20 +212,20 @@ final class MCSUpdateConsistencyTests: XCTestCase {
     // New
 
     var aNewFile: MediaFile {
-        let url = URL(string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3")!
+        let url = URL(string: "\(documentBaseURL)Inbox/this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: true)!
     }
 
     var aNewModifiedFile: MediaFile {
         // the url has change with respect to "aNewFile"
-        let url = URL(string: "file://a/new/url.mp3")!
+        let url = URL(string: "\(documentBaseURL)Inbox/Updated%20Title.mp3")!
         return MediaFile(url: url, isNew: true)!
     }
 
     var aNewModifiedEntity: LectureDataEntity {
         let uuidString = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaURL: url)
+        let urlComponenets = URLComponents(string: "Inbox/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
+        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaTailURL: urlComponenets)
         entity.state = .new
         // Modify because we change the title.
         entity.title = "Updated Title"
@@ -234,20 +236,22 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     var aManagedFile: MediaFile {
         let uuidString = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
+        let url = URL(string: "\(documentBaseURL)Managed/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: false)!
     }
 
     var aManagedModifedFile: MediaFile {
         // The URL is different and (without UUID).
-        let url = URL(string: "file://a/new/url.mp3")!
+        let url = URL(string: "\(documentBaseURL)Managed/Updated%20Title.mp3")!
         return MediaFile(url: url, isNew: false)!
     }
 
     var aManagedEntity: LectureDataEntity {
         let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaURL: url)
+        let uRLComponents = URLComponents(
+            string: "Managed/\(uuid)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaTailURL: uRLComponents)
         entity.state = .managed
         entity.title = "Updated Title"
         return entity
@@ -255,8 +259,10 @@ final class MCSUpdateConsistencyTests: XCTestCase {
 
     var aModifiedManagedEntity: LectureDataEntity {
         let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaURL: url)
+        let urlComponets = URLComponents(
+            string: "Managed/\(uuid)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaTailURL: urlComponets)
         entity.state = .managed
         entity.title = "A Modified Title"
         return entity
@@ -265,17 +271,22 @@ final class MCSUpdateConsistencyTests: XCTestCase {
     // Archived
 
     var aArchivedEntity: LectureDataEntity {
-        let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaURL: url)
+        let uuidString = uuidString("0")
+        let urlComponents = URLComponents(
+            string: "Archived/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaTailURL: urlComponents)
         entity.state = .archived
         entity.title = "Updated Title"
         return entity
     }
 
     var aModifiedArchivedEntity: LectureDataEntity {
-        let url = URL(string: "file://a/new/url.mp3")!
-        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaURL: url)
+        let uuidString = uuidString("0")
+        let urlComponents = URLComponents(
+            string: "Archived/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaTailURL: urlComponents)
         entity.state = .archived
         entity.title = "The new Modified title"
         return entity

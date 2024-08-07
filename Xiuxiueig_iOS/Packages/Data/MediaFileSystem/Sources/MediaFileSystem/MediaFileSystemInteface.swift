@@ -61,6 +61,13 @@ public protocol MediaFileSystemInteface: AutoMockable {
     /// - Returns: The file associated to the URl if any.
     func file(from url: URL) -> MediaFile?
 
+    /// Given the tail of the url create a media file that represent
+    /// the file associated with that URL.
+    /// - Parameter tailURLComponents: the Tail of the URL (`Inbox/my-file.mp3`)
+    ///                                Notice that the tail should not have the initial `/`
+    /// - Returns: The file representing that URL, nil if the file does not exist.
+    func file(fromTailURL tailURLComponents: URLComponents) -> MediaFile?
+
     /// Update a file name in the file system with the new information.
     /// Any file can be updated independently of it location, but is should be ready
     /// to be managed which means that it should be previously given and id and a name.

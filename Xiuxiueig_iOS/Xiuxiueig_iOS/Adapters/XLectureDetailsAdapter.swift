@@ -13,7 +13,7 @@ final class XLectureDetailsAdapter: XLectureDetailsServiceInterface {
                                                title: "Mathematics",
                                                imageURL: nil,
                                                defaultImage: "pyramid"),
-                      mediaURL: URL(string: "https://whatever.com")!)
+                      mediaTailURL: URLComponents())
     }
 
     func categories() async throws -> [XEntities.CategoryEntity] {

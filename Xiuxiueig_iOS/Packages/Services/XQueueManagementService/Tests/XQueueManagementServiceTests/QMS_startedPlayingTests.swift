@@ -94,8 +94,8 @@ final class QMSStartedPlayingTests: XCTestCase {
 
     private var initialLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/whatsup.com")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox /whatsup.com")!, queuePosition: 2)
         ]
     }
 }

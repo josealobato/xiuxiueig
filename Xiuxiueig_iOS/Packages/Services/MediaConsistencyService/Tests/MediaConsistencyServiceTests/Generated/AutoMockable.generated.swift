@@ -480,6 +480,24 @@ final class MediaFileSystemIntefaceMock: MediaFileSystemInteface {
         return fileFromClosure.map({ $0(url) }) ?? fileFromReturnValue
     }
 
+    //MARK: - file
+
+    var fileFromTailURLCallsCount = 0
+    var fileFromTailURLCalled: Bool {
+        return fileFromTailURLCallsCount > 0
+    }
+    var fileFromTailURLReceivedTailURLComponents: URLComponents?
+    var fileFromTailURLReceivedInvocations: [URLComponents] = []
+    var fileFromTailURLReturnValue: MediaFile?
+    var fileFromTailURLClosure: ((URLComponents) -> MediaFile?)?
+
+    func file(fromTailURL tailURLComponents: URLComponents) -> MediaFile? {
+        fileFromTailURLCallsCount += 1
+        fileFromTailURLReceivedTailURLComponents = tailURLComponents
+        fileFromTailURLReceivedInvocations.append(tailURLComponents)
+        return fileFromTailURLClosure.map({ $0(tailURLComponents) }) ?? fileFromTailURLReturnValue
+    }
+
     //MARK: - updateFile
 
     var updateFileFileCallsCount = 0

@@ -11,7 +11,12 @@ import Foundation
 /// Using `fileName` one can get a properly formated file name.
 public struct MediaFile {
 
-    public let url: URL
+    // Full file URL taking the form `file:///users/.../Inbox/myFile.mp3`
+    let url: URL
+
+    // The last part of the file URL taking the form `Inbox/myFile.mp3`
+    // Notice no `/` before the folder.
+    public let tailURL: URLComponents
 
     public var id: String? {
         didSet { isDirty = true }
@@ -45,6 +50,9 @@ public struct MediaFile {
           isNew: Bool = false) {
 
         self.url = url
+        if let tail = MediaFile.getTailURL(from: url) {
+            self.tailURL = tail
+        } else { return nil }
         self.isNew = isNew
 
         // set the values of id and name
@@ -54,6 +62,55 @@ public struct MediaFile {
         } catch { return nil }
 
         self.isDirty = false
+    }
+
+    /// This public static variable provides the base folder where the files are taken
+    /// from. We should be using this everywhere inside this package but not externaly.
+    /// It is offered externally to allow for testing the creation of media files on a fake
+    /// environment to later be able to play with them, and making test independent
+    /// of the documents folder or icloud.
+    public static var baseURL: () -> URL? = {
+        let fileMng = FileManager.default
+        let docsURL = try? fileMng.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: false
+        )
+        return docsURL
+    }
+
+    /// Geting the tail from a url.
+    ///
+    /// It is offered publicly to allow for creating tails that are compatible
+    /// with MediaFile for testing purposes.
+    ///
+    /// - Parameter url: a URL of the form `file:///users/Inbox/myFile.mp3`
+    /// - Returns: a partial url of the form: `Inbox/myFile.mp3`
+    public static func getTailURL(from url: URL) -> URLComponents? {
+
+        guard let docsURL = MediaFile.baseURL() else { return nil }
+
+        // Using Strings remove the common part (the documents folder).
+        // Notice that we are using the `absoluteString` to get the full path
+        // including the `/`. as a result we will get something like `Inbox/myfile.mp3`
+        let tailPath = url.absoluteString.replacingOccurrences(
+            of: docsURL.absoluteString,
+            with: "")
+
+        // From that section of path create a URLComponent that contains that
+        // path section.
+        if let tailPathURL = URL(string: tailPath),
+           let tailComponents = URLComponents(url: tailPathURL, resolvingAgainstBaseURL: false) {
+            return tailComponents
+        }
+
+        // NOTE: I'm creating a URLComponent for two reasons:
+        // 1. It conveys better may intention (that is a URL) than using regular string.
+        // 2. The original URL can be reconstructing very easily like this:
+        //    `let reconstructedURL = relPathComponents.url(relativeTo: baseURL)!`
+
+        return nil
     }
 
     // MARK: - Getting the name and id from the URL.

@@ -5,30 +5,20 @@ import XToolKit
 
 extension MediaFileSystem: MediaFileSystemInteface {
 
-    private func documentsURL() throws -> URL {
-        let fileMng = FileManager.default
-        let docsURL = try fileMng.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false)
-        return docsURL
-    }
-
     private func inboxFolder() throws -> URL {
-        return try documentsURL().appendingPathComponent(Constants.inboxFolderName)
+        return try baseFolderURL().appendingPathComponent(Constants.inboxFolderName)
     }
 
     private func managedFolder() throws -> URL {
-        return try documentsURL().appendingPathComponent(Constants.managedFolderName)
+        return try baseFolderURL().appendingPathComponent(Constants.managedFolderName)
     }
 
     private func archivedFolder() throws -> URL {
-        return try documentsURL().appendingPathComponent(Constants.archivedFolderName)
+        return try baseFolderURL().appendingPathComponent(Constants.archivedFolderName)
     }
 
     private func discardedFolder() throws -> URL {
-        return try documentsURL().appendingPathComponent(Constants.discardedFolderName)
+        return try baseFolderURL().appendingPathComponent(Constants.discardedFolderName)
     }
 
     private func mediaFilesInFolder(folderURL: URL, isManaged: Bool) throws -> [MediaFile] {
@@ -89,6 +79,18 @@ extension MediaFileSystem: MediaFileSystemInteface {
             logger.debug("Not existing file by url: \(url)")
             return nil
         }
+    }
+
+    func file(fromTailURL tailURLComponents: URLComponents) -> MediaFile? {
+
+        guard let baseURL = MediaFile.baseURL() else { return nil }
+
+        if let relativeURL = tailURLComponents.url(relativeTo: baseURL) {
+            let absoluteURL = relativeURL.absoluteURL
+            return file(from: absoluteURL)
+        }
+
+        return nil
     }
 
     func updateFile(file: MediaFile) -> MediaFile? {

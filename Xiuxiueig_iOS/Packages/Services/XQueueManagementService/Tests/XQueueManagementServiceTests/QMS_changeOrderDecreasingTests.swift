@@ -81,23 +81,23 @@ final class QMSChangeOrderDecreasingTests: XCTestCase {
 
     private var lecturesInOrder: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
-            LectureDataEntity(id: uuid("4"), title: "title 04", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 4),
-            LectureDataEntity(id: uuid("5"), title: "title 05", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 5),
-            LectureDataEntity(id: uuid("6"), title: "title 06", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 6)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 3),
+            LectureDataEntity(id: uuid("4"), title: "title 04", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 4),
+            LectureDataEntity(id: uuid("5"), title: "title 05", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 5),
+            LectureDataEntity(id: uuid("6"), title: "title 06", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 6)
         ]
     }
 
     private var lecturesUpdatedStored: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureDataEntity(id: uuid("5"), title: "title 05", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3),
-            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 4),
-            LectureDataEntity(id: uuid("4"), title: "title 04", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 5),
-            LectureDataEntity(id: uuid("6"), title: "title 06", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 6)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 2),
+            LectureDataEntity(id: uuid("5"), title: "title 05", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 3),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 4),
+            LectureDataEntity(id: uuid("4"), title: "title 04", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 5),
+            LectureDataEntity(id: uuid("6"), title: "title 06", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 6)
         ]
     }
 }

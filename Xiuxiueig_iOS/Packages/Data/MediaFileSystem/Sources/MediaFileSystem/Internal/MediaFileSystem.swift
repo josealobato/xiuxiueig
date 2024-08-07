@@ -8,6 +8,7 @@ struct MediaFileSystem {
     enum MediaFileSystemError: Error {
 
         case convertingFileToNew
+        case notAbleToBuildBaseURL
     }
 
     let logger = XLog.logger(category: "MediaFileSystem")
@@ -17,6 +18,13 @@ struct MediaFileSystem {
         static let inboxFolderName: String = "Inbox"
         static let archivedFolderName: String = "Archived"
         static let discardedFolderName: String = "Discarded"
+    }
+
+    func baseFolderURL() throws -> URL {
+        guard let base = MediaFile.baseURL() else {
+            throw MediaFileSystemError.notAbleToBuildBaseURL
+        }
+        return base
     }
 
     init() {
@@ -53,16 +61,11 @@ struct MediaFileSystem {
 
         do {
             let fileMng = FileManager.default
-            let docsURL = try fileMng.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: false
-            )
+            let baseFolderURL = try baseFolderURL()
 
-            logger.debug("documents URL: \(docsURL.absoluteString)")
+            logger.debug("documents URL: \(baseFolderURL.absoluteString)")
 
-            let manageFolderULR = docsURL.appendingPathComponent(Constants.managedFolderName)
+            let manageFolderULR = baseFolderURL.appendingPathComponent(Constants.managedFolderName)
             if !existDirectory(url: manageFolderULR) {
 
                 try fileMng.createDirectory(at: manageFolderULR, withIntermediateDirectories: false)
@@ -76,14 +79,9 @@ struct MediaFileSystem {
 
         do {
             let fileMng = FileManager.default
-            let docsURL = try fileMng.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: false
-            )
+            let baseFolderURL = try baseFolderURL()
 
-            let inboxFolderULR = docsURL.appendingPathComponent(Constants.inboxFolderName)
+            let inboxFolderULR = baseFolderURL.appendingPathComponent(Constants.inboxFolderName)
             var inboxJustCreated = false
             if !existDirectory(url: inboxFolderULR) {
 
@@ -110,14 +108,9 @@ struct MediaFileSystem {
 
         do {
             let fileMng = FileManager.default
-            let docsURL = try fileMng.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: false
-            )
+            let baseFolderURL = try baseFolderURL()
 
-            let manageFolderULR = docsURL.appendingPathComponent(Constants.archivedFolderName)
+            let manageFolderULR = baseFolderURL.appendingPathComponent(Constants.archivedFolderName)
             if !existDirectory(url: manageFolderULR) {
 
                 try fileMng.createDirectory(at: manageFolderULR, withIntermediateDirectories: false)
@@ -131,14 +124,9 @@ struct MediaFileSystem {
 
         do {
             let fileMng = FileManager.default
-            let docsURL = try fileMng.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: false
-            )
+            let baseFolderURL = try baseFolderURL()
 
-            let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+            let discardedFolderULR = baseFolderURL.appendingPathComponent(Constants.discardedFolderName)
             if !existDirectory(url: discardedFolderULR) {
 
                 try fileMng.createDirectory(at: discardedFolderULR, withIntermediateDirectories: false)

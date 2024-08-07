@@ -12,6 +12,8 @@ final class MCSNewConsistencyTest: XCTestCase {
     var fileSystemMock: MediaFileSystemIntefaceMock!
     var repoMock: LectureRepositoryIntefaceMock!
 
+    let documentBaseURL: URL = URL(string: "file:///user/document/")!
+
     override func setUp() {
         super.setUp()
         fileSystemMock = MediaFileSystemIntefaceMock()
@@ -22,6 +24,8 @@ final class MCSNewConsistencyTest: XCTestCase {
         fileSystemMock.managedFilesReturnValue = []
         fileSystemMock.archivedFilesReturnValue = []
         repoMock.lectureWithIdReturnValue = nil
+
+        MediaFile.baseURL = { self.documentBaseURL }
     }
 
     override func tearDown() {
@@ -117,12 +121,13 @@ final class MCSNewConsistencyTest: XCTestCase {
     // MARK: - Test Data
 
     var aNewFile: MediaFile {
-        let url = URL(string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3")!
+        let url = URL(string: "\(documentBaseURL)Inbox/this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: true)!
     }
 
     var aNewFileMatchingEntity: LectureDataEntity {
-        let url = URL(string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3")!
-        return LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaURL: url)
+        let urlComponents = URLComponents(
+            string: "Inbox/this%20is%20a%20sample%20file%20name.mp3")!
+        return LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaTailURL: urlComponents)
     }
 }

@@ -14,7 +14,7 @@ extension LectureDataEntity {
         LectureEntity(id: self.id,
                       title: self.title,
                       category: self.category?.entity(),
-                      mediaURL: self.mediaURL,
+                      mediaTailURL: self.mediaTailURL,
                       imageURL: self.imageURL,
                       queuePosition: self.queuePosition,
                       playPosition: self.playPosition,
@@ -40,7 +40,7 @@ extension LectureEntity {
         LectureDataEntity(id: self.id,
                           title: self.title,
                           category: self.category?.dataEntity(),
-                          mediaURL: self.mediaURL,
+                          mediaTailURL: self.mediaTailURL,
                           queuePosition: self.queuePosition,
                           playPosition: self.playPosition,
                           played: self.played)

@@ -7,7 +7,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public let id: UUID
     public var title: String
     public var category: CategoryDataEntity?
-    public var mediaURL: URL
+    public var mediaTailURL: URLComponents
     public var imageURL: URL?
     public var queuePosition: Int?
     public var playPosition: Int?
@@ -23,7 +23,8 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public init(id: UUID,
                 title: String,
                 category: CategoryDataEntity? = nil,
-                mediaURL: URL, imageURL: URL? = nil,
+                mediaTailURL: URLComponents,
+                imageURL: URL? = nil,
                 queuePosition: Int? = nil,
                 playPosition: Int? = nil,
                 played: [Date] = [],
@@ -32,7 +33,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
         self.id = id
         self.title = title
         self.category = category
-        self.mediaURL = mediaURL
+        self.mediaTailURL = mediaTailURL
         self.imageURL = imageURL
         self.queuePosition = queuePosition
         self.playPosition = playPosition
@@ -57,7 +58,7 @@ extension LectureDataEntity {
         return LectureModel(externalId: self.id,
                             title: self.title,
                             category: self.category?.categoryModel(),
-                            mediaURL: self.mediaURL,
+                            mediaTailURLPath: self.mediaTailURL.path,
                             imageURL: self.imageURL,
                             queuePosition: self.queuePosition,
                             playPosition: self.playPosition,
@@ -67,7 +68,9 @@ extension LectureDataEntity {
 
     static func from(model: LectureModel) -> Self? {
 
-        guard let mediaURL = model.mediaURL else { return nil }
+        guard let mediaTailURLPath = model.mediaTailURLPath,
+              let mediaTailURLComponents = URLComponents(string: mediaTailURLPath)
+        else { return nil }
 
         var categoryDataEntity: CategoryDataEntity?
         if let categoryModel = model.category {
@@ -85,7 +88,7 @@ extension LectureDataEntity {
         return LectureDataEntity(id: model.externalId ?? UUID(),
                                  title: model.title ?? "",
                                  category: categoryDataEntity,
-                                 mediaURL: mediaURL,
+                                 mediaTailURL: mediaTailURLComponents,
                                  imageURL: model.imageURL ?? nil,
                                  queuePosition: model.queuePosition,
                                  playPosition: model.playPosition,

@@ -85,7 +85,7 @@ extension LectureRepository: LectureRepositoryInteface {
             }
         }
 
-        logger.debug("LR Updated lecture \(modifiedLecture.title) with url \(modifiedLecture.mediaURL)")
+        logger.debug("LR Updated lecture \(modifiedLecture.title) with url \(modifiedLecture.mediaTailURL)")
         try await persist()
     }
 

@@ -93,7 +93,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .new)
             // ... UPDATED URL
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.inboxFolderName + "/\(secondFileName).mp3"
                 )
             )
@@ -114,7 +114,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .managed)
             // ... UPDATED URL with new folder location.
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.managedFolderName + "/\(lecture.id.uuidString)-\(secondFileName).mp3"
                 )
             )
@@ -137,7 +137,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .managed)
             // ... UPDATED URL
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.managedFolderName + "/\(lecture.id.uuidString)-\(thirdFileName).mp3"
                 )
             )
@@ -158,7 +158,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .archived)
             // ... UPDATED URL with new folder location.
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.archivedFolderName + "/\(lecture.id.uuidString)-\(lecture.title).mp3"
                 )
             )
@@ -211,7 +211,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .new)
             // ... UPDATED URL
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.inboxFolderName + "/\(secondFileName).mp3"
                 )
             )
@@ -236,7 +236,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .managed)
             // ... UPDATED URL with new folder location.
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.managedFolderName + "/\(lecture.id.uuidString)-\(secondFileName).mp3"
                 )
             )
@@ -263,7 +263,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .managed)
             // ... UPDATED URL
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.managedFolderName + "/\(lecture.id.uuidString)-\(thirdFileName).mp3"
                 )
             )
@@ -288,7 +288,7 @@ final class ManagingEntityUpdatesIntegrationTests: XCTestCase {
             XCTAssertEqual(alecture.state, .archived)
             // ... UPDATED URL with new folder location.
             XCTAssert(
-                alecture.mediaURL.path.hasSuffix(
+                alecture.mediaTailURL.path.hasSuffix(
                     Constants.archivedFolderName + "/\(lecture.id.uuidString)-\(lecture.title).mp3"
                 )
             )

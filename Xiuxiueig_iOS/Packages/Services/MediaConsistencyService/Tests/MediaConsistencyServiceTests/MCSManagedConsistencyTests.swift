@@ -15,6 +15,8 @@ final class MCSManagedConsistencyTests: XCTestCase {
     var fileSystemMock: MediaFileSystemIntefaceMock!
     var repoMock: LectureRepositoryIntefaceMock!
 
+    let documentBaseURL: URL = URL(string: "file:///user/document/")!
+
     override func setUp() {
         super.setUp()
         fileSystemMock = MediaFileSystemIntefaceMock()
@@ -26,6 +28,7 @@ final class MCSManagedConsistencyTests: XCTestCase {
         fileSystemMock.archivedFilesReturnValue = []
         repoMock.lecturesReturnValue = []
 
+        MediaFile.baseURL = { self.documentBaseURL }
     }
 
     override func tearDown() {
@@ -124,14 +127,14 @@ final class MCSManagedConsistencyTests: XCTestCase {
 
     var aManagedFile: MediaFile {
         let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
+        let url = URL(string: "\(documentBaseURL)Managed/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: false)!
     }
 
     var aManagedFileMatchingEntity: LectureDataEntity {
         let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaURL: url)
+        let urlComponents = URLComponents(string: "Managed/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
+        var entity = LectureDataEntity(id: UUID(), title: "this is a sample file name", mediaTailURL: urlComponents)
         entity.state = .managed
         return entity
     }

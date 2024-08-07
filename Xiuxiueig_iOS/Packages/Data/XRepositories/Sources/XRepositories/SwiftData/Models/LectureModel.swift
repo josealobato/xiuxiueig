@@ -11,7 +11,7 @@ final class LectureModel {
     @Relationship(deleteRule: .nullify)
     var category: CategoryModel?
 
-    var mediaURL: URL?
+    var mediaTailURLPath: String?
     var imageURL: URL?
 
     var queuePosition: Int?
@@ -36,7 +36,7 @@ final class LectureModel {
     init(externalId: UUID? = nil,
          title: String? = nil,
          category: CategoryModel? = nil,
-         mediaURL: URL? = nil,
+         mediaTailURLPath: String? = nil,
          imageURL: URL? = nil,
          queuePosition: Int? = nil,
          playPosition: Int? = nil,
@@ -45,7 +45,7 @@ final class LectureModel {
         self.externalId = externalId
         self.title = title
         self.category = category
-        self.mediaURL = mediaURL
+        self.mediaTailURLPath = mediaTailURLPath
         self.imageURL = imageURL
         self.queuePosition = queuePosition
         self.playPosition = playPosition
@@ -60,7 +60,7 @@ extension LectureModel {
         // id is not updated
         title = entity.title
         // Not updating the category here.
-        mediaURL = entity.mediaURL
+        mediaTailURLPath = entity.mediaTailURL.path
         queuePosition = entity.queuePosition
         playPosition = entity.playPosition
         played = entity.played

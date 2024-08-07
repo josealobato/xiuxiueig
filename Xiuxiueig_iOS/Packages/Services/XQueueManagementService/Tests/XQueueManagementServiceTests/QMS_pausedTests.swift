@@ -141,15 +141,15 @@ final class QMSPausedTests: XCTestCase {
 
     private var initialLecturesNonePlaying: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "/Inbox/myFile.mp3")!, queuePosition: 1, playPosition: nil),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "/Inbox/myFile.mp3")!, queuePosition: 2, playPosition: nil)
         ]
     }
 
     private var initialLecturesOnePlaying: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "/Inbox/myFile.mp3")!, queuePosition: 1, playPosition: 10),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "/Inbox/myFile.mp3")!, queuePosition: 2, playPosition: nil)
         ]
     }
 }

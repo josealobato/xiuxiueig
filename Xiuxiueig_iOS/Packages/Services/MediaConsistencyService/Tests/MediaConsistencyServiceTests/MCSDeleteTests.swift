@@ -15,6 +15,8 @@ final class MCSDeleteTests: XCTestCase {
     var fileSystemMock: MediaFileSystemIntefaceMock!
     var repoMock: LectureRepositoryIntefaceMock!
 
+    let documentBaseURL: URL = URL(string: "file:///user/document/")!
+
     override func setUp() {
         super.setUp()
         fileSystemMock = MediaFileSystemIntefaceMock()
@@ -26,6 +28,7 @@ final class MCSDeleteTests: XCTestCase {
         fileSystemMock.archivedFilesReturnValue = []
         repoMock.lecturesReturnValue = []
 
+        MediaFile.baseURL = { self.documentBaseURL }
     }
 
     override func tearDown() {
@@ -82,7 +85,7 @@ final class MCSDeleteTests: XCTestCase {
         fileSystemMock.unmanagedFilesReturnValue = []
         fileSystemMock.managedFilesReturnValue = [aManagedFile]
         // to a given entity
-        let anEntity = aArchivedEntity
+        let anEntity = aManagedEntity
 
         // WHEN deleting the entity
         try mcs.delete(entity: anEntity)
@@ -98,17 +101,17 @@ final class MCSDeleteTests: XCTestCase {
     // New
 
     var aNewFile: MediaFile {
-        let url = URL(string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3")!
+        let url = URL(string: "\(documentBaseURL)Inbox/this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: true)!
     }
 
     var aNewEntity: LectureDataEntity {
-        let url = URL(
-            string: "file:///Users/ana.maria/this%20is%20a%20sample%20file%20name.mp3"
+        let urlComponents = URLComponents(
+            string: "Inbox/this%20is%20a%20sample%20file%20name.mp3"
         )!
         var entity = LectureDataEntity(id: uuid("0"),
                                        title: "this is a sample file name",
-                                       mediaURL: url)
+                                       mediaTailURL: urlComponents)
         entity.state = .new
         return entity
     }
@@ -116,15 +119,17 @@ final class MCSDeleteTests: XCTestCase {
     // Managed
 
     var aManagedFile: MediaFile {
-        let uuid = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuid)-this%20is%20a%20sample%20file%20name.mp3")!
+        let uuidString = uuidString("0")
+        let url = URL(string: "\(documentBaseURL)Managed/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
         return MediaFile(url: url, isNew: false)!
     }
 
     var aManagedEntity: LectureDataEntity {
         let uuidString = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaURL: url)
+        let urlComponents = URLComponents(
+            string: "Managed/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaTailURL: urlComponents)
         entity.state = .managed
         return entity
     }
@@ -133,8 +138,10 @@ final class MCSDeleteTests: XCTestCase {
 
     var aArchivedEntity: LectureDataEntity {
         let uuidString = uuidString("0")
-        let url = URL(string: "file:///Users/ana.maria/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3")!
-        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaURL: url)
+        let urlComponents = URLComponents(
+            string: "Archived/\(uuidString)-this%20is%20a%20sample%20file%20name.mp3"
+        )!
+        var entity = LectureDataEntity(id: uuid("0"), title: "this is a sample file name", mediaTailURL: urlComponents)
         entity.state = .archived
         return entity
     }

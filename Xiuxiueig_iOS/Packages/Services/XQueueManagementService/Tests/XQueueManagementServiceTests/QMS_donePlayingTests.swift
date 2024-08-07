@@ -80,7 +80,7 @@ final class QMSDonePlayingTests: XCTestCase {
         // THEN The lecture marked as played, not playing, not in queue and saved.
         let savedLecture = LectureDataEntity(id: uuid("1"),
                                              title: "title 01",
-                                             mediaURL: URL(string: "https://whatsup.com")!,
+                                             mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!,
                                              queuePosition: nil,
                                              playPosition: nil,
                                              played: [timeProviderMock.now])
@@ -103,7 +103,7 @@ final class QMSDonePlayingTests: XCTestCase {
         // THEN The lecture marked as played, not playing, not in queue and saved.
         let savedLecture = LectureDataEntity(id: uuid("1"),
                                              title: "title 01",
-                                             mediaURL: URL(string: "https://whatsup.com")!,
+                                             mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!,
                                              queuePosition: nil,
                                              playPosition: nil,
                                              played: [timeProviderMock.now, timeProviderMock.now])
@@ -137,30 +137,30 @@ final class QMSDonePlayingTests: XCTestCase {
 
     private var initialDataLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil),
-            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3, playPosition: nil)
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1, playPosition: 10),
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 2, playPosition: nil),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 3, playPosition: nil)
         ]
     }
 
     private var initialDataLecturesWithPlayedTime: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10, played: [timeProviderMock.now])
+            LectureDataEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1, playPosition: 10, played: [timeProviderMock.now])
         ]
     }
 
     private var finalDataLectures: [LectureDataEntity] {
         [
-            LectureDataEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: nil),
-            LectureDataEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2, playPosition: nil)
+            LectureDataEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1, playPosition: nil),
+            LectureDataEntity(id: uuid("3"), title: "title 03", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 2, playPosition: nil)
         ]
     }
 
     private var initialUnchangedLectures: [LectureEntity] {
         [
-            LectureEntity(id: uuid("1"), title: "title 01", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 1, playPosition: 10),
-            LectureEntity(id: uuid("2"), title: "title 02", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 2),
-            LectureEntity(id: uuid("3"), title: "title 03", mediaURL: URL(string: "https://whatsup.com")!, queuePosition: 3)
+            LectureEntity(id: uuid("1"), title: "title 01", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 1, playPosition: 10),
+            LectureEntity(id: uuid("2"), title: "title 02", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 2),
+            LectureEntity(id: uuid("3"), title: "title 03", mediaTailURL: URLComponents(string: "Inbox/MyFile.mp3")!, queuePosition: 3)
         ]
     }
 }

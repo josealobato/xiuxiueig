@@ -13,7 +13,7 @@ extension LectureEntity {
         return LectureDataEntity(id: id,
                                  title: title,
                                  category: categoryData,
-                                 mediaURL: mediaURL,
+                                 mediaTailURL: mediaTailURL,
                                  queuePosition: queuePosition,
                                  playPosition: playPosition,
                                  played: played,

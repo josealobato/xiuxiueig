@@ -20,8 +20,8 @@ final class XRepositoriesTests: XCTestCase {
         // GIVEN a Lecture data entity
         let uuid = UUID()
         let title = "This is a test title"
-        let url = URL(string: "file://This/is/a/test/url.mp3")!
-        let initialLecture = LectureDataEntity(id: uuid, title: title, mediaURL: url)
+        let urlComponents = URLComponents()
+        let initialLecture = LectureDataEntity(id: uuid, title: title, mediaTailURL: urlComponents)
 
         // WHEN adding a lecture
         try await lectureRepo.add(lecture: initialLecture)
@@ -49,8 +49,8 @@ final class XRepositoriesTests: XCTestCase {
         // GIVEN a Lecture is already in the repo
         let uuid = UUID()
         let title = "This is a test title"
-        let url = URL(string: "file://This/is/a/test/url.mp3")!
-        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaURL: url)
+        let urlComponents = URLComponents()
+        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaTailURL: urlComponents)
         try await lectureRepo.add(lecture: initialLecture)
 
         // THEN then we can retrive that lecture.
@@ -84,8 +84,8 @@ final class XRepositoriesTests: XCTestCase {
         // GIVEN a Lecture is already in the repo
         let uuid = UUID()
         let title = "This is a test title"
-        let url = URL(string: "file://This/is/a/test/url.mp3")!
-        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaURL: url)
+        let urlComponents = URLComponents(string: "/Inbox/myfile.mp3")!
+        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaTailURL: urlComponents)
         try await lectureRepo.add(lecture: initialLecture)
 
         // THEN then we can retrive that lecture.
@@ -98,7 +98,7 @@ final class XRepositoriesTests: XCTestCase {
         // AND if the URL consistency handler modify the URL
         uRLConsistencyMock.updateEntityClosure = { lecture in
             var modifiedLecture = lecture
-            modifiedLecture.mediaURL = URL(string: "file://This/is/a/new/url.mp3")!
+            modifiedLecture.mediaTailURL = URLComponents(string: "Inbox/myfile.mp3")!
             return modifiedLecture
         }
 
@@ -111,8 +111,8 @@ final class XRepositoriesTests: XCTestCase {
             XCTAssertEqual(retrievedLecture.id, uuid)
             XCTAssertEqual(retrievedLecture.state, .managed)
             XCTAssertEqual(
-                retrievedLecture.mediaURL.absoluteString,
-                "file://This/is/a/new/url.mp3"
+                retrievedLecture.mediaTailURL.path,
+                "Inbox/myfile.mp3"
             )
         } else {
             XCTFail("There should be a lecture to retrieve")
@@ -123,8 +123,8 @@ final class XRepositoriesTests: XCTestCase {
         // GIVEN a Lecture is already in the repo
         let uuid = UUID()
         let title = "This is a test title"
-        let url = URL(string: "file://This/is/a/test/url.mp3")!
-        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaURL: url)
+        let urlComponents = URLComponents()
+        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaTailURL: urlComponents)
         try await lectureRepo.add(lecture: initialLecture)
 
         // THEN then we can retrive that lecture.
@@ -155,8 +155,8 @@ final class XRepositoriesTests: XCTestCase {
         // with a entity in
         let uuid = UUID()
         let title = "This is a test title"
-        let url = URL(string: "file://This/is/a/test/url.mp3")!
-        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaURL: url)
+        let urlComponents = URLComponents()
+        var initialLecture = LectureDataEntity(id: uuid, title: title, mediaTailURL: urlComponents)
         try await lectureRepo.add(lecture: initialLecture)
 
         // THEN then we can retrive that lecture.

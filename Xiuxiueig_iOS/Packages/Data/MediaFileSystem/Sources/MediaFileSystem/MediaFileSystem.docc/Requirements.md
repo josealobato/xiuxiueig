@@ -29,7 +29,13 @@
                     means no ID on file name).
 
 * [MFS0100] [x] [N] User should be able to request a Media File by its ID, 
-                     getting nil if the file does not exist.  
+                    getting nil if the file does not exist.  
+
+* [MFS0110] [x] [N] User should be able to request a Media File by its URL, 
+                    getting nil if the file does not exist.
+
+* [MFS0100] [x] [N] User should be able to request a Media File by its tail URL, 
+                    getting nil if the file does not exist.
 
 ### About MediaFiles creation
 

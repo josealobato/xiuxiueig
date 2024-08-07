@@ -45,7 +45,7 @@ extension MediaConsistencyService: MediaConsistencyServiceInterface {
         resultingEntity = try processorSerialQueue.sync {
             logger.debug("MCS Update Entity Start -> ")
             // Get the file entity by the url.
-            guard var mediaFile = fileSystem.file(from: entity.mediaURL) else {
+            guard var mediaFile = fileSystem.file(fromTailURL: entity.mediaTailURL) else {
                 logger.warning("On Update, no existing file for entity \(entity.title)")
                 throw MediaConsistencyServiceError.noMediaFileForGivenEntity
             }
@@ -87,7 +87,7 @@ extension MediaConsistencyService: MediaConsistencyServiceInterface {
 
             if let mediaFile = updatedMediaFile {
                 var modifiedEntity = entity
-                modifiedEntity.mediaURL = mediaFile.url
+                modifiedEntity.mediaTailURL = mediaFile.tailURL
                 return modifiedEntity
             } else {
                 return entity
@@ -138,7 +138,7 @@ extension MediaConsistencyService: MediaConsistencyServiceInterface {
     public func delete(entity: LectureDataEntity) throws {
         let files: [MediaFile] = fileSystem.unmanagedFiles() + fileSystem.managedFiles()
         // We do not use the id to check the file because unmanaged files do not have id.
-        if let file = files.first(where: { $0.url == entity.mediaURL}) {
+        if let file = files.first(where: { $0.tailURL == entity.mediaTailURL}) {
             logger.debug("MCS request to delete file: \(entity.title)")
             fileSystem.deleteFile(file: file)
         } else {
@@ -173,7 +173,7 @@ extension MediaConsistencyService {
                     id: UUID(),
                     title: file.name,
                     category: nil,
-                    mediaURL: file.url,
+                    mediaTailURL: file.tailURL,
                     imageURL: nil,
                     queuePosition: nil,
                     playPosition: nil,
@@ -201,7 +201,7 @@ extension MediaConsistencyService {
         // 3. For every entity...
         for entity in newEntities {
             // find a file with matching URL
-            let fileExist = newFiles.contains(where: { $0.url == entity.mediaURL })
+            let fileExist = newFiles.contains(where: { $0.tailURL == entity.mediaTailURL })
             if !fileExist {
                 // If none is found, delete the entity:
                 try await self.repository.deleteLecture(withId: entity.id)

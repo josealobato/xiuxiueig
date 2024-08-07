@@ -18,24 +18,22 @@ final class MediaFileSystemCreationTest: XCTestCase {
         static let discardedFolderName: String = "Discarded"
     }
 
+    private func baseFolderURL() -> URL {
+        return MediaFile.baseURL()!
+    }
+
     func deleteAllBeforeTest() {
 
         let fileMng = FileManager.default
-        // swiftlint:disable:next force_try
-        let docsURL = try! fileMng.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        )
+        let baseFolderURL = baseFolderURL()
 
-        let inboxFolderULR = docsURL.appendingPathComponent(Constants.inboxFolderName)
+        let inboxFolderULR = baseFolderURL.appendingPathComponent(Constants.inboxFolderName)
         try? fileMng.removeItem(at: inboxFolderULR)
-        let managedFolderULR = docsURL.appendingPathComponent(Constants.managedFolderName)
+        let managedFolderULR = baseFolderURL.appendingPathComponent(Constants.managedFolderName)
         try? fileMng.removeItem(at: managedFolderULR)
-        let archivedFolderULR = docsURL.appendingPathComponent(Constants.archivedFolderName)
+        let archivedFolderULR = baseFolderURL.appendingPathComponent(Constants.archivedFolderName)
         try? fileMng.removeItem(at: archivedFolderULR)
-        let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+        let discardedFolderULR = baseFolderURL.appendingPathComponent(Constants.discardedFolderName)
         try? fileMng.removeItem(at: discardedFolderULR)
     }
 
@@ -68,22 +66,15 @@ final class MediaFileSystemCreationTest: XCTestCase {
         _ = MediaFileSystem()
 
         // THEN the folders for inbox, managed and archive shold be created
-        let fileMng = FileManager.default
-        // swiftlint:disable:next force_try
-        let docsURL = try! fileMng.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        )
+        let baseFolderURL = baseFolderURL()
 
-        let inboxFolderULR = docsURL.appendingPathComponent(Constants.inboxFolderName)
+        let inboxFolderULR = baseFolderURL.appendingPathComponent(Constants.inboxFolderName)
         XCTAssert(existDirectory(url: inboxFolderULR))
-        let managedFolderULR = docsURL.appendingPathComponent(Constants.managedFolderName)
+        let managedFolderULR = baseFolderURL.appendingPathComponent(Constants.managedFolderName)
         XCTAssert(existDirectory(url: managedFolderULR))
-        let archivedFolderULR = docsURL.appendingPathComponent(Constants.archivedFolderName)
+        let archivedFolderULR = baseFolderURL.appendingPathComponent(Constants.archivedFolderName)
         XCTAssert(existDirectory(url: archivedFolderULR))
-        let discardedFolderULR = docsURL.appendingPathComponent(Constants.discardedFolderName)
+        let discardedFolderULR = baseFolderURL.appendingPathComponent(Constants.discardedFolderName)
         XCTAssert(existDirectory(url: discardedFolderULR))
     }
 }
