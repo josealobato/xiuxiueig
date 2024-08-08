@@ -1,3 +1,5 @@
+// Copyright © 2024 Jose A Lobato. Under MIT license(https://mit-license.org)
+
 import XCTest
 @testable import XRepositories
 
@@ -8,6 +10,9 @@ final class XRepositoriesTests: XCTestCase {
 
     override func setUp() async throws {
         try await super.setUp()
+
+        // Get rid of the inMemory Store
+        ModelStoreBuilder.inMemoryStorageContainer = nil
 
         uRLConsistencyMock = LectureURLConsistencyHandlerMock()
         lectureRepo = try LectureRepositoryBuilder.buildInMemory(

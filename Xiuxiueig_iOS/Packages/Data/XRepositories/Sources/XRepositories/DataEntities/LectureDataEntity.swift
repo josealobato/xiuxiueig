@@ -7,6 +7,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public let id: UUID
     public var title: String
     public var category: CategoryDataEntity?
+    public var goal: GoalDataEntity?
     public var mediaTailURL: URLComponents
     public var imageURL: URL?
     public var queuePosition: Int?
@@ -23,6 +24,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
     public init(id: UUID,
                 title: String,
                 category: CategoryDataEntity? = nil,
+                goal: GoalDataEntity? = nil,
                 mediaTailURL: URLComponents,
                 imageURL: URL? = nil,
                 queuePosition: Int? = nil,
@@ -33,6 +35,7 @@ public struct LectureDataEntity: Identifiable, Equatable {
         self.id = id
         self.title = title
         self.category = category
+        self.goal = goal
         self.mediaTailURL = mediaTailURL
         self.imageURL = imageURL
         self.queuePosition = queuePosition
@@ -58,6 +61,7 @@ extension LectureDataEntity {
         return LectureModel(externalId: self.id,
                             title: self.title,
                             category: self.category?.categoryModel(),
+                            goal: self.goal?.goalModel(),
                             mediaTailURLPath: self.mediaTailURL.path,
                             imageURL: self.imageURL,
                             queuePosition: self.queuePosition,
@@ -77,6 +81,11 @@ extension LectureDataEntity {
             categoryDataEntity = CategoryDataEntity.from(model: categoryModel)
         }
 
+        var goalDataEntity: GoalDataEntity?
+        if let goalModel = model.goal {
+            goalDataEntity = GoalDataEntity.from(model: goalModel)
+        }
+
         var state: State
         switch model.state {
         case .archived: state = .archived
@@ -88,6 +97,7 @@ extension LectureDataEntity {
         return LectureDataEntity(id: model.externalId ?? UUID(),
                                  title: model.title ?? "",
                                  category: categoryDataEntity,
+                                 goal: goalDataEntity,
                                  mediaTailURL: mediaTailURLComponents,
                                  imageURL: model.imageURL ?? nil,
                                  queuePosition: model.queuePosition,

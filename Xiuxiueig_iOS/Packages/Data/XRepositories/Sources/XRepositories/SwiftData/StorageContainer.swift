@@ -22,7 +22,8 @@ struct StorageContainer {
     lazy var modelContainer: ModelContainer = {
         let fullSchema = Schema([
             LectureModel.self,
-            CategoryModel.self
+            CategoryModel.self,
+            GoalModel.self
         ])
 
         let configuration = ModelConfiguration(schema: fullSchema, isStoredInMemoryOnly: inMemory)

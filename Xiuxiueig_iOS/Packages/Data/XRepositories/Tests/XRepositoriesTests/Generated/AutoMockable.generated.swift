@@ -149,6 +149,129 @@ final class CategoryRepositoryIntefaceMock: CategoryRepositoryInteface {
     }
 
 }
+final class GoalRepositoryInterfaceMock: GoalRepositoryInterface {
+
+    //MARK: - add
+
+    var addGoalThrowableError: Error?
+    var addGoalCallsCount = 0
+    var addGoalCalled: Bool {
+        return addGoalCallsCount > 0
+    }
+    var addGoalReceivedGoal: GoalDataEntity?
+    var addGoalReceivedInvocations: [GoalDataEntity] = []
+    var addGoalClosure: ((GoalDataEntity) throws -> Void)?
+
+    func add(goal: GoalDataEntity) async throws {
+        if let error = addGoalThrowableError {
+            throw error
+        }
+        addGoalCallsCount += 1
+        addGoalReceivedGoal = goal
+        addGoalReceivedInvocations.append(goal)
+        try addGoalClosure?(goal)
+    }
+
+    //MARK: - goals
+
+    var goalsThrowableError: Error?
+    var goalsCallsCount = 0
+    var goalsCalled: Bool {
+        return goalsCallsCount > 0
+    }
+    var goalsReturnValue: [GoalDataEntity]!
+    var goalsClosure: (() throws -> [GoalDataEntity])?
+
+    func goals() async throws -> [GoalDataEntity] {
+        if let error = goalsThrowableError {
+            throw error
+        }
+        goalsCallsCount += 1
+        return try goalsClosure.map({ try $0() }) ?? goalsReturnValue
+    }
+
+    //MARK: - goal
+
+    var goalWithIdThrowableError: Error?
+    var goalWithIdCallsCount = 0
+    var goalWithIdCalled: Bool {
+        return goalWithIdCallsCount > 0
+    }
+    var goalWithIdReceivedId: UUID?
+    var goalWithIdReceivedInvocations: [UUID] = []
+    var goalWithIdReturnValue: GoalDataEntity?
+    var goalWithIdClosure: ((UUID) throws -> GoalDataEntity?)?
+
+    func goal(withId id: UUID) async throws -> GoalDataEntity? {
+        if let error = goalWithIdThrowableError {
+            throw error
+        }
+        goalWithIdCallsCount += 1
+        goalWithIdReceivedId = id
+        goalWithIdReceivedInvocations.append(id)
+        return try goalWithIdClosure.map({ try $0(id) }) ?? goalWithIdReturnValue
+    }
+
+    //MARK: - update
+
+    var updateGoalThrowableError: Error?
+    var updateGoalCallsCount = 0
+    var updateGoalCalled: Bool {
+        return updateGoalCallsCount > 0
+    }
+    var updateGoalReceivedGoal: GoalDataEntity?
+    var updateGoalReceivedInvocations: [GoalDataEntity] = []
+    var updateGoalClosure: ((GoalDataEntity) throws -> Void)?
+
+    func update(goal: GoalDataEntity) async throws {
+        if let error = updateGoalThrowableError {
+            throw error
+        }
+        updateGoalCallsCount += 1
+        updateGoalReceivedGoal = goal
+        updateGoalReceivedInvocations.append(goal)
+        try updateGoalClosure?(goal)
+    }
+
+    //MARK: - deleteGoal
+
+    var deleteGoalWithIdThrowableError: Error?
+    var deleteGoalWithIdCallsCount = 0
+    var deleteGoalWithIdCalled: Bool {
+        return deleteGoalWithIdCallsCount > 0
+    }
+    var deleteGoalWithIdReceivedId: UUID?
+    var deleteGoalWithIdReceivedInvocations: [UUID] = []
+    var deleteGoalWithIdClosure: ((UUID) throws -> Void)?
+
+    func deleteGoal(withId id: UUID) async throws {
+        if let error = deleteGoalWithIdThrowableError {
+            throw error
+        }
+        deleteGoalWithIdCallsCount += 1
+        deleteGoalWithIdReceivedId = id
+        deleteGoalWithIdReceivedInvocations.append(id)
+        try deleteGoalWithIdClosure?(id)
+    }
+
+    //MARK: - persist
+
+    var persistThrowableError: Error?
+    var persistCallsCount = 0
+    var persistCalled: Bool {
+        return persistCallsCount > 0
+    }
+    var persistClosure: (() throws -> Void)?
+
+    func persist() async throws {
+        if let error = persistThrowableError {
+            throw error
+        }
+        persistCallsCount += 1
+        try persistClosure?()
+    }
+
+}
 final class LectureRepositoryIntefaceMock: LectureRepositoryInteface {
 
     //MARK: - add

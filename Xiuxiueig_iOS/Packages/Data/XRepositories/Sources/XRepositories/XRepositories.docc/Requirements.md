@@ -48,3 +48,12 @@ Here the term "user" refers to the user o the repositories (not the user of the 
 * [REP0340] [ ] [ ]  User can delete all categories.
 * [REP0350] [ ] [ ]  User can update (modify) a category.
 * [REP0360] [ ] [ ]  User can explicitly request to persist the categories.
+
+### Goal repositories
+
+* [REP0500] [x] [ ]  User can add a goal.
+* [REP0520] [x] [ ]  User can retrive intividual goal or all goal.
+* [REP0530] [x] [ ]  User can delete individual goal.
+* [REP0540] [ ] [ ]  User can delete all goal.
+* [REP0550] [x] [ ]  User can update (modify) a goal.
+* [REP0560] [x] [ ]  User can explicitly request to persist the goals.

@@ -85,6 +85,16 @@ extension LectureRepository: LectureRepositoryInteface {
             }
         }
 
+        // Update Dependencies (Goal)
+        if let goal = modifiedLecture.goal {
+            let goalId = goal.id
+            let modelPredicate = #Predicate<GoalModel> { $0.externalId == goalId }
+            let models: [GoalModel] = try await store.fetch(modelPredicate)
+            if let goalModel = models.first {
+                lectureModel.goal = goalModel
+            }
+        }
+
         logger.debug("LR Updated lecture \(modifiedLecture.title) with url \(modifiedLecture.mediaTailURL)")
         try await persist()
     }
