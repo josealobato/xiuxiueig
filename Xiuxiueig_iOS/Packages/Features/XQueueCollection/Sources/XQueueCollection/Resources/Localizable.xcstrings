@@ -1,0 +1,21 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Delete" : {
+
+    },
+    "Dequeue" : {
+
+    },
+    "Lecture List" : {
+
+    },
+    "Play" : {
+
+    },
+    "Queue" : {
+
+    }
+  },
+  "version" : "1.0"
+}

@@ -78,6 +78,14 @@
 		45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */; };
 		45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */; };
 		45E2C61F2C46756400951264 /* XRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = 45E2C61E2C46756400951264 /* XRepositories */; };
+		45FD46DE2C64A4AF00A49A92 /* XQueueCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 45FD46DD2C64A4AF00A49A92 /* XQueueCollection */; };
+		45FD46E02C64AABB00A49A92 /* XQueueCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46DF2C64AABB00A49A92 /* XQueueCollectionAdapter.swift */; };
+		45FD46E32C64AD5400A49A92 /* QueueFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46E22C64AD5400A49A92 /* QueueFlowCoordinator.swift */; };
+		45FD46E52C64AD6100A49A92 /* QueueFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46E42C64AD6100A49A92 /* QueueFlowView.swift */; };
+		45FD46E72C64AD6B00A49A92 /* QueueFlowContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46E62C64AD6B00A49A92 /* QueueFlowContext.swift */; };
+		45FD46E92C64AED500A49A92 /* QueueFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46E82C64AED500A49A92 /* QueueFlowCoordinator+Features.swift */; };
+		45FD46EB2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EA2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift */; };
+		45FD46ED2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +169,7 @@
 		458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowCoordinator.swift; sourceTree = "<group>"; };
 		458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInFlowView.swift; sourceTree = "<group>"; };
 		458100CF2C17722700F2AC0A /* XToolKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XToolKit; sourceTree = "<group>"; };
+		458BADF62C63BF4200D832DA /* XQueueCollection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XQueueCollection; sourceTree = "<group>"; };
 		458C16662C52BC97001B3651 /* FileDetectionDataIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetectionDataIntegrationTests.swift; sourceTree = "<group>"; };
 		458C166C2C52D1A8001B3651 /* ManagingEntityUpdatesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingEntityUpdatesIntegrationTests.swift; sourceTree = "<group>"; };
 		458C16722C564929001B3651 /* Xiuxiueig_iOSIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xiuxiueig_iOSIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +184,13 @@
 		45E2C6142C3AF76500951264 /* PlayerFlowCoordinator+Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayerFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
 		45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPlayerAdapter.swift; sourceTree = "<group>"; };
 		45E2C61D2C3C5E8C00951264 /* XQueueManagementService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XQueueManagementService; sourceTree = "<group>"; };
+		45FD46DF2C64AABB00A49A92 /* XQueueCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XQueueCollectionAdapter.swift; sourceTree = "<group>"; };
+		45FD46E22C64AD5400A49A92 /* QueueFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueFlowCoordinator.swift; sourceTree = "<group>"; };
+		45FD46E42C64AD6100A49A92 /* QueueFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueFlowView.swift; sourceTree = "<group>"; };
+		45FD46E62C64AD6B00A49A92 /* QueueFlowContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueFlowContext.swift; sourceTree = "<group>"; };
+		45FD46E82C64AED500A49A92 /* QueueFlowCoordinator+Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
+		45FD46EA2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
+		45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FD46DE2C64A4AF00A49A92 /* XQueueCollection in Frameworks */,
 				454498622C248D80005357FD /* XLectureDetails in Frameworks */,
 				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
 				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
@@ -338,6 +355,7 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				458BADF62C63BF4200D832DA /* XQueueCollection */,
 				45E2C60A2C3AED4000951264 /* XPlayer */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
 				456038FD2C24891F00BE25FC /* XLectureDetails */,
@@ -371,6 +389,7 @@
 				454498822C281EF5005357FD /* XOnboardingAdapter.swift */,
 				454CFD522C398C9700FA2CA5 /* XSettingsAdapter.swift */,
 				45E2C61A2C3AF8AA00951264 /* XPlayerAdapter.swift */,
+				45FD46DF2C64AABB00A49A92 /* XQueueCollectionAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -389,6 +408,7 @@
 		458100C62C16166500F2AC0A /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				45FD46E12C64AD2200A49A92 /* QueueFlow */,
 				45E2C60D2C3AF60D00951264 /* PlayerFlow */,
 				454CFD3F2C3985B700FA2CA5 /* SettingsFlow */,
 				4544986B2C26B30D005357FD /* LoggedInFlow */,
@@ -457,6 +477,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		45FD46E12C64AD2200A49A92 /* QueueFlow */ = {
+			isa = PBXGroup;
+			children = (
+				45FD46E22C64AD5400A49A92 /* QueueFlowCoordinator.swift */,
+				45FD46E42C64AD6100A49A92 /* QueueFlowView.swift */,
+				45FD46E62C64AD6B00A49A92 /* QueueFlowContext.swift */,
+				45FD46E82C64AED500A49A92 /* QueueFlowCoordinator+Features.swift */,
+				45FD46EA2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift */,
+				45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */,
+			);
+			path = QueueFlow;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -489,6 +522,7 @@
 				457BD04E2C46C08200589246 /* XQueueManagementService */,
 				4567EB6C2C5F7ADD00B159B3 /* MediaConsistencyService */,
 				4567EB6E2C5F7ADD00B159B3 /* MediaFileSystem */,
+				45FD46DD2C64A4AF00A49A92 /* XQueueCollection */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -675,6 +709,8 @@
 				45E2C6182C3AF76500951264 /* PlayerFlowView.swift in Sources */,
 				4544986F2C26B754005357FD /* AppFlowView.swift in Sources */,
 				456038F92C20A90900BE25FC /* CollectionFlowView.swift in Sources */,
+				45FD46E32C64AD5400A49A92 /* QueueFlowCoordinator.swift in Sources */,
+				45FD46E02C64AABB00A49A92 /* XQueueCollectionAdapter.swift in Sources */,
 				45E2C6192C3AF76500951264 /* PlayerFlowCoordinator+Features.swift in Sources */,
 				456038FC2C22055700BE25FC /* XLectureCollectionAdapter.swift in Sources */,
 				458100CA2C16169B00F2AC0A /* LoggedInFlowView.swift in Sources */,
@@ -684,6 +720,7 @@
 				45E2C61B2C3AF8AA00951264 /* XPlayerAdapter.swift in Sources */,
 				45E2C6172C3AF76500951264 /* PlayerFlowCoordinator+ViewBuilder.swift in Sources */,
 				456038F72C20A8F300BE25FC /* CollectionFlowCoordinator.swift in Sources */,
+				45FD46EB2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				45E2C60F2C3AF6FF00951264 /* PlayerFlowContext.swift in Sources */,
 				454498682C2494E6005357FD /* CollectionFlowCoordinator+ViewBuilder.swift in Sources */,
 				454CFD482C39873D00FA2CA5 /* SettingsFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
@@ -692,9 +729,11 @@
 				457BD05B2C47B83E00589246 /* CategoryEntity+ToDataEntity.swift in Sources */,
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				454CFD3C2C3949DF00FA2CA5 /* LoggedInFlowContext.swift in Sources */,
+				45FD46ED2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift in Sources */,
 				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
 				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
 				454CFD4A2C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift in Sources */,
+				45FD46E52C64AD6100A49A92 /* QueueFlowView.swift in Sources */,
 				454498782C28138C005357FD /* AppFlowCoordinator+XCoordinationRequestProtocol.swift in Sources */,
 				45E2C6152C3AF76500951264 /* PlayerFlowCoordinator.swift in Sources */,
 				454498762C281270005357FD /* XLoginAdapter.swift in Sources */,
@@ -705,10 +744,12 @@
 				457BD05A2C47B83E00589246 /* CategoryEntity+FromDataEntity.swift in Sources */,
 				4567EB692C5F756E00B159B3 /* LoggedInFlowCoordinator+Services.swift in Sources */,
 				454CFD532C398C9700FA2CA5 /* XSettingsAdapter.swift in Sources */,
+				45FD46E72C64AD6B00A49A92 /* QueueFlowContext.swift in Sources */,
 				458100C82C16167F00F2AC0A /* LoggedInFlowCoordinator.swift in Sources */,
 				4544986A2C2496E7005357FD /* XLectureDetailsAdapter.swift in Sources */,
 				45E2C6162C3AF76500951264 /* PlayerFlowCoordinator+CoordinationRequestProtocol.swift in Sources */,
 				4544987C2C28146D005357FD /* AppFlowCoordinator+Onboarding.swift in Sources */,
+				45FD46E92C64AED500A49A92 /* QueueFlowCoordinator+Features.swift in Sources */,
 				4567EB6B2C5F769C00B159B3 /* URLConsistencyHandlerBridge.swift in Sources */,
 				4524A0962C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift in Sources */,
 			);
@@ -1179,6 +1220,10 @@
 		45E2C61E2C46756400951264 /* XRepositories */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XRepositories;
+		};
+		45FD46DD2C64A4AF00A49A92 /* XQueueCollection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XQueueCollection;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

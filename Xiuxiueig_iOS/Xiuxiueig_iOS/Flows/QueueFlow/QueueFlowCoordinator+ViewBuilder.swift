@@ -4,7 +4,9 @@ import SwiftUI
 import XLectureDetails
 
 /// This extension contains the build facility of the Coordinator.
-extension CollectionFlowCoordinator {
+///
+
+extension QueueFlowCoordinator {
 
     @ViewBuilder
     /// The cooridnator knows how to build the Views for every functionality (Feature).
