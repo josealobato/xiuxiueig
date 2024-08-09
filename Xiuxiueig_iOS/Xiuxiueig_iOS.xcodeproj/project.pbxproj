@@ -88,6 +88,8 @@
 		45FD46ED2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */; };
 		45FD46EF2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EE2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift */; };
 		45FD46F22C65F75C00A49A92 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45FD46F12C65F75C00A49A92 /* Localizable.xcstrings */; };
+		45FD46F62C660BFF00A49A92 /* XGoalPicker in Resources */ = {isa = PBXBuildFile; fileRef = 45FD46F52C660BFE00A49A92 /* XGoalPicker */; };
+		45FD46F82C6657EF00A49A92 /* XGoalPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 45FD46F72C6657EF00A49A92 /* XGoalPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +197,7 @@
 		45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
 		45FD46EE2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoggedInFlow+SeedData.swift"; sourceTree = "<group>"; };
 		45FD46F12C65F75C00A49A92 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		45FD46F52C660BFE00A49A92 /* XGoalPicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XGoalPicker; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,7 @@
 				454498622C248D80005357FD /* XLectureDetails in Frameworks */,
 				4544985C2C248D66005357FD /* XCoordinator in Frameworks */,
 				4544985E2C248D74005357FD /* XLectureCollection in Frameworks */,
+				45FD46F82C6657EF00A49A92 /* XGoalPicker in Frameworks */,
 				454498812C281EA1005357FD /* XOnboarding in Frameworks */,
 				45E2C60C2C3AEEC900951264 /* XPlayer in Frameworks */,
 				4567EB6D2C5F7ADD00B159B3 /* MediaConsistencyService in Frameworks */,
@@ -360,12 +364,13 @@
 		456038F12C1EED7C00BE25FC /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				458BADF62C63BF4200D832DA /* XQueueCollection */,
-				45E2C60A2C3AED4000951264 /* XPlayer */,
+				45FD46F52C660BFE00A49A92 /* XGoalPicker */,
 				456038F22C1EEDDB00BE25FC /* XLectureCollection */,
 				456038FD2C24891F00BE25FC /* XLectureDetails */,
 				454498702C26E2F0005357FD /* XLogin */,
 				4544987F2C281CB3005357FD /* XOnboarding */,
+				45E2C60A2C3AED4000951264 /* XPlayer */,
+				458BADF62C63BF4200D832DA /* XQueueCollection */,
 				454CFD4F2C398BCC00FA2CA5 /* XSettings */,
 			);
 			path = Features;
@@ -537,6 +542,7 @@
 				4567EB6C2C5F7ADD00B159B3 /* MediaConsistencyService */,
 				4567EB6E2C5F7ADD00B159B3 /* MediaFileSystem */,
 				45FD46DD2C64A4AF00A49A92 /* XQueueCollection */,
+				45FD46F72C6657EF00A49A92 /* XGoalPicker */,
 			);
 			productName = Xiuxiueig_iOS;
 			productReference = 4524A0922C0A3CF1002A3B40 /* Xiuxiueig.app */;
@@ -661,6 +667,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FD46F62C660BFF00A49A92 /* XGoalPicker in Resources */,
 				4524A09D2C0A3CF2002A3B40 /* Preview Assets.xcassets in Resources */,
 				4524A09A2C0A3CF2002A3B40 /* Assets.xcassets in Resources */,
 				45FD46F22C65F75C00A49A92 /* Localizable.xcstrings in Resources */,
@@ -1240,6 +1247,10 @@
 		45FD46DD2C64A4AF00A49A92 /* XQueueCollection */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = XQueueCollection;
+		};
+		45FD46F72C6657EF00A49A92 /* XGoalPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XGoalPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

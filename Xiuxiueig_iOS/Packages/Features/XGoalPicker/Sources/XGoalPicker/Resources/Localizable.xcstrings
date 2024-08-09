@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Goals" : {
+      "comment" : "Goal Picker list title"
+    },
+    "No due date" : {
+      "comment" : "Goal subtitle when no due date available"
+    },
+    "Select a Goal" : {
+      "comment" : "Goal picker navigation title"
+    }
+  },
+  "version" : "1.0"
+}

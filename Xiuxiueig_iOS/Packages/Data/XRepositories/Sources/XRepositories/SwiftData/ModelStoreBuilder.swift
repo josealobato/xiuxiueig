@@ -25,7 +25,6 @@ struct ModelStoreBuilder {
             storageContainer = StorageContainer.shared
         }
 
-
         return ModelStore(modelContainer: storageContainer.modelContainer)
     }
 }
