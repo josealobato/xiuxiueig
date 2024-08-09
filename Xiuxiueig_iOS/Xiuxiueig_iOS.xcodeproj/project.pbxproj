@@ -86,6 +86,8 @@
 		45FD46E92C64AED500A49A92 /* QueueFlowCoordinator+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46E82C64AED500A49A92 /* QueueFlowCoordinator+Features.swift */; };
 		45FD46EB2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EA2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift */; };
 		45FD46ED2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */; };
+		45FD46EF2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FD46EE2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift */; };
+		45FD46F22C65F75C00A49A92 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 45FD46F12C65F75C00A49A92 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +193,8 @@
 		45FD46E82C64AED500A49A92 /* QueueFlowCoordinator+Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+Features.swift"; sourceTree = "<group>"; };
 		45FD46EA2C64B03300A49A92 /* QueueFlowCoordinator+CoordinationRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+CoordinationRequestProtocol.swift"; sourceTree = "<group>"; };
 		45FD46EC2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueueFlowCoordinator+ViewBuilder.swift"; sourceTree = "<group>"; };
+		45FD46EE2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoggedInFlow+SeedData.swift"; sourceTree = "<group>"; };
+		45FD46F12C65F75C00A49A92 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,11 +277,11 @@
 		4524A0942C0A3CF1002A3B40 /* Xiuxiueig_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				457BD0532C47B79E00589246 /* Mappers */,
 				456038FA2C2203F500BE25FC /* Adapters */,
-				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
 				458100C62C16166500F2AC0A /* Flows */,
+				457BD0532C47B79E00589246 /* Mappers */,
 				4524A09B2C0A3CF2002A3B40 /* Preview Content */,
+				45FD46F02C65F73800A49A92 /* Resources */,
 				454CFD382C385A7700FA2CA5 /* Tools */,
 				4524A0952C0A3CF1002A3B40 /* Xiuxiueig_iOSApp.swift */,
 			);
@@ -317,6 +321,7 @@
 				458100C72C16167F00F2AC0A /* LoggedInFlowCoordinator.swift */,
 				458100C92C16169B00F2AC0A /* LoggedInFlowView.swift */,
 				454CFD3B2C3949DF00FA2CA5 /* LoggedInFlowContext.swift */,
+				45FD46EE2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift */,
 			);
 			path = LoggedInFlow;
 			sourceTree = "<group>";
@@ -490,6 +495,15 @@
 			path = QueueFlow;
 			sourceTree = "<group>";
 		};
+		45FD46F02C65F73800A49A92 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4524A0992C0A3CF2002A3B40 /* Assets.xcassets */,
+				45FD46F12C65F75C00A49A92 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -649,6 +663,7 @@
 			files = (
 				4524A09D2C0A3CF2002A3B40 /* Preview Assets.xcassets in Resources */,
 				4524A09A2C0A3CF2002A3B40 /* Assets.xcassets in Resources */,
+				45FD46F22C65F75C00A49A92 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +745,7 @@
 				454498642C249244005357FD /* CollectionFlowCoordinator+Features.swift in Sources */,
 				454CFD3C2C3949DF00FA2CA5 /* LoggedInFlowContext.swift in Sources */,
 				45FD46ED2C64B19600A49A92 /* QueueFlowCoordinator+ViewBuilder.swift in Sources */,
+				45FD46EF2C65F6F800A49A92 /* LoggedInFlow+SeedData.swift in Sources */,
 				454CFD3A2C385A9400FA2CA5 /* PreferencesKeys.swift in Sources */,
 				4544987A2C28140C005357FD /* AppFlowCoordinator+LoggedIn.swift in Sources */,
 				454CFD4A2C39878800FA2CA5 /* SettingsFlowCoordinator+Features.swift in Sources */,

@@ -67,7 +67,7 @@ extension CollectionFlowCoordinator {
         } else {
             // Nothice that we do not want to build the view without the
             // repository.
-            Text("Ups! Something went wrong")
+            Text(verbatim: "Ups! Something went wrong")
         }
     }
 }

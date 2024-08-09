@@ -33,7 +33,8 @@ struct CollectionFlowView: View {
                 }
         }
         .tabItem {
-            Label("Library", systemImage: "books.vertical")
+            Label(String(localized: "Library", comment: "Tab title"),
+                  systemImage: "books.vertical")
         }
         .onAppear {
             if onFirstLoad {

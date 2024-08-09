@@ -22,7 +22,7 @@ extension SettingsFlowCoordinator {
             // ```
             //   case let .lectureDetails(id): buildLectureDetails(with: id)
             // ```
-        default: Text("Not a feature")
+        default: Text(verbatim: "Not a feature")
         }
     }
 

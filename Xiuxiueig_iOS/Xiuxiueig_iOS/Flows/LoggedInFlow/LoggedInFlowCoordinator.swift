@@ -50,6 +50,7 @@ final class LoggedInFlowCoordinator: XCoordinatorProtocol, ObservableObject {
         }
 
         initializeServices()
+        addSeedDataIfNeeded()
     }
 
     deinit {

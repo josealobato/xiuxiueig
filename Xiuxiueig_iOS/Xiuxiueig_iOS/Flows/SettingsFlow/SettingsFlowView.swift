@@ -33,7 +33,8 @@ struct SettingsFlowView: View {
                 }
         }
         .tabItem {
-            Label("Settings", systemImage: "gearshape")
+            Label(String(localized: "Settings", comment: "Tab title"),
+                         systemImage: "gearshape")
         }
         .onAppear {
             if onFirstLoad {

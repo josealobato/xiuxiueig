@@ -33,7 +33,8 @@ struct PlayerFlowView: View {
                 }
         }
         .tabItem {
-            Label("Player", systemImage: "play")
+            Label(String(localized: "Player", comment: "Tab title"),
+                  systemImage: "play")
         }
         .onAppear {
             if onFirstLoad {

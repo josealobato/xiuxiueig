@@ -1,0 +1,21 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Library" : {
+      "comment" : "Tab title"
+    },
+    "Long-term learning" : {
+      "comment" : "Title of the default goal"
+    },
+    "Player" : {
+      "comment" : "Tab title"
+    },
+    "Queue" : {
+      "comment" : "Tab title"
+    },
+    "Settings" : {
+      "comment" : "Tab title"
+    }
+  },
+  "version" : "1.0"
+}

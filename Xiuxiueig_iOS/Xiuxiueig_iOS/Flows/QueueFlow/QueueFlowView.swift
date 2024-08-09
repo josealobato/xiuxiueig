@@ -33,7 +33,8 @@ struct QueueFlowView: View {
                 }
         }
         .tabItem {
-            Label("Queue", systemImage: "rectangle.stack")
+            Label(String(localized: "Queue", comment: "Tab title"),
+                         systemImage: "rectangle.stack")
         }
         .onAppear {
             if onFirstLoad {
